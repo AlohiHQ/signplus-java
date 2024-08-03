@@ -1,11 +1,11 @@
-# Signplus Java SDK 2.0.0
+# Signplus Java SDK 1.0.0
 
 Welcome to the Signplus SDK documentation. This guide will help you get started with integrating and using the Signplus SDK in your project.
 
 ## Versions
 
 - API version: `2.0.0`
-- SDK version: `2.0.0`
+- SDK version: `1.0.0`
 
 ## About the API
 
@@ -38,14 +38,14 @@ If you use Maven, place the following within the _dependency_ tag in your `pom.x
 <dependency>
     <groupId>alohi.signplus</groupId>
     <artifactId>signplus</artifactId>
-    <version>2.0.0</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
 If you use Gradle, paste the next line inside the _dependencies_ block of your `build.gradle` file:
 
 ```Gradle
-implementation group: alohi.signplus, name: signplus, version: 2.0.0
+implementation group: alohi.signplus, name: signplus, version: 1.0.0
 ```
 
 If you use JAR files, package the SDK by running the following command:
