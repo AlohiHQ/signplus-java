@@ -22,7 +22,7 @@ public class CreateEnvelopeRequest {
   private String name;
 
   /**
-   * Flow type of the envelope (REQUEST_SIGNATURE is a request for signature, SIGN_MYSELF is a self-signing flow)
+   * Flow type of the envelope (REQUEST_SIGNATURE is a request for signature)
    */
   @NonNull
   @JsonProperty("flow_type")
