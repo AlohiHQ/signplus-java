@@ -36,7 +36,7 @@ public class Envelope {
   private Long pages;
 
   /**
-   * Flow type of the envelope (REQUEST_SIGNATURE is a request for signature, SIGN_MYSELF is a self-signing flow)
+   * Flow type of the envelope (REQUEST_SIGNATURE is a request for signature)
    */
   @JsonProperty("flow_type")
   private EnvelopeFlowType flowType;
