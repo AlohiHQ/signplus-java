@@ -70,7 +70,6 @@ import alohi.signplus.signplus.Signplus;
 import alohi.signplus.signplus.config.SignplusConfig;
 import alohi.signplus.signplus.models.CreateEnvelopeRequest;
 import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.EnvelopeFlowType;
 import alohi.signplus.signplus.models.EnvelopeLegalityLevel;
 
 public class Main {
@@ -83,7 +82,6 @@ public class Main {
     CreateEnvelopeRequest createEnvelopeRequest = CreateEnvelopeRequest
       .builder()
       .name("name")
-      .flowType(EnvelopeFlowType.REQUEST_SIGNATURE)
       .legalityLevel(EnvelopeLegalityLevel.SES)
       .expiresAt(5L)
       .comment("comment")
