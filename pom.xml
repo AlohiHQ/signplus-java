@@ -22,6 +22,16 @@
         <url>https://github.com/alohihq/signplus-java</url>
     </scm>
 
+    <!-- See https://central.sonatype.org/publish/requirements/#developer-information -->
+    <developers>
+        <developer>
+            <name>Alohi SA</name>
+            <email>support@alohi.com</email>
+            <organization>Alohi SA</organization>
+            <organizationUrl>https://www.alohi.com</organizationUrl>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>MIT</name>
