@@ -1,11 +1,11 @@
-# Signplus Java SDK 1.0.0
+# Signplus Java SDK 2.0.0
 
 Welcome to the Signplus SDK documentation. This guide will help you get started with integrating and using the Signplus SDK in your project.
 
 ## Versions
 
 - API version: `2.0.0`
-- SDK version: `1.0.0`
+- SDK version: `2.0.0`
 
 ## About the API
 
@@ -36,16 +36,16 @@ If you use Maven, place the following within the _dependency_ tag in your `pom.x
 
 ```XML
 <dependency>
-    <groupId>alohi.signplus</groupId>
+    <groupId>com.alohi</groupId>
     <artifactId>signplus</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
 If you use Gradle, paste the next line inside the _dependencies_ block of your `build.gradle` file:
 
 ```Gradle
-implementation group: alohi.signplus, name: signplus, version: 1.0.0
+implementation group: com.alohi, name: signplus, version: 2.0.0
 ```
 
 If you use JAR files, package the SDK by running the following command:
@@ -69,8 +69,8 @@ This token must be provided to authenticate your requests to the API.
 When you initialize the SDK, you can set the access token as follows:
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
 
 public class Main {
 
@@ -94,8 +94,8 @@ signplus.setAccessToken('YOUR_ACCESS_TOKEN');
 You can set a custom timeout for the SDK's HTTP requests as follows:
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
 
 public class Main {
 
@@ -112,9 +112,9 @@ public class Main {
 Below is a comprehensive example demonstrating how to authenticate and call a simple endpoint:
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
 
 public class Main {
 

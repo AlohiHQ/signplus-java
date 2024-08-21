@@ -66,11 +66,11 @@ Create new envelope
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.CreateEnvelopeRequest;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.EnvelopeLegalityLevel;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.CreateEnvelopeRequest;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.EnvelopeLegalityLevel;
 
 public class Main {
 
@@ -83,7 +83,7 @@ public class Main {
       .builder()
       .name("name")
       .legalityLevel(EnvelopeLegalityLevel.SES)
-      .expiresAt(8L)
+      .expiresAt(5L)
       .comment("comment")
       .sandbox(false)
       .build();
@@ -117,10 +117,10 @@ Create new envelope from template
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.CreateEnvelopeFromTemplateRequest;
-import alohi.signplus.signplus.models.Envelope;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.CreateEnvelopeFromTemplateRequest;
+import com.alohi.signplus.models.Envelope;
 
 public class Main {
 
@@ -133,7 +133,7 @@ public class Main {
       .builder()
       .name("name")
       .comment("comment")
-      .sandbox(false)
+      .sandbox(true)
       .build();
 
     Envelope response = signplus.signplusService.createEnvelopeFromTemplate(
@@ -167,12 +167,12 @@ List envelopes
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.EnvelopeOrderField;
-import alohi.signplus.signplus.models.EnvelopeStatus;
-import alohi.signplus.signplus.models.ListEnvelopesRequest;
-import alohi.signplus.signplus.models.ListEnvelopesResponse;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.EnvelopeOrderField;
+import com.alohi.signplus.models.EnvelopeStatus;
+import com.alohi.signplus.models.ListEnvelopesRequest;
+import com.alohi.signplus.models.ListEnvelopesResponse;
 import java.util.Arrays;
 import java.util.List;
 
@@ -199,17 +199,17 @@ public class Main {
       .ids(ids)
       .statuses(statuses)
       .folderIds(folderIds)
-      .onlyRootFolder(true)
-      .dateFrom(4L)
-      .dateTo(7L)
+      .onlyRootFolder(false)
+      .dateFrom(1L)
+      .dateTo(4L)
       .uid("uid")
-      .first(8L)
-      .last(9L)
+      .first(1L)
+      .last(5L)
       .after("after")
       .before("before")
       .orderField(EnvelopeOrderField.CREATION_DATE)
       .ascending(false)
-      .includeTrash(true)
+      .includeTrash(false)
       .build();
 
     ListEnvelopesResponse response = signplus.signplusService.listEnvelopes(listEnvelopesRequest);
@@ -240,9 +240,9 @@ Get envelope
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
 
 public class Main {
 
@@ -275,8 +275,8 @@ Delete envelope
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
 
 public class Main {
 
@@ -312,9 +312,9 @@ Get envelope document
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Document;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Document;
 
 public class Main {
 
@@ -351,9 +351,9 @@ Get envelope documents
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.ListEnvelopeDocumentsResponse;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.ListEnvelopeDocumentsResponse;
 
 public class Main {
 
@@ -391,10 +391,10 @@ Add envelope document
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.AddEnvelopeDocumentRequest;
-import alohi.signplus.signplus.models.Document;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AddEnvelopeDocumentRequest;
+import com.alohi.signplus.models.Document;
 
 public class Main {
 
@@ -434,11 +434,11 @@ Set envelope dynamic fields
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.DynamicField;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.SetEnvelopeDynamicFieldsRequest;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.DynamicField;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.SetEnvelopeDynamicFieldsRequest;
 import java.util.Arrays;
 import java.util.List;
 
@@ -490,15 +490,15 @@ Add envelope signing steps
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.AddEnvelopeSigningStepsRequest;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.Recipient;
-import alohi.signplus.signplus.models.RecipientRole;
-import alohi.signplus.signplus.models.RecipientVerification;
-import alohi.signplus.signplus.models.RecipientVerificationType;
-import alohi.signplus.signplus.models.SigningStep;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AddEnvelopeSigningStepsRequest;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.Recipient;
+import com.alohi.signplus.models.RecipientRole;
+import com.alohi.signplus.models.RecipientVerification;
+import com.alohi.signplus.models.RecipientVerificationType;
+import com.alohi.signplus.models.SigningStep;
 import java.util.Arrays;
 import java.util.List;
 
@@ -564,9 +564,9 @@ Send envelope for signature
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
 
 public class Main {
 
@@ -603,9 +603,9 @@ Duplicate envelope
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
 
 public class Main {
 
@@ -642,9 +642,9 @@ Void envelope
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
 
 public class Main {
 
@@ -682,10 +682,10 @@ Rename envelope
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.RenameEnvelopeRequest;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.RenameEnvelopeRequest;
 
 public class Main {
 
@@ -725,10 +725,10 @@ Set envelope comment
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.SetEnvelopeCommentRequest;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.SetEnvelopeCommentRequest;
 
 public class Main {
 
@@ -771,10 +771,10 @@ Set envelope notification
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.EnvelopeNotification;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.EnvelopeNotification;
 
 public class Main {
 
@@ -787,7 +787,7 @@ public class Main {
       .builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(1L)
+      .reminderInterval(0L)
       .build();
 
     Envelope response = signplus.signplusService.setEnvelopeNotification("envelope_id", envelopeNotification);
@@ -819,10 +819,10 @@ Set envelope expiration date
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.SetEnvelopeExpirationRequest;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.SetEnvelopeExpirationRequest;
 
 public class Main {
 
@@ -833,7 +833,7 @@ public class Main {
 
     SetEnvelopeExpirationRequest setEnvelopeExpirationRequest = SetEnvelopeExpirationRequest
       .builder()
-      .expiresAt(6L)
+      .expiresAt(8L)
       .build();
 
     Envelope response = signplus.signplusService.setEnvelopeExpirationDate("envelope_id", setEnvelopeExpirationRequest);
@@ -865,11 +865,11 @@ Set envelope legality level
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
-import alohi.signplus.signplus.models.EnvelopeLegalityLevel;
-import alohi.signplus.signplus.models.SetEnvelopeLegalityLevelRequest;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.EnvelopeLegalityLevel;
+import com.alohi.signplus.models.SetEnvelopeLegalityLevelRequest;
 
 public class Main {
 
@@ -914,9 +914,9 @@ Get envelope annotations
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Annotation;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Annotation;
 import java.util.List;
 
 public class Main {
@@ -955,9 +955,9 @@ Get envelope document annotations
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.ListEnvelopeDocumentAnnotationsResponse;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.ListEnvelopeDocumentAnnotationsResponse;
 
 public class Main {
 
@@ -998,20 +998,20 @@ Add envelope annotation
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.AddAnnotationRequest;
-import alohi.signplus.signplus.models.Annotation;
-import alohi.signplus.signplus.models.AnnotationCheckbox;
-import alohi.signplus.signplus.models.AnnotationCheckboxStyle;
-import alohi.signplus.signplus.models.AnnotationDateTime;
-import alohi.signplus.signplus.models.AnnotationDateTimeFormat;
-import alohi.signplus.signplus.models.AnnotationFont;
-import alohi.signplus.signplus.models.AnnotationFontFamily;
-import alohi.signplus.signplus.models.AnnotationInitials;
-import alohi.signplus.signplus.models.AnnotationSignature;
-import alohi.signplus.signplus.models.AnnotationText;
-import alohi.signplus.signplus.models.AnnotationType;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AddAnnotationRequest;
+import com.alohi.signplus.models.Annotation;
+import com.alohi.signplus.models.AnnotationCheckbox;
+import com.alohi.signplus.models.AnnotationCheckboxStyle;
+import com.alohi.signplus.models.AnnotationDateTime;
+import com.alohi.signplus.models.AnnotationDateTimeFormat;
+import com.alohi.signplus.models.AnnotationFont;
+import com.alohi.signplus.models.AnnotationFontFamily;
+import com.alohi.signplus.models.AnnotationInitials;
+import com.alohi.signplus.models.AnnotationSignature;
+import com.alohi.signplus.models.AnnotationText;
+import com.alohi.signplus.models.AnnotationType;
 
 public class Main {
 
@@ -1028,13 +1028,13 @@ public class Main {
       .builder()
       .family(AnnotationFontFamily.UNKNOWN)
       .italic(true)
-      .bold(true)
+      .bold(false)
       .build();
 
     AnnotationText annotationText = AnnotationText
       .builder()
-      .size(0.75D)
-      .color(0.4D)
+      .size(9.27D)
+      .color(3.32D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
@@ -1043,12 +1043,12 @@ public class Main {
 
     AnnotationDateTime annotationDateTime = AnnotationDateTime
       .builder()
-      .size(2.34D)
+      .size(5.54D)
       .font(annotationFont)
       .color("color")
       .autoFill(false)
       .timezone("timezone")
-      .timestamp(6L)
+      .timestamp(8L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
@@ -1062,11 +1062,11 @@ public class Main {
       .builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(5L)
-      .x(2.83D)
-      .y(1.27D)
-      .width(5.18D)
-      .height(4.34D)
+      .page(6L)
+      .x(4.19D)
+      .y(8.41D)
+      .width(8.25D)
+      .height(9.18D)
       .required(false)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
@@ -1101,8 +1101,8 @@ Delete envelope annotation
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
 
 public class Main {
 
@@ -1137,10 +1137,10 @@ Create new template
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.CreateTemplateRequest;
-import alohi.signplus.signplus.models.Template;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.CreateTemplateRequest;
+import com.alohi.signplus.models.Template;
 
 public class Main {
 
@@ -1179,11 +1179,11 @@ List templates
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.ListTemplatesRequest;
-import alohi.signplus.signplus.models.ListTemplatesResponse;
-import alohi.signplus.signplus.models.TemplateOrderField;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.ListTemplatesRequest;
+import com.alohi.signplus.models.ListTemplatesResponse;
+import com.alohi.signplus.models.TemplateOrderField;
 import java.util.Arrays;
 import java.util.List;
 
@@ -1203,12 +1203,12 @@ public class Main {
       .name("name")
       .tags(tags)
       .ids(ids)
-      .first(2L)
-      .last(0L)
+      .first(8L)
+      .last(7L)
       .after("after")
       .before("before")
       .orderField(TemplateOrderField.TEMPLATE_ID)
-      .ascending(true)
+      .ascending(false)
       .build();
 
     ListTemplatesResponse response = signplus.signplusService.listTemplates(listTemplatesRequest);
@@ -1239,9 +1239,9 @@ Get template
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Template;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Template;
 
 public class Main {
 
@@ -1274,8 +1274,8 @@ Delete template
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
 
 public class Main {
 
@@ -1310,9 +1310,9 @@ Duplicate template
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Template;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Template;
 
 public class Main {
 
@@ -1350,10 +1350,10 @@ Add template document
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.AddTemplateDocumentRequest;
-import alohi.signplus.signplus.models.Document;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AddTemplateDocumentRequest;
+import com.alohi.signplus.models.Document;
 
 public class Main {
 
@@ -1393,9 +1393,9 @@ Get template document
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Document;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Document;
 
 public class Main {
 
@@ -1432,9 +1432,9 @@ Get template documents
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.ListTemplateDocumentsResponse;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.ListTemplateDocumentsResponse;
 
 public class Main {
 
@@ -1472,13 +1472,13 @@ Add template signing steps
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.AddTemplateSigningStepsRequest;
-import alohi.signplus.signplus.models.Template;
-import alohi.signplus.signplus.models.TemplateRecipient;
-import alohi.signplus.signplus.models.TemplateRecipientRole;
-import alohi.signplus.signplus.models.TemplateSigningStep;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AddTemplateSigningStepsRequest;
+import com.alohi.signplus.models.Template;
+import com.alohi.signplus.models.TemplateRecipient;
+import com.alohi.signplus.models.TemplateRecipientRole;
+import com.alohi.signplus.models.TemplateSigningStep;
 import java.util.Arrays;
 import java.util.List;
 
@@ -1538,10 +1538,10 @@ Rename template
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.RenameTemplateRequest;
-import alohi.signplus.signplus.models.Template;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.RenameTemplateRequest;
+import com.alohi.signplus.models.Template;
 
 public class Main {
 
@@ -1581,10 +1581,10 @@ Set template comment
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.SetTemplateCommentRequest;
-import alohi.signplus.signplus.models.Template;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.SetTemplateCommentRequest;
+import com.alohi.signplus.models.Template;
 
 public class Main {
 
@@ -1627,10 +1627,10 @@ Set template notification
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.EnvelopeNotification;
-import alohi.signplus.signplus.models.Template;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.EnvelopeNotification;
+import com.alohi.signplus.models.Template;
 
 public class Main {
 
@@ -1643,7 +1643,7 @@ public class Main {
       .builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(1L)
+      .reminderInterval(0L)
       .build();
 
     Template response = signplus.signplusService.setTemplateNotification("template_id", envelopeNotification);
@@ -1674,9 +1674,9 @@ Get template annotations
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.ListTemplateAnnotationsResponse;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.ListTemplateAnnotationsResponse;
 
 public class Main {
 
@@ -1714,9 +1714,9 @@ Get document template annotations
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.ListTemplateDocumentAnnotationsResponse;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.ListTemplateDocumentAnnotationsResponse;
 
 public class Main {
 
@@ -1757,20 +1757,20 @@ Add template annotation
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.AddAnnotationRequest;
-import alohi.signplus.signplus.models.Annotation;
-import alohi.signplus.signplus.models.AnnotationCheckbox;
-import alohi.signplus.signplus.models.AnnotationCheckboxStyle;
-import alohi.signplus.signplus.models.AnnotationDateTime;
-import alohi.signplus.signplus.models.AnnotationDateTimeFormat;
-import alohi.signplus.signplus.models.AnnotationFont;
-import alohi.signplus.signplus.models.AnnotationFontFamily;
-import alohi.signplus.signplus.models.AnnotationInitials;
-import alohi.signplus.signplus.models.AnnotationSignature;
-import alohi.signplus.signplus.models.AnnotationText;
-import alohi.signplus.signplus.models.AnnotationType;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AddAnnotationRequest;
+import com.alohi.signplus.models.Annotation;
+import com.alohi.signplus.models.AnnotationCheckbox;
+import com.alohi.signplus.models.AnnotationCheckboxStyle;
+import com.alohi.signplus.models.AnnotationDateTime;
+import com.alohi.signplus.models.AnnotationDateTimeFormat;
+import com.alohi.signplus.models.AnnotationFont;
+import com.alohi.signplus.models.AnnotationFontFamily;
+import com.alohi.signplus.models.AnnotationInitials;
+import com.alohi.signplus.models.AnnotationSignature;
+import com.alohi.signplus.models.AnnotationText;
+import com.alohi.signplus.models.AnnotationType;
 
 public class Main {
 
@@ -1787,13 +1787,13 @@ public class Main {
       .builder()
       .family(AnnotationFontFamily.UNKNOWN)
       .italic(true)
-      .bold(true)
+      .bold(false)
       .build();
 
     AnnotationText annotationText = AnnotationText
       .builder()
-      .size(0.75D)
-      .color(0.4D)
+      .size(9.27D)
+      .color(3.32D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
@@ -1802,12 +1802,12 @@ public class Main {
 
     AnnotationDateTime annotationDateTime = AnnotationDateTime
       .builder()
-      .size(2.34D)
+      .size(5.54D)
       .font(annotationFont)
       .color("color")
       .autoFill(false)
       .timezone("timezone")
-      .timestamp(6L)
+      .timestamp(8L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
@@ -1821,11 +1821,11 @@ public class Main {
       .builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(5L)
-      .x(2.83D)
-      .y(1.27D)
-      .width(5.18D)
-      .height(4.34D)
+      .page(6L)
+      .x(4.19D)
+      .y(8.41D)
+      .width(8.25D)
+      .height(9.18D)
       .required(false)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
@@ -1860,8 +1860,8 @@ Delete template annotation
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
 
 public class Main {
 
@@ -1896,11 +1896,11 @@ Create webhook
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.CreateWebhookRequest;
-import alohi.signplus.signplus.models.Webhook;
-import alohi.signplus.signplus.models.WebhookEvent;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.CreateWebhookRequest;
+import com.alohi.signplus.models.Webhook;
+import com.alohi.signplus.models.WebhookEvent;
 
 public class Main {
 
@@ -1943,11 +1943,11 @@ List webhooks
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.ListWebhooksRequest;
-import alohi.signplus.signplus.models.ListWebhooksResponse;
-import alohi.signplus.signplus.models.WebhookEvent;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.ListWebhooksRequest;
+import com.alohi.signplus.models.ListWebhooksResponse;
+import com.alohi.signplus.models.WebhookEvent;
 
 public class Main {
 
@@ -1986,8 +1986,8 @@ Delete webhook
 **Example Usage Code Snippet**
 
 ```java
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
 
 public class Main {
 
