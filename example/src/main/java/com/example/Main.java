@@ -1,8 +1,8 @@
 package com.example;
 
-import alohi.signplus.signplus.Signplus;
-import alohi.signplus.signplus.config.SignplusConfig;
-import alohi.signplus.signplus.models.Envelope;
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.Envelope;
 
 public class Main {
 
