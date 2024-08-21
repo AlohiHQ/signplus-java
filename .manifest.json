@@ -1,6 +1,6 @@
 {
   "liblabVersion": "2.1.28",
-  "date": "2024-08-21T15:45:27.984Z",
+  "date": "2024-08-21T16:17:52.441Z",
   "config": {
     "apiId": 947,
     "sdkName": "signplus",
@@ -31,6 +31,14 @@
       "java": {
         "groupId": "com.alohi",
         "artifactId": "signplus",
+        "developers": [
+          {
+            "name": "Alohi SA",
+            "email": "support@alohi.com",
+            "organization": "Alohi SA",
+            "organizationUrl": "https://www.alohi.com"
+          }
+        ],
         "additionalConstructorParameters": [],
         "githubRepoName": "signplus-java",
         "liblabVersion": "2",
@@ -97,10 +105,18 @@
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
     "multiTenant": true,
-    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240821%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240821T154526Z&X-Amz-Expires=43200&X-Amz-Signature=4acb6d99b2d8fa5116920ec6e560ef3564dba26c863d86e3f6a35df9f429c387&X-Amz-SignedHeaders=host&x-id=GetObject",
+    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240821%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240821T161747Z&X-Amz-Expires=43200&X-Amz-Signature=7cd3dd73691b6e954924f6e70d23937eda90cbefc4d61b27b5ea3cae8365739b&X-Amz-SignedHeaders=host&x-id=GetObject",
     "includeWatermark": false,
     "groupId": "com.alohi",
     "artifactId": "signplus",
+    "developers": [
+      {
+        "name": "Alohi SA",
+        "email": "support@alohi.com",
+        "organization": "Alohi SA",
+        "organizationUrl": "https://www.alohi.com"
+      }
+    ],
     "additionalConstructorParameters": [],
     "githubRepoName": "signplus-java",
     "language": "java",
