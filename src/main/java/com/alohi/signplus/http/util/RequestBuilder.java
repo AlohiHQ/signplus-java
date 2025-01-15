@@ -140,17 +140,28 @@ public class RequestBuilder {
   }
 
   /**
+   * Sets the body of the request.
+   */
+  public RequestBuilder setBody(RequestBody body) {
+    this.body = body;
+    return this;
+  }
+
+  /**
    * Sets the content of the request as JSON.
    */
   public RequestBuilder setJsonContent(Object content) {
+    return setJsonContent(content, MediaType.parse("application/json; charset=utf-8"));
+  }
+
+  /**
+   * Sets the content of the request as JSON.
+   */
+  public RequestBuilder setJsonContent(Object content, MediaType mediaType) {
     if (content == null) {
       return this;
     }
-    this.body =
-      RequestBody.create(
-        Objects.requireNonNull(ModelConverter.modelToJson(content)),
-        MediaType.parse("application/json; charset=utf-8")
-      );
+    setBody(RequestBody.create(Objects.requireNonNull(ModelConverter.modelToJson(content)), mediaType));
     return this;
   }
 

@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name       | Type            | Required | Description        |
-| :--------- | :-------------- | :------- | :----------------- |
-| recipients | List<Recipient> | ❌       | List of recipients |
+| Name       | Type              | Required | Description        |
+| :--------- | :---------------- | :------- | :----------------- |
+| recipients | List\<Recipient\> | ❌       | List of recipients |
