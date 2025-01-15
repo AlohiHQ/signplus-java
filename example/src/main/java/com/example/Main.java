@@ -11,7 +11,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    Envelope response = signplus.signplusService.getEnvelope("envelope_id");
+    Envelope response = signplus.signplus.getEnvelope("envelope_id");
 
     System.out.println(response);
   }

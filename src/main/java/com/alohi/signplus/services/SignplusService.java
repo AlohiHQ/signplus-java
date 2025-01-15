@@ -41,8 +41,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import lombok.NonNull;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -63,7 +66,6 @@ public class SignplusService extends BaseService {
   public Envelope createEnvelope(@NonNull CreateEnvelopeRequest createEnvelopeRequest) throws ApiException {
     Request request = this.buildCreateEnvelopeRequest(createEnvelopeRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -71,14 +73,14 @@ public class SignplusService extends BaseService {
    * Create new envelope
    *
    * @param createEnvelopeRequest {@link CreateEnvelopeRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> createEnvelopeAsync(@NonNull CreateEnvelopeRequest createEnvelopeRequest)
     throws ApiException {
     Request request = this.buildCreateEnvelopeRequest(createEnvelopeRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildCreateEnvelopeRequest(@NonNull CreateEnvelopeRequest createEnvelopeRequest) {
@@ -100,7 +102,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildCreateEnvelopeFromTemplateRequest(templateId, createEnvelopeFromTemplateRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -109,16 +110,16 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String
    * @param createEnvelopeFromTemplateRequest {@link CreateEnvelopeFromTemplateRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> createEnvelopeFromTemplateAsync(
     @NonNull String templateId,
     @NonNull CreateEnvelopeFromTemplateRequest createEnvelopeFromTemplateRequest
   ) throws ApiException {
     Request request = this.buildCreateEnvelopeFromTemplateRequest(templateId, createEnvelopeFromTemplateRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildCreateEnvelopeFromTemplateRequest(
@@ -137,7 +138,7 @@ public class SignplusService extends BaseService {
    * @return response of {@code ListEnvelopesResponse}
    */
   public ListEnvelopesResponse listEnvelopes() throws ApiException {
-    return listEnvelopes(ListEnvelopesRequest.builder().build());
+    return this.listEnvelopes(ListEnvelopesRequest.builder().build());
   }
 
   /**
@@ -149,32 +150,32 @@ public class SignplusService extends BaseService {
   public ListEnvelopesResponse listEnvelopes(@NonNull ListEnvelopesRequest listEnvelopesRequest) throws ApiException {
     Request request = this.buildListEnvelopesRequest(listEnvelopesRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListEnvelopesResponse>() {});
   }
 
   /**
    * List envelopes
    *
-   * @return response of {@code ListEnvelopesResponse}
+   * @return response of {@code CompletableFuture<ListEnvelopesResponse>}
    */
   public CompletableFuture<ListEnvelopesResponse> listEnvelopesAsync() throws ApiException {
-    return listEnvelopesAsync(ListEnvelopesRequest.builder().build());
+    return this.listEnvelopesAsync(ListEnvelopesRequest.builder().build());
   }
 
   /**
    * List envelopes
    *
    * @param listEnvelopesRequest {@link ListEnvelopesRequest} Request Body
-   * @return response of {@code ListEnvelopesResponse}
+   * @return response of {@code CompletableFuture<ListEnvelopesResponse>}
    */
   public CompletableFuture<ListEnvelopesResponse> listEnvelopesAsync(
     @NonNull ListEnvelopesRequest listEnvelopesRequest
   ) throws ApiException {
     Request request = this.buildListEnvelopesRequest(listEnvelopesRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<ListEnvelopesResponse>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListEnvelopesResponse>() {})
+    );
   }
 
   private Request buildListEnvelopesRequest(@NonNull ListEnvelopesRequest listEnvelopesRequest) {
@@ -192,7 +193,6 @@ public class SignplusService extends BaseService {
   public Envelope getEnvelope(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildGetEnvelopeRequest(envelopeId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -200,13 +200,13 @@ public class SignplusService extends BaseService {
    * Get envelope
    *
    * @param envelopeId String
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> getEnvelopeAsync(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildGetEnvelopeRequest(envelopeId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildGetEnvelopeRequest(@NonNull String envelopeId) {
@@ -219,7 +219,7 @@ public class SignplusService extends BaseService {
    * Delete envelope
    *
    * @param envelopeId String
-   * @return response of {@code Void}
+   * @return response of {@code void}
    */
   public void deleteEnvelope(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildDeleteEnvelopeRequest(envelopeId);
@@ -230,13 +230,11 @@ public class SignplusService extends BaseService {
    * Delete envelope
    *
    * @param envelopeId String
-   * @return response of {@code Void}
+   * @return response of {@code CompletableFuture<Void>}
    */
   public CompletableFuture<Void> deleteEnvelopeAsync(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildDeleteEnvelopeRequest(envelopeId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> null);
+    return this.executeAsync(request).thenApplyAsync(response -> null);
   }
 
   private Request buildDeleteEnvelopeRequest(@NonNull String envelopeId) {
@@ -255,7 +253,6 @@ public class SignplusService extends BaseService {
   public Document getEnvelopeDocument(@NonNull String envelopeId, @NonNull String documentId) throws ApiException {
     Request request = this.buildGetEnvelopeDocumentRequest(envelopeId, documentId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Document>() {});
   }
 
@@ -264,14 +261,14 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param documentId String
-   * @return response of {@code Document}
+   * @return response of {@code CompletableFuture<Document>}
    */
   public CompletableFuture<Document> getEnvelopeDocumentAsync(@NonNull String envelopeId, @NonNull String documentId)
     throws ApiException {
     Request request = this.buildGetEnvelopeDocumentRequest(envelopeId, documentId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Document>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Document>() {})
+    );
   }
 
   private Request buildGetEnvelopeDocumentRequest(@NonNull String envelopeId, @NonNull String documentId) {
@@ -290,7 +287,6 @@ public class SignplusService extends BaseService {
   public ListEnvelopeDocumentsResponse getEnvelopeDocuments(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildGetEnvelopeDocumentsRequest(envelopeId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListEnvelopeDocumentsResponse>() {});
   }
 
@@ -298,15 +294,14 @@ public class SignplusService extends BaseService {
    * Get envelope documents
    *
    * @param envelopeId String
-   * @return response of {@code ListEnvelopeDocumentsResponse}
+   * @return response of {@code CompletableFuture<ListEnvelopeDocumentsResponse>}
    */
   public CompletableFuture<ListEnvelopeDocumentsResponse> getEnvelopeDocumentsAsync(@NonNull String envelopeId)
     throws ApiException {
     Request request = this.buildGetEnvelopeDocumentsRequest(envelopeId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res ->
-      ModelConverter.convert(res, new TypeReference<ListEnvelopeDocumentsResponse>() {})
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListEnvelopeDocumentsResponse>() {})
     );
   }
 
@@ -329,7 +324,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildAddEnvelopeDocumentRequest(envelopeId, addEnvelopeDocumentRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Document>() {});
   }
 
@@ -338,25 +332,33 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param addEnvelopeDocumentRequest {@link AddEnvelopeDocumentRequest} Request Body
-   * @return response of {@code Document}
+   * @return response of {@code CompletableFuture<Document>}
    */
   public CompletableFuture<Document> addEnvelopeDocumentAsync(
     @NonNull String envelopeId,
     @NonNull AddEnvelopeDocumentRequest addEnvelopeDocumentRequest
   ) throws ApiException {
     Request request = this.buildAddEnvelopeDocumentRequest(envelopeId, addEnvelopeDocumentRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Document>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Document>() {})
+    );
   }
 
   private Request buildAddEnvelopeDocumentRequest(
     @NonNull String envelopeId,
     @NonNull AddEnvelopeDocumentRequest addEnvelopeDocumentRequest
   ) {
+    MultipartBody.Builder multipartBodyBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+    if (addEnvelopeDocumentRequest.getFile() != null) {
+      multipartBodyBuilder.addFormDataPart(
+        "file",
+        "file",
+        RequestBody.create(addEnvelopeDocumentRequest.getFile().toString(), MediaType.parse("application/octet-stream"))
+      );
+    }
     return new RequestBuilder(HttpMethod.POST, this.serverUrl, "envelope/{envelope_id}/document")
       .setPathParameter("envelope_id", envelopeId)
-      .setJsonContent(addEnvelopeDocumentRequest)
+      .setBody(multipartBodyBuilder.build())
       .build();
   }
 
@@ -373,7 +375,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildSetEnvelopeDynamicFieldsRequest(envelopeId, setEnvelopeDynamicFieldsRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -382,16 +383,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param setEnvelopeDynamicFieldsRequest {@link SetEnvelopeDynamicFieldsRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> setEnvelopeDynamicFieldsAsync(
     @NonNull String envelopeId,
     @NonNull SetEnvelopeDynamicFieldsRequest setEnvelopeDynamicFieldsRequest
   ) throws ApiException {
     Request request = this.buildSetEnvelopeDynamicFieldsRequest(envelopeId, setEnvelopeDynamicFieldsRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildSetEnvelopeDynamicFieldsRequest(
@@ -417,7 +418,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildAddEnvelopeSigningStepsRequest(envelopeId, addEnvelopeSigningStepsRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -426,16 +426,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param addEnvelopeSigningStepsRequest {@link AddEnvelopeSigningStepsRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> addEnvelopeSigningStepsAsync(
     @NonNull String envelopeId,
     @NonNull AddEnvelopeSigningStepsRequest addEnvelopeSigningStepsRequest
   ) throws ApiException {
     Request request = this.buildAddEnvelopeSigningStepsRequest(envelopeId, addEnvelopeSigningStepsRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildAddEnvelopeSigningStepsRequest(
@@ -457,7 +457,6 @@ public class SignplusService extends BaseService {
   public Envelope sendEnvelope(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildSendEnvelopeRequest(envelopeId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -465,13 +464,13 @@ public class SignplusService extends BaseService {
    * Send envelope for signature
    *
    * @param envelopeId String
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> sendEnvelopeAsync(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildSendEnvelopeRequest(envelopeId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildSendEnvelopeRequest(@NonNull String envelopeId) {
@@ -489,7 +488,6 @@ public class SignplusService extends BaseService {
   public Envelope duplicateEnvelope(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildDuplicateEnvelopeRequest(envelopeId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -497,13 +495,13 @@ public class SignplusService extends BaseService {
    * Duplicate envelope
    *
    * @param envelopeId String
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> duplicateEnvelopeAsync(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildDuplicateEnvelopeRequest(envelopeId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildDuplicateEnvelopeRequest(@NonNull String envelopeId) {
@@ -521,7 +519,6 @@ public class SignplusService extends BaseService {
   public Envelope voidEnvelope(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildVoidEnvelopeRequest(envelopeId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -529,13 +526,13 @@ public class SignplusService extends BaseService {
    * Void envelope
    *
    * @param envelopeId String
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> voidEnvelopeAsync(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildVoidEnvelopeRequest(envelopeId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildVoidEnvelopeRequest(@NonNull String envelopeId) {
@@ -555,7 +552,6 @@ public class SignplusService extends BaseService {
     throws ApiException {
     Request request = this.buildRenameEnvelopeRequest(envelopeId, renameEnvelopeRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -564,16 +560,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param renameEnvelopeRequest {@link RenameEnvelopeRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> renameEnvelopeAsync(
     @NonNull String envelopeId,
     @NonNull RenameEnvelopeRequest renameEnvelopeRequest
   ) throws ApiException {
     Request request = this.buildRenameEnvelopeRequest(envelopeId, renameEnvelopeRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildRenameEnvelopeRequest(
@@ -599,7 +595,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildSetEnvelopeCommentRequest(envelopeId, setEnvelopeCommentRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -608,16 +603,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param setEnvelopeCommentRequest {@link SetEnvelopeCommentRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> setEnvelopeCommentAsync(
     @NonNull String envelopeId,
     @NonNull SetEnvelopeCommentRequest setEnvelopeCommentRequest
   ) throws ApiException {
     Request request = this.buildSetEnvelopeCommentRequest(envelopeId, setEnvelopeCommentRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildSetEnvelopeCommentRequest(
@@ -643,7 +638,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildSetEnvelopeNotificationRequest(envelopeId, envelopeNotification);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -652,16 +646,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param envelopeNotification {@link EnvelopeNotification} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> setEnvelopeNotificationAsync(
     @NonNull String envelopeId,
     @NonNull EnvelopeNotification envelopeNotification
   ) throws ApiException {
     Request request = this.buildSetEnvelopeNotificationRequest(envelopeId, envelopeNotification);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildSetEnvelopeNotificationRequest(
@@ -687,7 +681,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildSetEnvelopeExpirationDateRequest(envelopeId, setEnvelopeExpirationRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -696,16 +689,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param setEnvelopeExpirationRequest {@link SetEnvelopeExpirationRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> setEnvelopeExpirationDateAsync(
     @NonNull String envelopeId,
     @NonNull SetEnvelopeExpirationRequest setEnvelopeExpirationRequest
   ) throws ApiException {
     Request request = this.buildSetEnvelopeExpirationDateRequest(envelopeId, setEnvelopeExpirationRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildSetEnvelopeExpirationDateRequest(
@@ -731,7 +724,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildSetEnvelopeLegalityLevelRequest(envelopeId, setEnvelopeLegalityLevelRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Envelope>() {});
   }
 
@@ -740,16 +732,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String
    * @param setEnvelopeLegalityLevelRequest {@link SetEnvelopeLegalityLevelRequest} Request Body
-   * @return response of {@code Envelope}
+   * @return response of {@code CompletableFuture<Envelope>}
    */
   public CompletableFuture<Envelope> setEnvelopeLegalityLevelAsync(
     @NonNull String envelopeId,
     @NonNull SetEnvelopeLegalityLevelRequest setEnvelopeLegalityLevelRequest
   ) throws ApiException {
     Request request = this.buildSetEnvelopeLegalityLevelRequest(envelopeId, setEnvelopeLegalityLevelRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Envelope>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Envelope>() {})
+    );
   }
 
   private Request buildSetEnvelopeLegalityLevelRequest(
@@ -771,7 +763,6 @@ public class SignplusService extends BaseService {
   public List<Annotation> getEnvelopeAnnotations(@NonNull String envelopeId) throws ApiException {
     Request request = this.buildGetEnvelopeAnnotationsRequest(envelopeId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<List<Annotation>>() {});
   }
 
@@ -779,14 +770,15 @@ public class SignplusService extends BaseService {
    * Get envelope annotations
    *
    * @param envelopeId String ID of the envelope
-   * @return response of {@code List<Annotation>}
+   * @return response of {@code CompletableFuture<List<Annotation>>}
    */
   public CompletableFuture<List<Annotation>> getEnvelopeAnnotationsAsync(@NonNull String envelopeId)
     throws ApiException {
     Request request = this.buildGetEnvelopeAnnotationsRequest(envelopeId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<List<Annotation>>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<List<Annotation>>() {})
+    );
   }
 
   private Request buildGetEnvelopeAnnotationsRequest(@NonNull String envelopeId) {
@@ -808,7 +800,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildGetEnvelopeDocumentAnnotationsRequest(envelopeId, documentId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListEnvelopeDocumentAnnotationsResponse>() {});
   }
 
@@ -817,17 +808,16 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String ID of the envelope
    * @param documentId String ID of document
-   * @return response of {@code ListEnvelopeDocumentAnnotationsResponse}
+   * @return response of {@code CompletableFuture<ListEnvelopeDocumentAnnotationsResponse>}
    */
   public CompletableFuture<ListEnvelopeDocumentAnnotationsResponse> getEnvelopeDocumentAnnotationsAsync(
     @NonNull String envelopeId,
     @NonNull String documentId
   ) throws ApiException {
     Request request = this.buildGetEnvelopeDocumentAnnotationsRequest(envelopeId, documentId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res ->
-      ModelConverter.convert(res, new TypeReference<ListEnvelopeDocumentAnnotationsResponse>() {})
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListEnvelopeDocumentAnnotationsResponse>() {})
     );
   }
 
@@ -851,7 +841,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildAddEnvelopeAnnotationRequest(envelopeId, addAnnotationRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Annotation>() {});
   }
 
@@ -860,16 +849,17 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String ID of the envelope
    * @param addAnnotationRequest {@link AddAnnotationRequest} Request Body
-   * @return response of {@code Annotation}
+   * @return response of {@code CompletableFuture<Annotation>}
    */
   public CompletableFuture<Annotation> addEnvelopeAnnotationAsync(
     @NonNull String envelopeId,
     @NonNull AddAnnotationRequest addAnnotationRequest
   ) throws ApiException {
     Request request = this.buildAddEnvelopeAnnotationRequest(envelopeId, addAnnotationRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Annotation>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<Annotation>() {})
+    );
   }
 
   private Request buildAddEnvelopeAnnotationRequest(
@@ -887,7 +877,7 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String ID of the envelope
    * @param annotationId String ID of the annotation to delete
-   * @return response of {@code Void}
+   * @return response of {@code void}
    */
   public void deleteEnvelopeAnnotation(@NonNull String envelopeId, @NonNull String annotationId) throws ApiException {
     Request request = this.buildDeleteEnvelopeAnnotationRequest(envelopeId, annotationId);
@@ -899,16 +889,14 @@ public class SignplusService extends BaseService {
    *
    * @param envelopeId String ID of the envelope
    * @param annotationId String ID of the annotation to delete
-   * @return response of {@code Void}
+   * @return response of {@code CompletableFuture<Void>}
    */
   public CompletableFuture<Void> deleteEnvelopeAnnotationAsync(
     @NonNull String envelopeId,
     @NonNull String annotationId
   ) throws ApiException {
     Request request = this.buildDeleteEnvelopeAnnotationRequest(envelopeId, annotationId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> null);
+    return this.executeAsync(request).thenApplyAsync(response -> null);
   }
 
   private Request buildDeleteEnvelopeAnnotationRequest(@NonNull String envelopeId, @NonNull String annotationId) {
@@ -927,7 +915,6 @@ public class SignplusService extends BaseService {
   public Template createTemplate(@NonNull CreateTemplateRequest createTemplateRequest) throws ApiException {
     Request request = this.buildCreateTemplateRequest(createTemplateRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Template>() {});
   }
 
@@ -935,14 +922,14 @@ public class SignplusService extends BaseService {
    * Create new template
    *
    * @param createTemplateRequest {@link CreateTemplateRequest} Request Body
-   * @return response of {@code Template}
+   * @return response of {@code CompletableFuture<Template>}
    */
   public CompletableFuture<Template> createTemplateAsync(@NonNull CreateTemplateRequest createTemplateRequest)
     throws ApiException {
     Request request = this.buildCreateTemplateRequest(createTemplateRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Template>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Template>() {})
+    );
   }
 
   private Request buildCreateTemplateRequest(@NonNull CreateTemplateRequest createTemplateRequest) {
@@ -957,7 +944,7 @@ public class SignplusService extends BaseService {
    * @return response of {@code ListTemplatesResponse}
    */
   public ListTemplatesResponse listTemplates() throws ApiException {
-    return listTemplates(ListTemplatesRequest.builder().build());
+    return this.listTemplates(ListTemplatesRequest.builder().build());
   }
 
   /**
@@ -969,32 +956,32 @@ public class SignplusService extends BaseService {
   public ListTemplatesResponse listTemplates(@NonNull ListTemplatesRequest listTemplatesRequest) throws ApiException {
     Request request = this.buildListTemplatesRequest(listTemplatesRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListTemplatesResponse>() {});
   }
 
   /**
    * List templates
    *
-   * @return response of {@code ListTemplatesResponse}
+   * @return response of {@code CompletableFuture<ListTemplatesResponse>}
    */
   public CompletableFuture<ListTemplatesResponse> listTemplatesAsync() throws ApiException {
-    return listTemplatesAsync(ListTemplatesRequest.builder().build());
+    return this.listTemplatesAsync(ListTemplatesRequest.builder().build());
   }
 
   /**
    * List templates
    *
    * @param listTemplatesRequest {@link ListTemplatesRequest} Request Body
-   * @return response of {@code ListTemplatesResponse}
+   * @return response of {@code CompletableFuture<ListTemplatesResponse>}
    */
   public CompletableFuture<ListTemplatesResponse> listTemplatesAsync(
     @NonNull ListTemplatesRequest listTemplatesRequest
   ) throws ApiException {
     Request request = this.buildListTemplatesRequest(listTemplatesRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<ListTemplatesResponse>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListTemplatesResponse>() {})
+    );
   }
 
   private Request buildListTemplatesRequest(@NonNull ListTemplatesRequest listTemplatesRequest) {
@@ -1012,7 +999,6 @@ public class SignplusService extends BaseService {
   public Template getTemplate(@NonNull String templateId) throws ApiException {
     Request request = this.buildGetTemplateRequest(templateId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Template>() {});
   }
 
@@ -1020,13 +1006,13 @@ public class SignplusService extends BaseService {
    * Get template
    *
    * @param templateId String
-   * @return response of {@code Template}
+   * @return response of {@code CompletableFuture<Template>}
    */
   public CompletableFuture<Template> getTemplateAsync(@NonNull String templateId) throws ApiException {
     Request request = this.buildGetTemplateRequest(templateId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Template>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Template>() {})
+    );
   }
 
   private Request buildGetTemplateRequest(@NonNull String templateId) {
@@ -1039,7 +1025,7 @@ public class SignplusService extends BaseService {
    * Delete template
    *
    * @param templateId String
-   * @return response of {@code Void}
+   * @return response of {@code void}
    */
   public void deleteTemplate(@NonNull String templateId) throws ApiException {
     Request request = this.buildDeleteTemplateRequest(templateId);
@@ -1050,13 +1036,11 @@ public class SignplusService extends BaseService {
    * Delete template
    *
    * @param templateId String
-   * @return response of {@code Void}
+   * @return response of {@code CompletableFuture<Void>}
    */
   public CompletableFuture<Void> deleteTemplateAsync(@NonNull String templateId) throws ApiException {
     Request request = this.buildDeleteTemplateRequest(templateId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> null);
+    return this.executeAsync(request).thenApplyAsync(response -> null);
   }
 
   private Request buildDeleteTemplateRequest(@NonNull String templateId) {
@@ -1074,7 +1058,6 @@ public class SignplusService extends BaseService {
   public Template duplicateTemplate(@NonNull String templateId) throws ApiException {
     Request request = this.buildDuplicateTemplateRequest(templateId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Template>() {});
   }
 
@@ -1082,13 +1065,13 @@ public class SignplusService extends BaseService {
    * Duplicate template
    *
    * @param templateId String
-   * @return response of {@code Template}
+   * @return response of {@code CompletableFuture<Template>}
    */
   public CompletableFuture<Template> duplicateTemplateAsync(@NonNull String templateId) throws ApiException {
     Request request = this.buildDuplicateTemplateRequest(templateId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Template>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Template>() {})
+    );
   }
 
   private Request buildDuplicateTemplateRequest(@NonNull String templateId) {
@@ -1110,7 +1093,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildAddTemplateDocumentRequest(templateId, addTemplateDocumentRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Document>() {});
   }
 
@@ -1119,16 +1101,16 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String
    * @param addTemplateDocumentRequest {@link AddTemplateDocumentRequest} Request Body
-   * @return response of {@code Document}
+   * @return response of {@code CompletableFuture<Document>}
    */
   public CompletableFuture<Document> addTemplateDocumentAsync(
     @NonNull String templateId,
     @NonNull AddTemplateDocumentRequest addTemplateDocumentRequest
   ) throws ApiException {
     Request request = this.buildAddTemplateDocumentRequest(templateId, addTemplateDocumentRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Document>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Document>() {})
+    );
   }
 
   private Request buildAddTemplateDocumentRequest(
@@ -1137,7 +1119,19 @@ public class SignplusService extends BaseService {
   ) {
     return new RequestBuilder(HttpMethod.POST, this.serverUrl, "template/{template_id}/document")
       .setPathParameter("template_id", templateId)
-      .setJsonContent(addTemplateDocumentRequest)
+      .setBody(
+        new MultipartBody.Builder()
+          .setType(MultipartBody.FORM)
+          .addFormDataPart(
+            "file",
+            "file",
+            RequestBody.create(
+              addTemplateDocumentRequest.getFile().toString(),
+              MediaType.parse("application/octet-stream")
+            )
+          )
+          .build()
+      )
       .build();
   }
 
@@ -1151,7 +1145,6 @@ public class SignplusService extends BaseService {
   public Document getTemplateDocument(@NonNull String templateId, @NonNull String documentId) throws ApiException {
     Request request = this.buildGetTemplateDocumentRequest(templateId, documentId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Document>() {});
   }
 
@@ -1160,14 +1153,14 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String
    * @param documentId String
-   * @return response of {@code Document}
+   * @return response of {@code CompletableFuture<Document>}
    */
   public CompletableFuture<Document> getTemplateDocumentAsync(@NonNull String templateId, @NonNull String documentId)
     throws ApiException {
     Request request = this.buildGetTemplateDocumentRequest(templateId, documentId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Document>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Document>() {})
+    );
   }
 
   private Request buildGetTemplateDocumentRequest(@NonNull String templateId, @NonNull String documentId) {
@@ -1186,7 +1179,6 @@ public class SignplusService extends BaseService {
   public ListTemplateDocumentsResponse getTemplateDocuments(@NonNull String templateId) throws ApiException {
     Request request = this.buildGetTemplateDocumentsRequest(templateId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListTemplateDocumentsResponse>() {});
   }
 
@@ -1194,15 +1186,14 @@ public class SignplusService extends BaseService {
    * Get template documents
    *
    * @param templateId String
-   * @return response of {@code ListTemplateDocumentsResponse}
+   * @return response of {@code CompletableFuture<ListTemplateDocumentsResponse>}
    */
   public CompletableFuture<ListTemplateDocumentsResponse> getTemplateDocumentsAsync(@NonNull String templateId)
     throws ApiException {
     Request request = this.buildGetTemplateDocumentsRequest(templateId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res ->
-      ModelConverter.convert(res, new TypeReference<ListTemplateDocumentsResponse>() {})
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListTemplateDocumentsResponse>() {})
     );
   }
 
@@ -1225,7 +1216,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildAddTemplateSigningStepsRequest(templateId, addTemplateSigningStepsRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Template>() {});
   }
 
@@ -1234,16 +1224,16 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String
    * @param addTemplateSigningStepsRequest {@link AddTemplateSigningStepsRequest} Request Body
-   * @return response of {@code Template}
+   * @return response of {@code CompletableFuture<Template>}
    */
   public CompletableFuture<Template> addTemplateSigningStepsAsync(
     @NonNull String templateId,
     @NonNull AddTemplateSigningStepsRequest addTemplateSigningStepsRequest
   ) throws ApiException {
     Request request = this.buildAddTemplateSigningStepsRequest(templateId, addTemplateSigningStepsRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Template>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Template>() {})
+    );
   }
 
   private Request buildAddTemplateSigningStepsRequest(
@@ -1267,7 +1257,6 @@ public class SignplusService extends BaseService {
     throws ApiException {
     Request request = this.buildRenameTemplateRequest(templateId, renameTemplateRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Template>() {});
   }
 
@@ -1276,16 +1265,16 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String
    * @param renameTemplateRequest {@link RenameTemplateRequest} Request Body
-   * @return response of {@code Template}
+   * @return response of {@code CompletableFuture<Template>}
    */
   public CompletableFuture<Template> renameTemplateAsync(
     @NonNull String templateId,
     @NonNull RenameTemplateRequest renameTemplateRequest
   ) throws ApiException {
     Request request = this.buildRenameTemplateRequest(templateId, renameTemplateRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Template>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Template>() {})
+    );
   }
 
   private Request buildRenameTemplateRequest(
@@ -1311,7 +1300,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildSetTemplateCommentRequest(templateId, setTemplateCommentRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Template>() {});
   }
 
@@ -1320,16 +1308,16 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String
    * @param setTemplateCommentRequest {@link SetTemplateCommentRequest} Request Body
-   * @return response of {@code Template}
+   * @return response of {@code CompletableFuture<Template>}
    */
   public CompletableFuture<Template> setTemplateCommentAsync(
     @NonNull String templateId,
     @NonNull SetTemplateCommentRequest setTemplateCommentRequest
   ) throws ApiException {
     Request request = this.buildSetTemplateCommentRequest(templateId, setTemplateCommentRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Template>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Template>() {})
+    );
   }
 
   private Request buildSetTemplateCommentRequest(
@@ -1355,7 +1343,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildSetTemplateNotificationRequest(templateId, envelopeNotification);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Template>() {});
   }
 
@@ -1364,16 +1351,16 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String
    * @param envelopeNotification {@link EnvelopeNotification} Request Body
-   * @return response of {@code Template}
+   * @return response of {@code CompletableFuture<Template>}
    */
   public CompletableFuture<Template> setTemplateNotificationAsync(
     @NonNull String templateId,
     @NonNull EnvelopeNotification envelopeNotification
   ) throws ApiException {
     Request request = this.buildSetTemplateNotificationRequest(templateId, envelopeNotification);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Template>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Template>() {})
+    );
   }
 
   private Request buildSetTemplateNotificationRequest(
@@ -1395,7 +1382,6 @@ public class SignplusService extends BaseService {
   public ListTemplateAnnotationsResponse getTemplateAnnotations(@NonNull String templateId) throws ApiException {
     Request request = this.buildGetTemplateAnnotationsRequest(templateId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListTemplateAnnotationsResponse>() {});
   }
 
@@ -1403,15 +1389,14 @@ public class SignplusService extends BaseService {
    * Get template annotations
    *
    * @param templateId String ID of the template
-   * @return response of {@code ListTemplateAnnotationsResponse}
+   * @return response of {@code CompletableFuture<ListTemplateAnnotationsResponse>}
    */
   public CompletableFuture<ListTemplateAnnotationsResponse> getTemplateAnnotationsAsync(@NonNull String templateId)
     throws ApiException {
     Request request = this.buildGetTemplateAnnotationsRequest(templateId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res ->
-      ModelConverter.convert(res, new TypeReference<ListTemplateAnnotationsResponse>() {})
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListTemplateAnnotationsResponse>() {})
     );
   }
 
@@ -1434,7 +1419,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildGetDocumentTemplateAnnotationsRequest(templateId, documentId);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListTemplateDocumentAnnotationsResponse>() {});
   }
 
@@ -1443,17 +1427,16 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String ID of the template
    * @param documentId String ID of document
-   * @return response of {@code ListTemplateDocumentAnnotationsResponse}
+   * @return response of {@code CompletableFuture<ListTemplateDocumentAnnotationsResponse>}
    */
   public CompletableFuture<ListTemplateDocumentAnnotationsResponse> getDocumentTemplateAnnotationsAsync(
     @NonNull String templateId,
     @NonNull String documentId
   ) throws ApiException {
     Request request = this.buildGetDocumentTemplateAnnotationsRequest(templateId, documentId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res ->
-      ModelConverter.convert(res, new TypeReference<ListTemplateDocumentAnnotationsResponse>() {})
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListTemplateDocumentAnnotationsResponse>() {})
     );
   }
 
@@ -1477,7 +1460,6 @@ public class SignplusService extends BaseService {
   ) throws ApiException {
     Request request = this.buildAddTemplateAnnotationRequest(templateId, addAnnotationRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Annotation>() {});
   }
 
@@ -1486,16 +1468,17 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String ID of the template
    * @param addAnnotationRequest {@link AddAnnotationRequest} Request Body
-   * @return response of {@code Annotation}
+   * @return response of {@code CompletableFuture<Annotation>}
    */
   public CompletableFuture<Annotation> addTemplateAnnotationAsync(
     @NonNull String templateId,
     @NonNull AddAnnotationRequest addAnnotationRequest
   ) throws ApiException {
     Request request = this.buildAddTemplateAnnotationRequest(templateId, addAnnotationRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Annotation>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<Annotation>() {})
+    );
   }
 
   private Request buildAddTemplateAnnotationRequest(
@@ -1513,7 +1496,7 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String ID of the template
    * @param annotationId String ID of the annotation to delete
-   * @return response of {@code Void}
+   * @return response of {@code void}
    */
   public void deleteTemplateAnnotation(@NonNull String templateId, @NonNull String annotationId) throws ApiException {
     Request request = this.buildDeleteTemplateAnnotationRequest(templateId, annotationId);
@@ -1525,16 +1508,14 @@ public class SignplusService extends BaseService {
    *
    * @param templateId String ID of the template
    * @param annotationId String ID of the annotation to delete
-   * @return response of {@code Void}
+   * @return response of {@code CompletableFuture<Void>}
    */
   public CompletableFuture<Void> deleteTemplateAnnotationAsync(
     @NonNull String templateId,
     @NonNull String annotationId
   ) throws ApiException {
     Request request = this.buildDeleteTemplateAnnotationRequest(templateId, annotationId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> null);
+    return this.executeAsync(request).thenApplyAsync(response -> null);
   }
 
   private Request buildDeleteTemplateAnnotationRequest(@NonNull String templateId, @NonNull String annotationId) {
@@ -1553,7 +1534,6 @@ public class SignplusService extends BaseService {
   public Webhook createWebhook(@NonNull CreateWebhookRequest createWebhookRequest) throws ApiException {
     Request request = this.buildCreateWebhookRequest(createWebhookRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<Webhook>() {});
   }
 
@@ -1561,14 +1541,13 @@ public class SignplusService extends BaseService {
    * Create webhook
    *
    * @param createWebhookRequest {@link CreateWebhookRequest} Request Body
-   * @return response of {@code Webhook}
+   * @return response of {@code CompletableFuture<Webhook>}
    */
   public CompletableFuture<Webhook> createWebhookAsync(@NonNull CreateWebhookRequest createWebhookRequest)
     throws ApiException {
     Request request = this.buildCreateWebhookRequest(createWebhookRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<Webhook>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.convert(response, new TypeReference<Webhook>() {}));
   }
 
   private Request buildCreateWebhookRequest(@NonNull CreateWebhookRequest createWebhookRequest) {
@@ -1581,7 +1560,7 @@ public class SignplusService extends BaseService {
    * @return response of {@code ListWebhooksResponse}
    */
   public ListWebhooksResponse listWebhooks() throws ApiException {
-    return listWebhooks(ListWebhooksRequest.builder().build());
+    return this.listWebhooks(ListWebhooksRequest.builder().build());
   }
 
   /**
@@ -1593,31 +1572,31 @@ public class SignplusService extends BaseService {
   public ListWebhooksResponse listWebhooks(@NonNull ListWebhooksRequest listWebhooksRequest) throws ApiException {
     Request request = this.buildListWebhooksRequest(listWebhooksRequest);
     Response response = this.execute(request);
-
     return ModelConverter.convert(response, new TypeReference<ListWebhooksResponse>() {});
   }
 
   /**
    * List webhooks
    *
-   * @return response of {@code ListWebhooksResponse}
+   * @return response of {@code CompletableFuture<ListWebhooksResponse>}
    */
   public CompletableFuture<ListWebhooksResponse> listWebhooksAsync() throws ApiException {
-    return listWebhooksAsync(ListWebhooksRequest.builder().build());
+    return this.listWebhooksAsync(ListWebhooksRequest.builder().build());
   }
 
   /**
    * List webhooks
    *
    * @param listWebhooksRequest {@link ListWebhooksRequest} Request Body
-   * @return response of {@code ListWebhooksResponse}
+   * @return response of {@code CompletableFuture<ListWebhooksResponse>}
    */
   public CompletableFuture<ListWebhooksResponse> listWebhooksAsync(@NonNull ListWebhooksRequest listWebhooksRequest)
     throws ApiException {
     Request request = this.buildListWebhooksRequest(listWebhooksRequest);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> ModelConverter.convert(res, new TypeReference<ListWebhooksResponse>() {}));
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<ListWebhooksResponse>() {})
+    );
   }
 
   private Request buildListWebhooksRequest(@NonNull ListWebhooksRequest listWebhooksRequest) {
@@ -1628,7 +1607,7 @@ public class SignplusService extends BaseService {
    * Delete webhook
    *
    * @param webhookId String
-   * @return response of {@code Void}
+   * @return response of {@code void}
    */
   public void deleteWebhook(@NonNull String webhookId) throws ApiException {
     Request request = this.buildDeleteWebhookRequest(webhookId);
@@ -1639,13 +1618,11 @@ public class SignplusService extends BaseService {
    * Delete webhook
    *
    * @param webhookId String
-   * @return response of {@code Void}
+   * @return response of {@code CompletableFuture<Void>}
    */
   public CompletableFuture<Void> deleteWebhookAsync(@NonNull String webhookId) throws ApiException {
     Request request = this.buildDeleteWebhookRequest(webhookId);
-    CompletableFuture<Response> response = this.executeAsync(request);
-
-    return response.thenApplyAsync(res -> null);
+    return this.executeAsync(request).thenApplyAsync(response -> null);
   }
 
   private Request buildDeleteWebhookRequest(@NonNull String webhookId) {

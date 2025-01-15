@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name        | Type             | Required | Description |
-| :---------- | :--------------- | :------- | :---------- |
-| annotations | List<Annotation> | ❌       |             |
+| Name        | Type               | Required | Description |
+| :---------- | :----------------- | :------- | :---------- |
+| annotations | List\<Annotation\> | ❌       |             |

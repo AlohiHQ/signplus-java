@@ -1,17 +1,17 @@
 {
-  "liblabVersion": "2.1.28",
-  "date": "2024-08-21T16:17:52.441Z",
+  "liblabVersion": "2.10.9",
+  "date": "2025-01-15T12:53:18.653Z",
   "config": {
     "apiId": 947,
     "sdkName": "signplus",
     "sdkVersion": "2.0.0",
+    "languages": ["java"],
+    "auth": ["bearer"],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
-    "languages": ["java"],
     "apiVersion": "2.0.0",
     "apiName": "signplus-api",
     "specFilePath": "openapi.yaml",
-    "auth": ["bearer"],
     "languageOptions": {
       "csharp": {
         "packageId": "Alohi.Signplus",
@@ -71,7 +71,8 @@
         "githubRepoName": "signplus-typescript",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "2.0.0"
+        "sdkVersion": "2.0.0",
+        "generateEnumAs": "enum"
       }
     },
     "publishing": {
@@ -105,7 +106,6 @@
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
     "multiTenant": true,
-    "specUrl": "https://prod-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/947/open-api-spec.yaml?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA5P3QKKDKGVNIJ2H7%2F20240821%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240821T161747Z&X-Amz-Expires=43200&X-Amz-Signature=7cd3dd73691b6e954924f6e70d23937eda90cbefc4d61b27b5ea3cae8365739b&X-Amz-SignedHeaders=host&x-id=GetObject",
     "includeWatermark": false,
     "groupId": "com.alohi",
     "artifactId": "signplus",
@@ -131,7 +131,7 @@
     "httpLibrary": {
       "name": "axios",
       "packages": {
-        "axios": "^1.7.4"
+        "axios": "^1.7.7"
       },
       "languages": ["typescript"]
     },
@@ -139,16 +139,21 @@
       "paths": [],
       "rawQueries": [],
       "queriesData": []
-    }
+    },
+    "ai": false
   },
   "files": [
     "pom.xml",
     ".gitignore",
-    "src/main/java/com/alohi/signplus/validation/annotation/Length.java",
-    "src/main/java/com/alohi/signplus/validation/annotation/Max.java",
-    "src/main/java/com/alohi/signplus/validation/annotation/Min.java",
-    "src/main/java/com/alohi/signplus/validation/annotation/Pattern.java",
-    "src/main/java/com/alohi/signplus/validation/annotation/Valid.java",
+    "src/main/java/com/alohi/signplus/validation/Violation.java",
+    "src/main/java/com/alohi/signplus/validation/ViolationAggregator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/AbstractValidator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/ListValidator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/NumericValidator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/StringValidator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/Validator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/AbstractModelValidator.java",
+    "src/main/java/com/alohi/signplus/validation/exceptions/ValidationException.java",
     "src/main/java/com/alohi/signplus/services/BaseService.java",
     "src/main/java/com/alohi/signplus/http/HttpMethod.java",
     "src/main/java/com/alohi/signplus/http/ModelConverter.java",
@@ -230,9 +235,14 @@
     "documentation/models/WebhookEvent.md",
     "src/main/java/com/alohi/signplus/json/TypeUtils.java",
     "example/pom.xml",
-    "example/setup.sh",
+    "example/run.sh",
     "example/src/main/java/com/example/Main.java",
     "example/.gitignore",
+    ".idea/workspace.xml",
+    ".idea/misc.xml",
+    ".idea/compiler.xml",
+    ".idea/encoding.xml",
+    ".idea/jarRepositories.xml",
     "src/main/java/com/alohi/signplus/models/EnvelopeLegalityLevel.java",
     "src/main/java/com/alohi/signplus/models/EnvelopeFlowType.java",
     "src/main/java/com/alohi/signplus/models/EnvelopeStatus.java",
@@ -293,7 +303,7 @@
     "src/main/java/com/alohi/signplus/models/Envelope.java",
     "src/main/java/com/alohi/signplus/models/Annotation.java",
     "src/main/java/com/alohi/signplus/models/ListEnvelopesRequest.java",
-    "src/main/java/com/alohi/signplus/services/SignplusService.java",
-    "documentation/services/SignplusService.md"
+    "documentation/services/SignplusService.md",
+    "src/main/java/com/alohi/signplus/services/SignplusService.java"
   ]
 }

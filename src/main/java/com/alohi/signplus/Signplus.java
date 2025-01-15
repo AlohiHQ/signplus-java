@@ -12,7 +12,7 @@ import okhttp3.OkHttpClient;
 /** Integrate legally-binding electronic signature to your workflow */
 public class Signplus {
 
-  public final SignplusService signplusService;
+  public final SignplusService signplus;
 
   private final TokenInterceptor accessAuthInterceptor;
 
@@ -34,7 +34,7 @@ public class Signplus {
       .readTimeout(config.getTimeout(), TimeUnit.MILLISECONDS)
       .build();
 
-    this.signplusService = new SignplusService(httpClient, serverUrl);
+    this.signplus = new SignplusService(httpClient, serverUrl);
   }
 
   public void setEnvironment(Environment environment) {
@@ -42,7 +42,7 @@ public class Signplus {
   }
 
   public void setBaseUrl(String baseUrl) {
-    this.signplusService.setBaseUrl(baseUrl);
+    this.signplus.setBaseUrl(baseUrl);
   }
 
   public void setAccessToken(String token) {
