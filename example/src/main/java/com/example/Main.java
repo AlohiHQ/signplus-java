@@ -2,6 +2,7 @@ package com.example;
 
 import com.alohi.signplus.Signplus;
 import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.exceptions.ApiException;
 import com.alohi.signplus.models.Envelope;
 
 public class Main {
@@ -11,8 +12,14 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    Envelope response = signplus.signplus.getEnvelope("envelope_id");
+    try {
+      Envelope response = signplus.signplus.getEnvelope("envelope_id");
 
-    System.out.println(response);
+      System.out.println(response);
+    } catch (ApiException e) {
+      e.printStackTrace();
+    }
+
+    System.exit(0);
   }
 }
