@@ -1,4 +1,4 @@
-# Signplus Java SDK 2.1.0
+# Signplus Java SDK 2.2.0
 
 Welcome to the Signplus SDK documentation. This guide will help you get started with integrating and using the Signplus SDK in your project.
 
@@ -6,8 +6,8 @@ Welcome to the Signplus SDK documentation. This guide will help you get started 
 
 ## Versions
 
-- API version: `2.1.0`
-- SDK version: `2.1.0`
+- API version: `2.2.0`
+- SDK version: `2.2.0`
 
 ## About the API
 
@@ -40,14 +40,14 @@ If you use Maven, place the following within the _dependency_ tag in your `pom.x
 <dependency>
     <groupId>com.alohi</groupId>
     <artifactId>signplus</artifactId>
-    <version>2.1.0</version>
+    <version>2.2.0</version>
 </dependency>
 ```
 
 If you use Gradle, paste the next line inside the _dependencies_ block of your `build.gradle` file:
 
 ```Gradle
-implementation group: com.alohi, name: signplus, version: 2.1.0
+implementation group: com.alohi, name: signplus, version: 2.2.0
 ```
 
 If you use JAR files, package the SDK by running the following command:
@@ -116,6 +116,7 @@ Below is a comprehensive example demonstrating how to authenticate and call a si
 ```java
 import com.alohi.signplus.Signplus;
 import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.exceptions.ApiException;
 import com.alohi.signplus.models.Envelope;
 
 public class Main {
@@ -125,9 +126,15 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    Envelope response = signplus.signplus.getEnvelope("envelope_id");
+    try {
+      Envelope response = signplus.signplus.getEnvelope("envelope_id");
 
-    System.out.println(response);
+      System.out.println(response);
+    } catch (ApiException e) {
+      e.printStackTrace();
+    }
+
+    System.exit(0);
   }
 }
 
