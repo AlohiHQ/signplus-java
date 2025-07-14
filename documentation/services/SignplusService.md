@@ -2,49 +2,51 @@
 
 A list of all methods in the `SignplusService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                           | Description                       |
-| :---------------------------------------------------------------- | :-------------------------------- |
-| [createEnvelope](#createenvelope)                                 | Create new envelope               |
-| [createEnvelopeFromTemplate](#createenvelopefromtemplate)         | Create new envelope from template |
-| [listEnvelopes](#listenvelopes)                                   | List envelopes                    |
-| [getEnvelope](#getenvelope)                                       | Get envelope                      |
-| [deleteEnvelope](#deleteenvelope)                                 | Delete envelope                   |
-| [getEnvelopeDocument](#getenvelopedocument)                       | Get envelope document             |
-| [getEnvelopeDocuments](#getenvelopedocuments)                     | Get envelope documents            |
-| [addEnvelopeDocument](#addenvelopedocument)                       | Add envelope document             |
-| [setEnvelopeDynamicFields](#setenvelopedynamicfields)             | Set envelope dynamic fields       |
-| [addEnvelopeSigningSteps](#addenvelopesigningsteps)               | Add envelope signing steps        |
-| [sendEnvelope](#sendenvelope)                                     | Send envelope for signature       |
-| [duplicateEnvelope](#duplicateenvelope)                           | Duplicate envelope                |
-| [voidEnvelope](#voidenvelope)                                     | Void envelope                     |
-| [renameEnvelope](#renameenvelope)                                 | Rename envelope                   |
-| [setEnvelopeComment](#setenvelopecomment)                         | Set envelope comment              |
-| [setEnvelopeNotification](#setenvelopenotification)               | Set envelope notification         |
-| [setEnvelopeExpirationDate](#setenvelopeexpirationdate)           | Set envelope expiration date      |
-| [setEnvelopeLegalityLevel](#setenvelopelegalitylevel)             | Set envelope legality level       |
-| [getEnvelopeAnnotations](#getenvelopeannotations)                 | Get envelope annotations          |
-| [getEnvelopeDocumentAnnotations](#getenvelopedocumentannotations) | Get envelope document annotations |
-| [addEnvelopeAnnotation](#addenvelopeannotation)                   | Add envelope annotation           |
-| [deleteEnvelopeAnnotation](#deleteenvelopeannotation)             | Delete envelope annotation        |
-| [createTemplate](#createtemplate)                                 | Create new template               |
-| [listTemplates](#listtemplates)                                   | List templates                    |
-| [getTemplate](#gettemplate)                                       | Get template                      |
-| [deleteTemplate](#deletetemplate)                                 | Delete template                   |
-| [duplicateTemplate](#duplicatetemplate)                           | Duplicate template                |
-| [addTemplateDocument](#addtemplatedocument)                       | Add template document             |
-| [getTemplateDocument](#gettemplatedocument)                       | Get template document             |
-| [getTemplateDocuments](#gettemplatedocuments)                     | Get template documents            |
-| [addTemplateSigningSteps](#addtemplatesigningsteps)               | Add template signing steps        |
-| [renameTemplate](#renametemplate)                                 | Rename template                   |
-| [setTemplateComment](#settemplatecomment)                         | Set template comment              |
-| [setTemplateNotification](#settemplatenotification)               | Set template notification         |
-| [getTemplateAnnotations](#gettemplateannotations)                 | Get template annotations          |
-| [getDocumentTemplateAnnotations](#getdocumenttemplateannotations) | Get document template annotations |
-| [addTemplateAnnotation](#addtemplateannotation)                   | Add template annotation           |
-| [deleteTemplateAnnotation](#deletetemplateannotation)             | Delete template annotation        |
-| [createWebhook](#createwebhook)                                   | Create webhook                    |
-| [listWebhooks](#listwebhooks)                                     | List webhooks                     |
-| [deleteWebhook](#deletewebhook)                                   | Delete webhook                    |
+| Methods                                                             | Description                                        |
+| :------------------------------------------------------------------ | :------------------------------------------------- |
+| [createEnvelope](#createenvelope)                                   | Create new envelope                                |
+| [createEnvelopeFromTemplate](#createenvelopefromtemplate)           | Create new envelope from template                  |
+| [listEnvelopes](#listenvelopes)                                     | List envelopes                                     |
+| [getEnvelope](#getenvelope)                                         | Get envelope                                       |
+| [deleteEnvelope](#deleteenvelope)                                   | Delete envelope                                    |
+| [downloadEnvelopeSignedDocuments](#downloadenvelopesigneddocuments) | Download signed documents for an envelope          |
+| [downloadEnvelopeCertificate](#downloadenvelopecertificate)         | Download certificate of completion for an envelope |
+| [getEnvelopeDocument](#getenvelopedocument)                         | Get envelope document                              |
+| [getEnvelopeDocuments](#getenvelopedocuments)                       | Get envelope documents                             |
+| [addEnvelopeDocument](#addenvelopedocument)                         | Add envelope document                              |
+| [setEnvelopeDynamicFields](#setenvelopedynamicfields)               | Set envelope dynamic fields                        |
+| [addEnvelopeSigningSteps](#addenvelopesigningsteps)                 | Add envelope signing steps                         |
+| [sendEnvelope](#sendenvelope)                                       | Send envelope for signature                        |
+| [duplicateEnvelope](#duplicateenvelope)                             | Duplicate envelope                                 |
+| [voidEnvelope](#voidenvelope)                                       | Void envelope                                      |
+| [renameEnvelope](#renameenvelope)                                   | Rename envelope                                    |
+| [setEnvelopeComment](#setenvelopecomment)                           | Set envelope comment                               |
+| [setEnvelopeNotification](#setenvelopenotification)                 | Set envelope notification                          |
+| [setEnvelopeExpirationDate](#setenvelopeexpirationdate)             | Set envelope expiration date                       |
+| [setEnvelopeLegalityLevel](#setenvelopelegalitylevel)               | Set envelope legality level                        |
+| [getEnvelopeAnnotations](#getenvelopeannotations)                   | Get envelope annotations                           |
+| [getEnvelopeDocumentAnnotations](#getenvelopedocumentannotations)   | Get envelope document annotations                  |
+| [addEnvelopeAnnotation](#addenvelopeannotation)                     | Add envelope annotation                            |
+| [deleteEnvelopeAnnotation](#deleteenvelopeannotation)               | Delete envelope annotation                         |
+| [createTemplate](#createtemplate)                                   | Create new template                                |
+| [listTemplates](#listtemplates)                                     | List templates                                     |
+| [getTemplate](#gettemplate)                                         | Get template                                       |
+| [deleteTemplate](#deletetemplate)                                   | Delete template                                    |
+| [duplicateTemplate](#duplicatetemplate)                             | Duplicate template                                 |
+| [addTemplateDocument](#addtemplatedocument)                         | Add template document                              |
+| [getTemplateDocument](#gettemplatedocument)                         | Get template document                              |
+| [getTemplateDocuments](#gettemplatedocuments)                       | Get template documents                             |
+| [addTemplateSigningSteps](#addtemplatesigningsteps)                 | Add template signing steps                         |
+| [renameTemplate](#renametemplate)                                   | Rename template                                    |
+| [setTemplateComment](#settemplatecomment)                           | Set template comment                               |
+| [setTemplateNotification](#settemplatenotification)                 | Set template notification                          |
+| [getTemplateAnnotations](#gettemplateannotations)                   | Get template annotations                           |
+| [getDocumentTemplateAnnotations](#getdocumenttemplateannotations)   | Get document template annotations                  |
+| [addTemplateAnnotation](#addtemplateannotation)                     | Add template annotation                            |
+| [deleteTemplateAnnotation](#deletetemplateannotation)               | Delete template annotation                         |
+| [createWebhook](#createwebhook)                                     | Create webhook                                     |
+| [listWebhooks](#listwebhooks)                                       | List webhooks                                      |
+| [deleteWebhook](#deletewebhook)                                     | Delete webhook                                     |
 
 ## createEnvelope
 
@@ -79,13 +81,12 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    CreateEnvelopeRequest createEnvelopeRequest = CreateEnvelopeRequest
-      .builder()
+    CreateEnvelopeRequest createEnvelopeRequest = CreateEnvelopeRequest.builder()
       .name("name")
       .legalityLevel(EnvelopeLegalityLevel.SES)
       .expiresAt(1L)
       .comment("comment")
-      .sandbox(true)
+      .sandbox(false)
       .build();
 
     Envelope response = signplus.signplus.createEnvelope(createEnvelopeRequest);
@@ -129,8 +130,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    CreateEnvelopeFromTemplateRequest createEnvelopeFromTemplateRequest = CreateEnvelopeFromTemplateRequest
-      .builder()
+    CreateEnvelopeFromTemplateRequest createEnvelopeFromTemplateRequest = CreateEnvelopeFromTemplateRequest.builder()
       .name("name")
       .comment("comment")
       .sandbox(true)
@@ -180,33 +180,32 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    List<String> tags = Arrays.asList("tags");
+    List<String> tagsList = Arrays.asList("tags");
 
-    List<String> ids = Arrays.asList("ids");
+    List<String> idsList = Arrays.asList("ids");
 
-    List<EnvelopeStatus> statuses = Arrays.asList(EnvelopeStatus.DRAFT);
+    List<EnvelopeStatus> statusesList = Arrays.asList(EnvelopeStatus.DRAFT);
 
-    List<String> folderIds = Arrays.asList("folder_ids");
+    List<String> folderIdsList = Arrays.asList("folder_ids");
 
-    ListEnvelopesRequest listEnvelopesRequest = ListEnvelopesRequest
-      .builder()
+    ListEnvelopesRequest listEnvelopesRequest = ListEnvelopesRequest.builder()
       .name("name")
-      .tags(tags)
+      .tags(tagsList)
       .comment("comment")
-      .ids(ids)
-      .statuses(statuses)
-      .folderIds(folderIds)
+      .ids(idsList)
+      .statuses(statusesList)
+      .folderIds(folderIdsList)
       .onlyRootFolder(false)
-      .dateFrom(0L)
-      .dateTo(0L)
+      .dateFrom(1L)
+      .dateTo(3L)
       .uid("uid")
       .first(7L)
       .last(8L)
       .after("after")
       .before("before")
       .orderField(EnvelopeOrderField.CREATION_DATE)
-      .ascending(false)
-      .includeTrash(false)
+      .ascending(true)
+      .includeTrash(true)
       .build();
 
     ListEnvelopesResponse response = signplus.signplus.listEnvelopes(listEnvelopesRequest);
@@ -283,6 +282,88 @@ public class Main {
     Signplus signplus = new Signplus(config);
 
     signplus.signplus.deleteEnvelope("envelope_id");
+  }
+}
+
+```
+
+## downloadEnvelopeSignedDocuments
+
+Download signed documents for an envelope
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/signed_documents`
+
+**Parameters**
+
+| Name              | Type                                                                                                | Required | Description               |
+| :---------------- | :-------------------------------------------------------------------------------------------------- | :------- | :------------------------ |
+| envelopeId        | String                                                                                              | ✅       | ID of the envelope        |
+| requestParameters | [DownloadEnvelopeSignedDocumentsParameters](../models/DownloadEnvelopeSignedDocumentsParameters.md) | ❌       | Request Parameters Object |
+
+**Return Type**
+
+`byte[]`
+
+**Example Usage Code Snippet**
+
+```java
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.DownloadEnvelopeSignedDocumentsParameters;
+
+public class Main {
+
+  public static void main(String[] args) {
+    SignplusConfig config = SignplusConfig.builder().accessToken("YOUR_ACCESS_TOKEN").build();
+
+    Signplus signplus = new Signplus(config);
+
+    DownloadEnvelopeSignedDocumentsParameters requestParameters = DownloadEnvelopeSignedDocumentsParameters.builder()
+      .certificateOfCompletion(true)
+      .build();
+
+    byte[] response = signplus.signplus.downloadEnvelopeSignedDocuments("envelope_id", requestParameters);
+
+    System.out.println(response);
+  }
+}
+
+```
+
+## downloadEnvelopeCertificate
+
+Download certificate of completion for an envelope
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/certificate`
+
+**Parameters**
+
+| Name       | Type   | Required | Description        |
+| :--------- | :----- | :------- | :----------------- |
+| envelopeId | String | ✅       | ID of the envelope |
+
+**Return Type**
+
+`byte[]`
+
+**Example Usage Code Snippet**
+
+```java
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+
+public class Main {
+
+  public static void main(String[] args) {
+    SignplusConfig config = SignplusConfig.builder().accessToken("YOUR_ACCESS_TOKEN").build();
+
+    Signplus signplus = new Signplus(config);
+
+    byte[] response = signplus.signplus.downloadEnvelopeCertificate("envelope_id");
+
+    System.out.println(response);
   }
 }
 
@@ -376,10 +457,11 @@ Add envelope document
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description  |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :----------- |
-| envelopeId                 | String                                                                | ✅       |              |
-| addEnvelopeDocumentRequest | [AddEnvelopeDocumentRequest](../models/AddEnvelopeDocumentRequest.md) | ✅       | Request Body |
+| Name                       | Type                                                                  | Required | Description                    |
+| :------------------------- | :-------------------------------------------------------------------- | :------- | :----------------------------- |
+| envelopeId                 | String                                                                | ✅       |                                |
+| addEnvelopeDocumentRequest | [AddEnvelopeDocumentRequest](../models/AddEnvelopeDocumentRequest.md) | ✅       | Request Body                   |
+| \_filename                 | [String](../models/String.md)                                         | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
@@ -401,8 +483,13 @@ public class Main {
     Signplus signplus = new Signplus(config);
 
     AddEnvelopeDocumentRequest addEnvelopeDocumentRequest = AddEnvelopeDocumentRequest.builder().file(file).build();
+    AddEnvelopeDocumentRequest addEnvelopeDocumentRequest = AddEnvelopeDocumentRequest.builder().file(file).build();
 
-    Document response = signplus.signplus.addEnvelopeDocument("envelope_id", addEnvelopeDocumentRequest);
+    Document response = signplus.signplus.addEnvelopeDocument(
+      "envelope_id",
+      addEnvelopeDocumentRequest,
+      addEnvelopeDocumentRequest
+    );
 
     System.out.println(response);
   }
@@ -448,11 +535,10 @@ public class Main {
 
     DynamicField dynamicField = DynamicField.builder().name("name").value("value").build();
 
-    List<DynamicField> dynamicFields = Arrays.asList(dynamicField);
+    List<DynamicField> dynamicFieldsList = Arrays.asList(dynamicField);
 
-    SetEnvelopeDynamicFieldsRequest setEnvelopeDynamicFieldsRequest = SetEnvelopeDynamicFieldsRequest
-      .builder()
-      .dynamicFields(dynamicFields)
+    SetEnvelopeDynamicFieldsRequest setEnvelopeDynamicFieldsRequest = SetEnvelopeDynamicFieldsRequest.builder()
+      .dynamicFields(dynamicFieldsList)
       .build();
 
     Envelope response = signplus.signplus.setEnvelopeDynamicFields("envelope_id", setEnvelopeDynamicFieldsRequest);
@@ -503,14 +589,12 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    RecipientVerification recipientVerification = RecipientVerification
-      .builder()
+    RecipientVerification recipientVerification = RecipientVerification.builder()
       .type(RecipientVerificationType.SMS)
       .value("value")
       .build();
 
-    Recipient recipient = Recipient
-      .builder()
+    Recipient recipient = Recipient.builder()
       .id("id")
       .uid("uid")
       .name("name")
@@ -519,15 +603,14 @@ public class Main {
       .verification(recipientVerification)
       .build();
 
-    List<Recipient> recipients = Arrays.asList(recipient);
+    List<Recipient> recipientsList = Arrays.asList(recipient);
 
-    SigningStep signingStep = SigningStep.builder().recipients(recipients).build();
+    SigningStep signingStep = SigningStep.builder().recipients(recipientsList).build();
 
-    List<SigningStep> signingSteps = Arrays.asList(signingStep);
+    List<SigningStep> signingStepsList = Arrays.asList(signingStep);
 
-    AddEnvelopeSigningStepsRequest addEnvelopeSigningStepsRequest = AddEnvelopeSigningStepsRequest
-      .builder()
-      .signingSteps(signingSteps)
+    AddEnvelopeSigningStepsRequest addEnvelopeSigningStepsRequest = AddEnvelopeSigningStepsRequest.builder()
+      .signingSteps(signingStepsList)
       .build();
 
     Envelope response = signplus.signplus.addEnvelopeSigningSteps("envelope_id", addEnvelopeSigningStepsRequest);
@@ -731,8 +814,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    SetEnvelopeCommentRequest setEnvelopeCommentRequest = SetEnvelopeCommentRequest
-      .builder()
+    SetEnvelopeCommentRequest setEnvelopeCommentRequest = SetEnvelopeCommentRequest.builder()
       .comment("comment")
       .build();
 
@@ -777,11 +859,10 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    EnvelopeNotification envelopeNotification = EnvelopeNotification
-      .builder()
+    EnvelopeNotification envelopeNotification = EnvelopeNotification.builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(1L)
+      .reminderInterval(5L)
       .build();
 
     Envelope response = signplus.signplus.setEnvelopeNotification("envelope_id", envelopeNotification);
@@ -825,9 +906,8 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    SetEnvelopeExpirationRequest setEnvelopeExpirationRequest = SetEnvelopeExpirationRequest
-      .builder()
-      .expiresAt(4L)
+    SetEnvelopeExpirationRequest setEnvelopeExpirationRequest = SetEnvelopeExpirationRequest.builder()
+      .expiresAt(1L)
       .build();
 
     Envelope response = signplus.signplus.setEnvelopeExpirationDate("envelope_id", setEnvelopeExpirationRequest);
@@ -872,8 +952,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    SetEnvelopeLegalityLevelRequest setEnvelopeLegalityLevelRequest = SetEnvelopeLegalityLevelRequest
-      .builder()
+    SetEnvelopeLegalityLevelRequest setEnvelopeLegalityLevelRequest = SetEnvelopeLegalityLevelRequest.builder()
       .legalityLevel(EnvelopeLegalityLevel.SES)
       .build();
 
@@ -1015,50 +1094,45 @@ public class Main {
 
     AnnotationInitials annotationInitials = AnnotationInitials.builder().id("id").build();
 
-    AnnotationFont annotationFont = AnnotationFont
-      .builder()
+    AnnotationFont annotationFont = AnnotationFont.builder()
       .family(AnnotationFontFamily.UNKNOWN)
       .italic(true)
       .bold(false)
       .build();
 
-    AnnotationText annotationText = AnnotationText
-      .builder()
-      .size(1.49D)
-      .color(1.36D)
+    AnnotationText annotationText = AnnotationText.builder()
+      .size(5.93D)
+      .color(4.37D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
       .font(annotationFont)
       .build();
 
-    AnnotationDateTime annotationDateTime = AnnotationDateTime
-      .builder()
-      .size(8.29D)
+    AnnotationDateTime annotationDateTime = AnnotationDateTime.builder()
+      .size(1.04D)
       .font(annotationFont)
       .color("color")
       .autoFill(false)
       .timezone("timezone")
-      .timestamp(2L)
+      .timestamp(0L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
-    AnnotationCheckbox annotationCheckbox = AnnotationCheckbox
-      .builder()
+    AnnotationCheckbox annotationCheckbox = AnnotationCheckbox.builder()
       .checked(true)
       .style(AnnotationCheckboxStyle.CIRCLE_CHECK)
       .build();
 
-    AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest
-      .builder()
+    AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(1L)
-      .x(8.95D)
-      .y(1.39D)
-      .width(2.77D)
-      .height(6.96D)
-      .required(false)
+      .page(6L)
+      .x(7.94D)
+      .y(1.77D)
+      .width(2.67D)
+      .height(5.4D)
+      .required(true)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
       .initials(annotationInitials)
@@ -1185,21 +1259,20 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    List<String> tags = Arrays.asList("tags");
+    List<String> tagsList = Arrays.asList("tags");
 
-    List<String> ids = Arrays.asList("ids");
+    List<String> idsList = Arrays.asList("ids");
 
-    ListTemplatesRequest listTemplatesRequest = ListTemplatesRequest
-      .builder()
+    ListTemplatesRequest listTemplatesRequest = ListTemplatesRequest.builder()
       .name("name")
-      .tags(tags)
-      .ids(ids)
-      .first(1L)
-      .last(4L)
+      .tags(tagsList)
+      .ids(idsList)
+      .first(5L)
+      .last(8L)
       .after("after")
       .before("before")
       .orderField(TemplateOrderField.TEMPLATE_ID)
-      .ascending(false)
+      .ascending(true)
       .build();
 
     ListTemplatesResponse response = signplus.signplus.listTemplates(listTemplatesRequest);
@@ -1329,10 +1402,11 @@ Add template document
 
 **Parameters**
 
-| Name                       | Type                                                                  | Required | Description  |
-| :------------------------- | :-------------------------------------------------------------------- | :------- | :----------- |
-| templateId                 | String                                                                | ✅       |              |
-| addTemplateDocumentRequest | [AddTemplateDocumentRequest](../models/AddTemplateDocumentRequest.md) | ✅       | Request Body |
+| Name                       | Type                                                                  | Required | Description                    |
+| :------------------------- | :-------------------------------------------------------------------- | :------- | :----------------------------- |
+| templateId                 | String                                                                | ✅       |                                |
+| addTemplateDocumentRequest | [AddTemplateDocumentRequest](../models/AddTemplateDocumentRequest.md) | ✅       | Request Body                   |
+| \_filename                 | [String](../models/String.md)                                         | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
@@ -1354,8 +1428,13 @@ public class Main {
     Signplus signplus = new Signplus(config);
 
     AddTemplateDocumentRequest addTemplateDocumentRequest = AddTemplateDocumentRequest.builder().file(file).build();
+    AddTemplateDocumentRequest addTemplateDocumentRequest = AddTemplateDocumentRequest.builder().file(file).build();
 
-    Document response = signplus.signplus.addTemplateDocument("template_id", addTemplateDocumentRequest);
+    Document response = signplus.signplus.addTemplateDocument(
+      "template_id",
+      addTemplateDocumentRequest,
+      addTemplateDocumentRequest
+    );
 
     System.out.println(response);
   }
@@ -1480,8 +1559,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    TemplateRecipient templateRecipient = TemplateRecipient
-      .builder()
+    TemplateRecipient templateRecipient = TemplateRecipient.builder()
       .id("id")
       .uid("uid")
       .name("name")
@@ -1489,15 +1567,14 @@ public class Main {
       .role(TemplateRecipientRole.SIGNER)
       .build();
 
-    List<TemplateRecipient> recipients = Arrays.asList(templateRecipient);
+    List<TemplateRecipient> recipientsList = Arrays.asList(templateRecipient);
 
-    TemplateSigningStep templateSigningStep = TemplateSigningStep.builder().recipients(recipients).build();
+    TemplateSigningStep templateSigningStep = TemplateSigningStep.builder().recipients(recipientsList).build();
 
-    List<TemplateSigningStep> signingSteps = Arrays.asList(templateSigningStep);
+    List<TemplateSigningStep> signingStepsList = Arrays.asList(templateSigningStep);
 
-    AddTemplateSigningStepsRequest addTemplateSigningStepsRequest = AddTemplateSigningStepsRequest
-      .builder()
-      .signingSteps(signingSteps)
+    AddTemplateSigningStepsRequest addTemplateSigningStepsRequest = AddTemplateSigningStepsRequest.builder()
+      .signingSteps(signingStepsList)
       .build();
 
     Template response = signplus.signplus.addTemplateSigningSteps("template_id", addTemplateSigningStepsRequest);
@@ -1584,8 +1661,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    SetTemplateCommentRequest setTemplateCommentRequest = SetTemplateCommentRequest
-      .builder()
+    SetTemplateCommentRequest setTemplateCommentRequest = SetTemplateCommentRequest.builder()
       .comment("comment")
       .build();
 
@@ -1630,11 +1706,10 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    EnvelopeNotification envelopeNotification = EnvelopeNotification
-      .builder()
+    EnvelopeNotification envelopeNotification = EnvelopeNotification.builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(1L)
+      .reminderInterval(5L)
       .build();
 
     Template response = signplus.signplus.setTemplateNotification("template_id", envelopeNotification);
@@ -1774,50 +1849,45 @@ public class Main {
 
     AnnotationInitials annotationInitials = AnnotationInitials.builder().id("id").build();
 
-    AnnotationFont annotationFont = AnnotationFont
-      .builder()
+    AnnotationFont annotationFont = AnnotationFont.builder()
       .family(AnnotationFontFamily.UNKNOWN)
       .italic(true)
       .bold(false)
       .build();
 
-    AnnotationText annotationText = AnnotationText
-      .builder()
-      .size(1.49D)
-      .color(1.36D)
+    AnnotationText annotationText = AnnotationText.builder()
+      .size(5.93D)
+      .color(4.37D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
       .font(annotationFont)
       .build();
 
-    AnnotationDateTime annotationDateTime = AnnotationDateTime
-      .builder()
-      .size(8.29D)
+    AnnotationDateTime annotationDateTime = AnnotationDateTime.builder()
+      .size(1.04D)
       .font(annotationFont)
       .color("color")
       .autoFill(false)
       .timezone("timezone")
-      .timestamp(2L)
+      .timestamp(0L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
-    AnnotationCheckbox annotationCheckbox = AnnotationCheckbox
-      .builder()
+    AnnotationCheckbox annotationCheckbox = AnnotationCheckbox.builder()
       .checked(true)
       .style(AnnotationCheckboxStyle.CIRCLE_CHECK)
       .build();
 
-    AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest
-      .builder()
+    AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(1L)
-      .x(8.95D)
-      .y(1.39D)
-      .width(2.77D)
-      .height(6.96D)
-      .required(false)
+      .page(6L)
+      .x(7.94D)
+      .y(1.77D)
+      .width(2.67D)
+      .height(5.4D)
+      .required(true)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
       .initials(annotationInitials)
@@ -1900,8 +1970,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    CreateWebhookRequest createWebhookRequest = CreateWebhookRequest
-      .builder()
+    CreateWebhookRequest createWebhookRequest = CreateWebhookRequest.builder()
       .event(WebhookEvent.ENVELOPE_EXPIRED)
       .target("target")
       .build();
@@ -1947,8 +2016,7 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    ListWebhooksRequest listWebhooksRequest = ListWebhooksRequest
-      .builder()
+    ListWebhooksRequest listWebhooksRequest = ListWebhooksRequest.builder()
       .webhookId("webhook_id")
       .event(WebhookEvent.ENVELOPE_EXPIRED)
       .build();

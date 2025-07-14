@@ -1,17 +1,18 @@
 {
-  "liblabVersion": "2.12.0",
-  "date": "2025-01-29T10:28:54.926Z",
+  "liblabVersion": "2.25.35",
+  "date": "2025-07-14T14:19:40.698Z",
   "config": {
-    "apiId": 1713,
+    "apiId": 2479,
     "sdkName": "signplus",
-    "sdkVersion": "2.2.0",
+    "sdkVersion": "2.3.0",
     "languages": ["java"],
     "auth": ["bearer"],
+    "docs": [],
     "liblabVersion": "2",
     "deliveryMethods": ["zip"],
     "rawConfig": {
       "sdkName": "signplus",
-      "apiVersion": "2.2.0",
+      "apiVersion": "2.3.1",
       "apiName": "signplus-api",
       "specFilePath": "openapi.yaml",
       "languages": ["csharp", "go", "python", "typescript", "java", "php"],
@@ -43,7 +44,7 @@
           "pypiPackageName": "signplus-python",
           "githubRepoName": "signplus-python",
           "ignoreFiles": [],
-          "sdkVersion": "1.2.0",
+          "sdkVersion": "1.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -51,7 +52,7 @@
           "githubRepoName": "signplus-java",
           "groupId": "com.alohi",
           "artifactId": "signplus",
-          "sdkVersion": "2.2.0",
+          "sdkVersion": "2.3.0",
           "liblabVersion": "2",
           "developers": [
             {
@@ -71,7 +72,7 @@
           "npmOrg": "alohi",
           "githubRepoName": "signplus-typescript",
           "ignoreFiles": [],
-          "sdkVersion": "2.2.0",
+          "sdkVersion": "2.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -79,7 +80,7 @@
           "goModuleName": "github.com/alohihq/signplus-go",
           "githubRepoName": "signplus-go",
           "ignoreFiles": [],
-          "sdkVersion": "1.2.0",
+          "sdkVersion": "1.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -87,7 +88,7 @@
           "packageName": "alohi/signplus",
           "githubRepoName": "signplus-php",
           "ignoreFiles": [],
-          "sdkVersion": "2.2.0",
+          "sdkVersion": "2.3.0",
           "liblabVersion": "2",
           "additionalConstructorParameters": []
         },
@@ -95,7 +96,7 @@
           "packageId": "Alohi.Signplus",
           "githubRepoName": "signplus-sharp",
           "ignoreFiles": [],
-          "sdkVersion": "1.2.0",
+          "sdkVersion": "1.3.0",
           "liblabVersion": "2"
         }
       },
@@ -103,28 +104,38 @@
         "githubOrg": "alohihq"
       }
     },
-    "apiVersion": "2.2.0",
+    "liblabConfigVersion": "1.0.0",
+    "apiVersion": "2.3.1",
     "apiName": "signplus-api",
     "specFilePath": "openapi.yaml",
+    "createDocs": false,
     "languageOptions": {
       "csharp": {
-        "packageId": "Alohi.Signplus",
         "githubRepoName": "signplus-sharp",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.3.0",
+        "packageId": "Alohi.Signplus"
       },
       "go": {
-        "goModuleName": "github.com/alohihq/signplus-go",
-        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-go",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.3.0",
+        "goModuleName": "github.com/alohihq/signplus-go",
+        "additionalConstructorParameters": []
       },
       "java": {
+        "githubRepoName": "signplus-java",
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "2.3.0",
         "groupId": "com.alohi",
         "artifactId": "signplus",
+        "includeKotlinSnippets": false,
         "developers": [
           {
             "name": "Alohi SA",
@@ -133,44 +144,51 @@
             "organizationUrl": "https://www.alohi.com"
           }
         ],
-        "additionalConstructorParameters": [],
-        "githubRepoName": "signplus-java",
-        "liblabVersion": "2",
-        "sdkVersion": "2.2.0"
+        "additionalConstructorParameters": []
       },
       "python": {
-        "alwaysInitializeOptionals": false,
-        "additionalConstructorParameters": [],
-        "pypiPackageName": "signplus-python",
         "githubRepoName": "signplus-python",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "1.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "1.3.0",
+        "alwaysInitializeOptionals": false,
+        "additionalConstructorParameters": [],
+        "pypiPackageName": "signplus-python"
       },
       "php": {
-        "packageName": "alohi/signplus",
-        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-php",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "2.2.0"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "2.3.0",
+        "additionalConstructorParameters": [],
+        "packageName": "alohi/signplus"
       },
       "typescript": {
-        "bundle": false,
-        "exportClassDefault": false,
-        "httpClient": "axios",
-        "npmName": "signplus-typescript",
-        "npmOrg": "alohi",
-        "additionalConstructorParameters": [],
         "githubRepoName": "signplus-typescript",
         "ignoreFiles": [],
         "liblabVersion": "2",
-        "sdkVersion": "2.2.0",
-        "generateEnumAs": "enum"
+        "renameIllegalModelProperties": true,
+        "sdkVersion": "2.3.0",
+        "additionalConstructorParameters": [],
+        "bundle": false,
+        "denoteCommon": false,
+        "exportClassDefault": false,
+        "generateEnumAs": "enum",
+        "httpClient": "axios",
+        "npmName": "signplus-typescript",
+        "npmOrg": "alohi"
       }
     },
+    "validationsToIgnore": [],
     "publishing": {
-      "githubOrg": "alohihq"
+      "githubOrg": "alohihq",
+      "platform": "github"
+    },
+    "analytics": {
+      "streaming": false,
+      "pagination": false
     },
     "authentication": {
       "access": {
@@ -180,8 +198,6 @@
     "devContainer": false,
     "generateEnv": true,
     "includeOptionalSnippetParameters": true,
-    "inferServiceNames": false,
-    "injectedModels": [],
     "license": {
       "type": "MIT",
       "name": "MIT",
@@ -189,6 +205,7 @@
       "path": "MIT.ejs"
     },
     "responseHeaders": false,
+    "buildAllModels": false,
     "retry": {
       "enabled": true,
       "maxAttempts": 3,
@@ -201,8 +218,12 @@
     },
     "multiTenant": true,
     "includeWatermark": false,
+    "githubRepoName": "signplus-java",
+    "ignoreFiles": [],
+    "renameIllegalModelProperties": true,
     "groupId": "com.alohi",
     "artifactId": "signplus",
+    "includeKotlinSnippets": false,
     "developers": [
       {
         "name": "Alohi SA",
@@ -212,7 +233,6 @@
       }
     ],
     "additionalConstructorParameters": [],
-    "githubRepoName": "signplus-java",
     "language": "java",
     "deliveryMethod": "zip",
     "hooks": {
@@ -222,10 +242,11 @@
     "usesFormData": false,
     "environmentVariables": [],
     "fileOutput": "/tmp",
+    "inferServiceNames": false,
     "httpLibrary": {
       "name": "axios",
       "packages": {
-        "axios": "^1.7.9"
+        "axios": "^1.9.0"
       },
       "languages": ["typescript"]
     },
@@ -234,7 +255,8 @@
       "rawQueries": [],
       "queriesData": []
     },
-    "ai": false
+    "ai": false,
+    "specType": "openapi"
   },
   "files": [
     "pom.xml",
@@ -252,7 +274,6 @@
     "src/main/java/com/alohi/signplus/http/HttpMethod.java",
     "src/main/java/com/alohi/signplus/http/ModelConverter.java",
     "src/main/java/com/alohi/signplus/http/util/HttpArgumentConverter.java",
-    "src/main/java/com/alohi/signplus/http/util/RequestBuilder.java",
     "src/main/java/com/alohi/signplus/http/serialization/PathSerializationStyle.java",
     "src/main/java/com/alohi/signplus/http/serialization/QuerySerializationStyle.java",
     "src/main/java/com/alohi/signplus/http/serialization/SerializationStyle.java",
@@ -260,13 +281,12 @@
     "src/main/java/com/alohi/signplus/http/serialization/Util.java",
     "src/main/java/com/alohi/signplus/http/interceptors/DefaultHeadersInterceptor.java",
     "src/main/java/com/alohi/signplus/hook/Hook.java",
-    "src/main/java/com/alohi/signplus/exceptions/ApiException.java",
+    "src/main/java/com/alohi/signplus/exceptions/ApiError.java",
     "src/main/java/com/alohi/signplus/http/Environment.java",
     "src/main/java/com/alohi/signplus/Signplus.java",
-    "./LICENSE",
+    "LICENSE",
     "src/main/java/com/alohi/signplus/http/interceptors/RetryInterceptor.java",
     "src/main/java/com/alohi/signplus/config/RetryConfig.java",
-    "src/main/java/com/alohi/signplus/http/interceptors/TokenInterceptor.java",
     "src/main/java/com/alohi/signplus/config/SignplusConfig.java",
     "documentation/models/CreateEnvelopeRequest.md",
     "documentation/models/Envelope.md",
@@ -327,16 +347,23 @@
     "documentation/models/TemplateRecipientRole.md",
     "documentation/models/TemplateOrderField.md",
     "documentation/models/WebhookEvent.md",
+    "documentation/models/DownloadEnvelopeSignedDocumentsParameters.md",
     "src/main/java/com/alohi/signplus/json/TypeUtils.java",
-    "example/pom.xml",
-    "example/run.sh",
-    "example/src/main/java/com/example/Main.java",
-    "example/.gitignore",
+    "examples/pom.xml",
+    "examples/run.sh",
+    "examples/src/main/java/com/example/Main.java",
+    "examples/.gitignore",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/CreateEnvelopeRequestValidator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/CreateEnvelopeFromTemplateRequestValidator.java",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/CreateTemplateRequestValidator.java",
     ".idea/workspace.xml",
     ".idea/misc.xml",
     ".idea/compiler.xml",
     ".idea/encoding.xml",
     ".idea/jarRepositories.xml",
+    "src/main/java/com/alohi/signplus/http/util/RequestBuilder.java",
+    "examples/README.md",
+    ".env.example",
     "src/main/java/com/alohi/signplus/models/EnvelopeLegalityLevel.java",
     "src/main/java/com/alohi/signplus/models/EnvelopeFlowType.java",
     "src/main/java/com/alohi/signplus/models/EnvelopeStatus.java",
@@ -350,29 +377,30 @@
     "src/main/java/com/alohi/signplus/models/TemplateRecipientRole.java",
     "src/main/java/com/alohi/signplus/models/TemplateOrderField.java",
     "src/main/java/com/alohi/signplus/models/WebhookEvent.java",
-    "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentsResponse.java",
-    "src/main/java/com/alohi/signplus/models/AddEnvelopeDocumentRequest.java",
     "src/main/java/com/alohi/signplus/models/SetEnvelopeDynamicFieldsRequest.java",
-    "src/main/java/com/alohi/signplus/models/AddEnvelopeSigningStepsRequest.java",
-    "src/main/java/com/alohi/signplus/models/RenameEnvelopeRequest.java",
     "src/main/java/com/alohi/signplus/models/SetEnvelopeCommentRequest.java",
     "src/main/java/com/alohi/signplus/models/SetEnvelopeExpirationRequest.java",
-    "src/main/java/com/alohi/signplus/models/SetEnvelopeLegalityLevelRequest.java",
-    "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentAnnotationsResponse.java",
     "src/main/java/com/alohi/signplus/models/CreateTemplateRequest.java",
     "src/main/java/com/alohi/signplus/models/AddTemplateDocumentRequest.java",
-    "src/main/java/com/alohi/signplus/models/ListTemplateDocumentsResponse.java",
     "src/main/java/com/alohi/signplus/models/AddTemplateSigningStepsRequest.java",
     "src/main/java/com/alohi/signplus/models/RenameTemplateRequest.java",
     "src/main/java/com/alohi/signplus/models/SetTemplateCommentRequest.java",
+    "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentsResponse.java",
+    "src/main/java/com/alohi/signplus/models/AddEnvelopeDocumentRequest.java",
+    "src/main/java/com/alohi/signplus/models/AddEnvelopeSigningStepsRequest.java",
+    "src/main/java/com/alohi/signplus/models/RenameEnvelopeRequest.java",
+    "src/main/java/com/alohi/signplus/models/SetEnvelopeLegalityLevelRequest.java",
+    "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentAnnotationsResponse.java",
+    "src/main/java/com/alohi/signplus/models/ListTemplateDocumentsResponse.java",
     "src/main/java/com/alohi/signplus/models/ListTemplateAnnotationsResponse.java",
     "src/main/java/com/alohi/signplus/models/ListTemplateDocumentAnnotationsResponse.java",
+    "src/main/java/com/alohi/signplus/models/CreateWebhookRequest.java",
     "src/main/java/com/alohi/signplus/models/ListWebhooksResponse.java",
     "src/main/java/com/alohi/signplus/models/SigningStep.java",
     "src/main/java/com/alohi/signplus/models/AnnotationSignature.java",
     "src/main/java/com/alohi/signplus/models/AnnotationInitials.java",
     "src/main/java/com/alohi/signplus/models/TemplateSigningStep.java",
-    "src/main/java/com/alohi/signplus/models/CreateWebhookRequest.java",
+    "src/main/java/com/alohi/signplus/models/DownloadEnvelopeSignedDocumentsParameters.java",
     "src/main/java/com/alohi/signplus/models/ListWebhooksRequest.java",
     "src/main/java/com/alohi/signplus/models/RecipientVerification.java",
     "src/main/java/com/alohi/signplus/models/Page.java",

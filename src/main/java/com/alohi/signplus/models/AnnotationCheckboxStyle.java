@@ -24,8 +24,7 @@ public enum AnnotationCheckboxStyle {
 
   @JsonCreator
   public static AnnotationCheckboxStyle fromValue(String value) {
-    return Arrays
-      .stream(AnnotationCheckboxStyle.values())
+    return Arrays.stream(AnnotationCheckboxStyle.values())
       .filter(item -> item.value.equals(value))
       .findFirst()
       .orElse(null);

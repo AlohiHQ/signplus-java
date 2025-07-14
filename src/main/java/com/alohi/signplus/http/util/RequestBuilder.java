@@ -165,6 +165,26 @@ public class RequestBuilder {
     return this;
   }
 
+  /*
+   * Sets the access token authentication header with a "Bearer" prefix.
+   */
+  public RequestBuilder setAccessTokenAuth(String token) {
+    if (token == null) {
+      return this;
+    }
+    return setAccessTokenAuth(token, "Bearer");
+  }
+
+  /*
+   * Sets the access token authentication header with a custom prefix.
+   */
+  public RequestBuilder setAccessTokenAuth(String token, String prefix) {
+    if (token == null || prefix == null) {
+      return this;
+    }
+    return setHeader("Authorization", String.format("%s %s", prefix, token));
+  }
+
   /**
    * @return The {@code Request} instance.
    */

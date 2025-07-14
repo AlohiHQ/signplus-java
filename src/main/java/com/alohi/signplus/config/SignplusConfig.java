@@ -4,6 +4,7 @@ import com.alohi.signplus.http.Environment;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NonNull;
+import lombok.Setter;
 
 @Builder
 @Data
@@ -13,9 +14,8 @@ public class SignplusConfig {
   @Builder.Default
   private String userAgent = "signplus/1.0.0";
 
-  @NonNull
-  @Builder.Default
-  private Environment environment = Environment.DEFAULT;
+  @Setter
+  private String baseUrl;
 
   @NonNull
   @Builder.Default
@@ -26,4 +26,8 @@ public class SignplusConfig {
   /** Timeout in milliseconds */
   @Builder.Default
   private long timeout = 10_000;
+
+  public void setEnvironment(Environment environment) {
+    this.baseUrl = environment.getUrl();
+  }
 }
