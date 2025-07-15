@@ -4,7 +4,6 @@ import com.alohi.signplus.config.SignplusConfig;
 import com.alohi.signplus.http.Environment;
 import com.alohi.signplus.http.interceptors.DefaultHeadersInterceptor;
 import com.alohi.signplus.http.interceptors.RetryInterceptor;
-import com.alohi.signplus.http.interceptors.TokenInterceptor;
 import com.alohi.signplus.services.SignplusService;
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
@@ -14,7 +13,7 @@ public class Signplus {
 
   public final SignplusService signplus;
 
-  private final TokenInterceptor accessAuthInterceptor;
+  private final SignplusConfig config;
 
   public Signplus() {
     // Default configs
@@ -22,19 +21,15 @@ public class Signplus {
   }
 
   public Signplus(SignplusConfig config) {
-    final String serverUrl = config.getEnvironment().getUrl();
-
-    this.accessAuthInterceptor =
-      TokenInterceptor.builder().header("Authorization").prefix("Bearer").token(config.getAccessToken()).build();
+    this.config = config;
 
     final OkHttpClient httpClient = new OkHttpClient.Builder()
       .addInterceptor(new DefaultHeadersInterceptor(config))
-      .addInterceptor(accessAuthInterceptor)
       .addInterceptor(new RetryInterceptor(config.getRetryConfig()))
       .readTimeout(config.getTimeout(), TimeUnit.MILLISECONDS)
       .build();
 
-    this.signplus = new SignplusService(httpClient, serverUrl);
+    this.signplus = new SignplusService(httpClient, config);
   }
 
   public void setEnvironment(Environment environment) {
@@ -42,11 +37,11 @@ public class Signplus {
   }
 
   public void setBaseUrl(String baseUrl) {
-    this.signplus.setBaseUrl(baseUrl);
+    this.config.setBaseUrl(baseUrl);
   }
 
   public void setAccessToken(String token) {
-    this.accessAuthInterceptor.setToken(token);
+    this.config.setAccessToken(token);
   }
 }
 // c029837e0e474b76bc487506e8799df5e3335891efe4fb02bda7a1441840310c

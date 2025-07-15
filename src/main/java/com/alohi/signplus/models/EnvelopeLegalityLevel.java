@@ -21,8 +21,7 @@ public enum EnvelopeLegalityLevel {
 
   @JsonCreator
   public static EnvelopeLegalityLevel fromValue(String value) {
-    return Arrays
-      .stream(EnvelopeLegalityLevel.values())
+    return Arrays.stream(EnvelopeLegalityLevel.values())
       .filter(item -> item.value.equals(value))
       .findFirst()
       .orElse(null);

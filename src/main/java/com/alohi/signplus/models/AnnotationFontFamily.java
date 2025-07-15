@@ -22,8 +22,7 @@ public enum AnnotationFontFamily {
 
   @JsonCreator
   public static AnnotationFontFamily fromValue(String value) {
-    return Arrays
-      .stream(AnnotationFontFamily.values())
+    return Arrays.stream(AnnotationFontFamily.values())
       .filter(item -> item.value.equals(value))
       .findFirst()
       .orElse(null);

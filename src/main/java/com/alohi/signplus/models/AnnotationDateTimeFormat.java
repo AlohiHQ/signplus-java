@@ -27,8 +27,7 @@ public enum AnnotationDateTimeFormat {
 
   @JsonCreator
   public static AnnotationDateTimeFormat fromValue(String value) {
-    return Arrays
-      .stream(AnnotationDateTimeFormat.values())
+    return Arrays.stream(AnnotationDateTimeFormat.values())
       .filter(item -> item.value.equals(value))
       .findFirst()
       .orElse(null);

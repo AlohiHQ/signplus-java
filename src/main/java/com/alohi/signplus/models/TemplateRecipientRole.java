@@ -14,15 +14,15 @@ import lombok.Getter;
 public enum TemplateRecipientRole {
   SIGNER("SIGNER"),
   RECEIVES_COPY("RECEIVES_COPY"),
-  IN_PERSON_SIGNER("IN_PERSON_SIGNER");
+  IN_PERSON_SIGNER("IN_PERSON_SIGNER"),
+  SENDER("SENDER");
 
   @JsonValue
   private final String value;
 
   @JsonCreator
   public static TemplateRecipientRole fromValue(String value) {
-    return Arrays
-      .stream(TemplateRecipientRole.values())
+    return Arrays.stream(TemplateRecipientRole.values())
       .filter(item -> item.value.equals(value))
       .findFirst()
       .orElse(null);
