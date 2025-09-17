@@ -88,6 +88,9 @@ public class Template {
   @JsonProperty("dynamic_fields")
   private JsonNullable<List<String>> dynamicFields;
 
+  @JsonProperty("attachments")
+  private JsonNullable<EnvelopeAttachments> attachments;
+
   @JsonIgnore
   public String getId() {
     return id.orElse(null);
@@ -151,6 +154,11 @@ public class Template {
   @JsonIgnore
   public List<String> getDynamicFields() {
     return dynamicFields.orElse(null);
+  }
+
+  @JsonIgnore
+  public EnvelopeAttachments getAttachments() {
+    return attachments.orElse(null);
   }
 
   // Overwrite lombok builder methods
@@ -296,6 +304,17 @@ public class Template {
         throw new IllegalStateException("dynamicFields cannot be null");
       }
       this.dynamicFields = JsonNullable.of(value);
+      return this;
+    }
+
+    private JsonNullable<EnvelopeAttachments> attachments = JsonNullable.undefined();
+
+    @JsonProperty("attachments")
+    public TemplateBuilder attachments(EnvelopeAttachments value) {
+      if (value == null) {
+        throw new IllegalStateException("attachments cannot be null");
+      }
+      this.attachments = JsonNullable.of(value);
       return this;
     }
   }

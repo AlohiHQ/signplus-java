@@ -100,6 +100,9 @@ public class Envelope {
   @JsonProperty("notification")
   private JsonNullable<EnvelopeNotification> notification;
 
+  @JsonProperty("attachments")
+  private JsonNullable<EnvelopeAttachments> attachments;
+
   @JsonIgnore
   public String getId() {
     return id.orElse(null);
@@ -173,6 +176,11 @@ public class Envelope {
   @JsonIgnore
   public EnvelopeNotification getNotification() {
     return notification.orElse(null);
+  }
+
+  @JsonIgnore
+  public EnvelopeAttachments getAttachments() {
+    return attachments.orElse(null);
   }
 
   // Overwrite lombok builder methods
@@ -340,6 +348,17 @@ public class Envelope {
         throw new IllegalStateException("notification cannot be null");
       }
       this.notification = JsonNullable.of(value);
+      return this;
+    }
+
+    private JsonNullable<EnvelopeAttachments> attachments = JsonNullable.undefined();
+
+    @JsonProperty("attachments")
+    public EnvelopeBuilder attachments(EnvelopeAttachments value) {
+      if (value == null) {
+        throw new IllegalStateException("attachments cannot be null");
+      }
+      this.attachments = JsonNullable.of(value);
       return this;
     }
   }

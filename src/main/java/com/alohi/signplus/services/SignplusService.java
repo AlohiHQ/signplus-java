@@ -19,6 +19,7 @@ import com.alohi.signplus.models.CreateWebhookRequest;
 import com.alohi.signplus.models.Document;
 import com.alohi.signplus.models.DownloadEnvelopeSignedDocumentsParameters;
 import com.alohi.signplus.models.Envelope;
+import com.alohi.signplus.models.EnvelopeAttachments;
 import com.alohi.signplus.models.EnvelopeNotification;
 import com.alohi.signplus.models.ListEnvelopeDocumentAnnotationsResponse;
 import com.alohi.signplus.models.ListEnvelopeDocumentsResponse;
@@ -33,6 +34,8 @@ import com.alohi.signplus.models.ListWebhooksRequest;
 import com.alohi.signplus.models.ListWebhooksResponse;
 import com.alohi.signplus.models.RenameEnvelopeRequest;
 import com.alohi.signplus.models.RenameTemplateRequest;
+import com.alohi.signplus.models.SetEnvelopeAttachmentsPlaceholdersRequest;
+import com.alohi.signplus.models.SetEnvelopeAttachmentsSettingsRequest;
 import com.alohi.signplus.models.SetEnvelopeCommentRequest;
 import com.alohi.signplus.models.SetEnvelopeDynamicFieldsRequest;
 import com.alohi.signplus.models.SetEnvelopeExpirationRequest;
@@ -603,6 +606,147 @@ public class SignplusService extends BaseService {
       .setAccessTokenAuth(this.config.getAccessToken(), "Bearer")
       .setPathParameter("envelope_id", envelopeId)
       .setJsonContent(addEnvelopeSigningStepsRequest)
+      .build();
+  }
+
+  /**
+   * Set envelope attachment settings
+   *
+   * @param envelopeId String
+   * @param setEnvelopeAttachmentsSettingsRequest {@link SetEnvelopeAttachmentsSettingsRequest} Request Body
+   * @return response of {@code EnvelopeAttachments}
+   */
+  public EnvelopeAttachments setEnvelopeAttachmentsSettings(
+    @NonNull String envelopeId,
+    @NonNull SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetEnvelopeAttachmentsSettingsRequest(envelopeId, setEnvelopeAttachmentsSettingsRequest);
+    Response response = this.execute(request);
+    return ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {});
+  }
+
+  /**
+   * Set envelope attachment settings
+   *
+   * @param envelopeId String
+   * @param setEnvelopeAttachmentsSettingsRequest {@link SetEnvelopeAttachmentsSettingsRequest} Request Body
+   * @return response of {@code CompletableFuture<EnvelopeAttachments>}
+   */
+  public CompletableFuture<EnvelopeAttachments> setEnvelopeAttachmentsSettingsAsync(
+    @NonNull String envelopeId,
+    @NonNull SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetEnvelopeAttachmentsSettingsRequest(envelopeId, setEnvelopeAttachmentsSettingsRequest);
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {})
+    );
+  }
+
+  private Request buildSetEnvelopeAttachmentsSettingsRequest(
+    @NonNull String envelopeId,
+    @NonNull SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest
+  ) {
+    return new RequestBuilder(
+      HttpMethod.PUT,
+      Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
+      "envelope/{envelope_id}/attachments/settings"
+    )
+      .setAccessTokenAuth(this.config.getAccessToken(), "Bearer")
+      .setPathParameter("envelope_id", envelopeId)
+      .setJsonContent(setEnvelopeAttachmentsSettingsRequest)
+      .build();
+  }
+
+  /**
+   * Placeholders to be set, completely replacing the existing ones.
+   *
+   * @param envelopeId String
+   * @param setEnvelopeAttachmentsPlaceholdersRequest {@link SetEnvelopeAttachmentsPlaceholdersRequest} Request Body
+   * @return response of {@code EnvelopeAttachments}
+   */
+  public EnvelopeAttachments setEnvelopeAttachmentsPlaceholders(
+    @NonNull String envelopeId,
+    @NonNull SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetEnvelopeAttachmentsPlaceholdersRequest(envelopeId, setEnvelopeAttachmentsPlaceholdersRequest);
+    Response response = this.execute(request);
+    return ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {});
+  }
+
+  /**
+   * Placeholders to be set, completely replacing the existing ones.
+   *
+   * @param envelopeId String
+   * @param setEnvelopeAttachmentsPlaceholdersRequest {@link SetEnvelopeAttachmentsPlaceholdersRequest} Request Body
+   * @return response of {@code CompletableFuture<EnvelopeAttachments>}
+   */
+  public CompletableFuture<EnvelopeAttachments> setEnvelopeAttachmentsPlaceholdersAsync(
+    @NonNull String envelopeId,
+    @NonNull SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetEnvelopeAttachmentsPlaceholdersRequest(envelopeId, setEnvelopeAttachmentsPlaceholdersRequest);
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {})
+    );
+  }
+
+  private Request buildSetEnvelopeAttachmentsPlaceholdersRequest(
+    @NonNull String envelopeId,
+    @NonNull SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest
+  ) {
+    return new RequestBuilder(
+      HttpMethod.PUT,
+      Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
+      "envelope/{envelope_id}/attachments/placeholders"
+    )
+      .setAccessTokenAuth(this.config.getAccessToken(), "Bearer")
+      .setPathParameter("envelope_id", envelopeId)
+      .setJsonContent(setEnvelopeAttachmentsPlaceholdersRequest)
+      .build();
+  }
+
+  /**
+   * Get envelope attachment file
+   *
+   * @param envelopeId String
+   * @param fileId String
+   * @return response of {@code byte[]}
+   */
+  public byte[] getAttachmentFile(@NonNull String envelopeId, @NonNull String fileId) throws ApiError {
+    Request request = this.buildGetAttachmentFileRequest(envelopeId, fileId);
+    Response response = this.execute(request);
+    return ModelConverter.readBytes(response);
+  }
+
+  /**
+   * Get envelope attachment file
+   *
+   * @param envelopeId String
+   * @param fileId String
+   * @return response of {@code CompletableFuture<byte[]>}
+   */
+  public CompletableFuture<byte[]> getAttachmentFileAsync(@NonNull String envelopeId, @NonNull String fileId)
+    throws ApiError {
+    Request request = this.buildGetAttachmentFileRequest(envelopeId, fileId);
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response -> ModelConverter.readBytes(response));
+  }
+
+  private Request buildGetAttachmentFileRequest(@NonNull String envelopeId, @NonNull String fileId) {
+    return new RequestBuilder(
+      HttpMethod.GET,
+      Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
+      "envelope/{envelope_id}/attachments/{file_id}"
+    )
+      .setAccessTokenAuth(this.config.getAccessToken(), "Bearer")
+      .setPathParameter("envelope_id", envelopeId)
+      .setPathParameter("file_id", fileId)
       .build();
   }
 
@@ -1826,6 +1970,108 @@ public class SignplusService extends BaseService {
       .setAccessTokenAuth(this.config.getAccessToken(), "Bearer")
       .setPathParameter("template_id", templateId)
       .setPathParameter("annotation_id", annotationId)
+      .build();
+  }
+
+  /**
+   * Set template attachment settings
+   *
+   * @param templateId String
+   * @param setEnvelopeAttachmentsSettingsRequest {@link SetEnvelopeAttachmentsSettingsRequest} Request Body
+   * @return response of {@code EnvelopeAttachments}
+   */
+  public EnvelopeAttachments setTemplateAttachmentsSettings(
+    @NonNull String templateId,
+    @NonNull SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetTemplateAttachmentsSettingsRequest(templateId, setEnvelopeAttachmentsSettingsRequest);
+    Response response = this.execute(request);
+    return ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {});
+  }
+
+  /**
+   * Set template attachment settings
+   *
+   * @param templateId String
+   * @param setEnvelopeAttachmentsSettingsRequest {@link SetEnvelopeAttachmentsSettingsRequest} Request Body
+   * @return response of {@code CompletableFuture<EnvelopeAttachments>}
+   */
+  public CompletableFuture<EnvelopeAttachments> setTemplateAttachmentsSettingsAsync(
+    @NonNull String templateId,
+    @NonNull SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetTemplateAttachmentsSettingsRequest(templateId, setEnvelopeAttachmentsSettingsRequest);
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {})
+    );
+  }
+
+  private Request buildSetTemplateAttachmentsSettingsRequest(
+    @NonNull String templateId,
+    @NonNull SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest
+  ) {
+    return new RequestBuilder(
+      HttpMethod.PUT,
+      Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
+      "template/{template_id}/attachments/settings"
+    )
+      .setAccessTokenAuth(this.config.getAccessToken(), "Bearer")
+      .setPathParameter("template_id", templateId)
+      .setJsonContent(setEnvelopeAttachmentsSettingsRequest)
+      .build();
+  }
+
+  /**
+   * Placeholders to be set, completely replacing the existing ones.
+   *
+   * @param templateId String
+   * @param setEnvelopeAttachmentsPlaceholdersRequest {@link SetEnvelopeAttachmentsPlaceholdersRequest} Request Body
+   * @return response of {@code EnvelopeAttachments}
+   */
+  public EnvelopeAttachments setTemplateAttachmentsPlaceholders(
+    @NonNull String templateId,
+    @NonNull SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetTemplateAttachmentsPlaceholdersRequest(templateId, setEnvelopeAttachmentsPlaceholdersRequest);
+    Response response = this.execute(request);
+    return ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {});
+  }
+
+  /**
+   * Placeholders to be set, completely replacing the existing ones.
+   *
+   * @param templateId String
+   * @param setEnvelopeAttachmentsPlaceholdersRequest {@link SetEnvelopeAttachmentsPlaceholdersRequest} Request Body
+   * @return response of {@code CompletableFuture<EnvelopeAttachments>}
+   */
+  public CompletableFuture<EnvelopeAttachments> setTemplateAttachmentsPlaceholdersAsync(
+    @NonNull String templateId,
+    @NonNull SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest
+  ) throws ApiError {
+    Request request =
+      this.buildSetTemplateAttachmentsPlaceholdersRequest(templateId, setEnvelopeAttachmentsPlaceholdersRequest);
+    CompletableFuture<Response> futureResponse = this.executeAsync(request);
+    return futureResponse.thenApplyAsync(response ->
+      ModelConverter.convert(response, new TypeReference<EnvelopeAttachments>() {})
+    );
+  }
+
+  private Request buildSetTemplateAttachmentsPlaceholdersRequest(
+    @NonNull String templateId,
+    @NonNull SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest
+  ) {
+    return new RequestBuilder(
+      HttpMethod.PUT,
+      Optional.ofNullable(this.config.getBaseUrl()).orElse(Environment.DEFAULT.getUrl()),
+      "template/{template_id}/attachments/placeholders"
+    )
+      .setAccessTokenAuth(this.config.getAccessToken(), "Bearer")
+      .setPathParameter("template_id", templateId)
+      .setJsonContent(setEnvelopeAttachmentsPlaceholdersRequest)
       .build();
   }
 
