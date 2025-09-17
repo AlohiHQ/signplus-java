@@ -2,51 +2,56 @@
 
 A list of all methods in the `SignplusService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                             | Description                                        |
-| :------------------------------------------------------------------ | :------------------------------------------------- |
-| [createEnvelope](#createenvelope)                                   | Create new envelope                                |
-| [createEnvelopeFromTemplate](#createenvelopefromtemplate)           | Create new envelope from template                  |
-| [listEnvelopes](#listenvelopes)                                     | List envelopes                                     |
-| [getEnvelope](#getenvelope)                                         | Get envelope                                       |
-| [deleteEnvelope](#deleteenvelope)                                   | Delete envelope                                    |
-| [downloadEnvelopeSignedDocuments](#downloadenvelopesigneddocuments) | Download signed documents for an envelope          |
-| [downloadEnvelopeCertificate](#downloadenvelopecertificate)         | Download certificate of completion for an envelope |
-| [getEnvelopeDocument](#getenvelopedocument)                         | Get envelope document                              |
-| [getEnvelopeDocuments](#getenvelopedocuments)                       | Get envelope documents                             |
-| [addEnvelopeDocument](#addenvelopedocument)                         | Add envelope document                              |
-| [setEnvelopeDynamicFields](#setenvelopedynamicfields)               | Set envelope dynamic fields                        |
-| [addEnvelopeSigningSteps](#addenvelopesigningsteps)                 | Add envelope signing steps                         |
-| [sendEnvelope](#sendenvelope)                                       | Send envelope for signature                        |
-| [duplicateEnvelope](#duplicateenvelope)                             | Duplicate envelope                                 |
-| [voidEnvelope](#voidenvelope)                                       | Void envelope                                      |
-| [renameEnvelope](#renameenvelope)                                   | Rename envelope                                    |
-| [setEnvelopeComment](#setenvelopecomment)                           | Set envelope comment                               |
-| [setEnvelopeNotification](#setenvelopenotification)                 | Set envelope notification                          |
-| [setEnvelopeExpirationDate](#setenvelopeexpirationdate)             | Set envelope expiration date                       |
-| [setEnvelopeLegalityLevel](#setenvelopelegalitylevel)               | Set envelope legality level                        |
-| [getEnvelopeAnnotations](#getenvelopeannotations)                   | Get envelope annotations                           |
-| [getEnvelopeDocumentAnnotations](#getenvelopedocumentannotations)   | Get envelope document annotations                  |
-| [addEnvelopeAnnotation](#addenvelopeannotation)                     | Add envelope annotation                            |
-| [deleteEnvelopeAnnotation](#deleteenvelopeannotation)               | Delete envelope annotation                         |
-| [createTemplate](#createtemplate)                                   | Create new template                                |
-| [listTemplates](#listtemplates)                                     | List templates                                     |
-| [getTemplate](#gettemplate)                                         | Get template                                       |
-| [deleteTemplate](#deletetemplate)                                   | Delete template                                    |
-| [duplicateTemplate](#duplicatetemplate)                             | Duplicate template                                 |
-| [addTemplateDocument](#addtemplatedocument)                         | Add template document                              |
-| [getTemplateDocument](#gettemplatedocument)                         | Get template document                              |
-| [getTemplateDocuments](#gettemplatedocuments)                       | Get template documents                             |
-| [addTemplateSigningSteps](#addtemplatesigningsteps)                 | Add template signing steps                         |
-| [renameTemplate](#renametemplate)                                   | Rename template                                    |
-| [setTemplateComment](#settemplatecomment)                           | Set template comment                               |
-| [setTemplateNotification](#settemplatenotification)                 | Set template notification                          |
-| [getTemplateAnnotations](#gettemplateannotations)                   | Get template annotations                           |
-| [getDocumentTemplateAnnotations](#getdocumenttemplateannotations)   | Get document template annotations                  |
-| [addTemplateAnnotation](#addtemplateannotation)                     | Add template annotation                            |
-| [deleteTemplateAnnotation](#deletetemplateannotation)               | Delete template annotation                         |
-| [createWebhook](#createwebhook)                                     | Create webhook                                     |
-| [listWebhooks](#listwebhooks)                                       | List webhooks                                      |
-| [deleteWebhook](#deletewebhook)                                     | Delete webhook                                     |
+| Methods                                                                   | Description                                                     |
+| :------------------------------------------------------------------------ | :-------------------------------------------------------------- |
+| [createEnvelope](#createenvelope)                                         | Create new envelope                                             |
+| [createEnvelopeFromTemplate](#createenvelopefromtemplate)                 | Create new envelope from template                               |
+| [listEnvelopes](#listenvelopes)                                           | List envelopes                                                  |
+| [getEnvelope](#getenvelope)                                               | Get envelope                                                    |
+| [deleteEnvelope](#deleteenvelope)                                         | Delete envelope                                                 |
+| [downloadEnvelopeSignedDocuments](#downloadenvelopesigneddocuments)       | Download signed documents for an envelope                       |
+| [downloadEnvelopeCertificate](#downloadenvelopecertificate)               | Download certificate of completion for an envelope              |
+| [getEnvelopeDocument](#getenvelopedocument)                               | Get envelope document                                           |
+| [getEnvelopeDocuments](#getenvelopedocuments)                             | Get envelope documents                                          |
+| [addEnvelopeDocument](#addenvelopedocument)                               | Add envelope document                                           |
+| [setEnvelopeDynamicFields](#setenvelopedynamicfields)                     | Set envelope dynamic fields                                     |
+| [addEnvelopeSigningSteps](#addenvelopesigningsteps)                       | Add envelope signing steps                                      |
+| [setEnvelopeAttachmentsSettings](#setenvelopeattachmentssettings)         | Set envelope attachment settings                                |
+| [setEnvelopeAttachmentsPlaceholders](#setenvelopeattachmentsplaceholders) | Placeholders to be set, completely replacing the existing ones. |
+| [getAttachmentFile](#getattachmentfile)                                   | Get envelope attachment file                                    |
+| [sendEnvelope](#sendenvelope)                                             | Send envelope for signature                                     |
+| [duplicateEnvelope](#duplicateenvelope)                                   | Duplicate envelope                                              |
+| [voidEnvelope](#voidenvelope)                                             | Void envelope                                                   |
+| [renameEnvelope](#renameenvelope)                                         | Rename envelope                                                 |
+| [setEnvelopeComment](#setenvelopecomment)                                 | Set envelope comment                                            |
+| [setEnvelopeNotification](#setenvelopenotification)                       | Set envelope notification                                       |
+| [setEnvelopeExpirationDate](#setenvelopeexpirationdate)                   | Set envelope expiration date                                    |
+| [setEnvelopeLegalityLevel](#setenvelopelegalitylevel)                     | Set envelope legality level                                     |
+| [getEnvelopeAnnotations](#getenvelopeannotations)                         | Get envelope annotations                                        |
+| [getEnvelopeDocumentAnnotations](#getenvelopedocumentannotations)         | Get envelope document annotations                               |
+| [addEnvelopeAnnotation](#addenvelopeannotation)                           | Add envelope annotation                                         |
+| [deleteEnvelopeAnnotation](#deleteenvelopeannotation)                     | Delete envelope annotation                                      |
+| [createTemplate](#createtemplate)                                         | Create new template                                             |
+| [listTemplates](#listtemplates)                                           | List templates                                                  |
+| [getTemplate](#gettemplate)                                               | Get template                                                    |
+| [deleteTemplate](#deletetemplate)                                         | Delete template                                                 |
+| [duplicateTemplate](#duplicatetemplate)                                   | Duplicate template                                              |
+| [addTemplateDocument](#addtemplatedocument)                               | Add template document                                           |
+| [getTemplateDocument](#gettemplatedocument)                               | Get template document                                           |
+| [getTemplateDocuments](#gettemplatedocuments)                             | Get template documents                                          |
+| [addTemplateSigningSteps](#addtemplatesigningsteps)                       | Add template signing steps                                      |
+| [renameTemplate](#renametemplate)                                         | Rename template                                                 |
+| [setTemplateComment](#settemplatecomment)                                 | Set template comment                                            |
+| [setTemplateNotification](#settemplatenotification)                       | Set template notification                                       |
+| [getTemplateAnnotations](#gettemplateannotations)                         | Get template annotations                                        |
+| [getDocumentTemplateAnnotations](#getdocumenttemplateannotations)         | Get document template annotations                               |
+| [addTemplateAnnotation](#addtemplateannotation)                           | Add template annotation                                         |
+| [deleteTemplateAnnotation](#deletetemplateannotation)                     | Delete template annotation                                      |
+| [setTemplateAttachmentsSettings](#settemplateattachmentssettings)         | Set template attachment settings                                |
+| [setTemplateAttachmentsPlaceholders](#settemplateattachmentsplaceholders) | Placeholders to be set, completely replacing the existing ones. |
+| [createWebhook](#createwebhook)                                           | Create webhook                                                  |
+| [listWebhooks](#listwebhooks)                                             | List webhooks                                                   |
+| [deleteWebhook](#deletewebhook)                                           | Delete webhook                                                  |
 
 ## createEnvelope
 
@@ -84,7 +89,7 @@ public class Main {
     CreateEnvelopeRequest createEnvelopeRequest = CreateEnvelopeRequest.builder()
       .name("name")
       .legalityLevel(EnvelopeLegalityLevel.SES)
-      .expiresAt(1L)
+      .expiresAt(8L)
       .comment("comment")
       .sandbox(false)
       .build();
@@ -195,12 +200,12 @@ public class Main {
       .ids(idsList)
       .statuses(statusesList)
       .folderIds(folderIdsList)
-      .onlyRootFolder(false)
-      .dateFrom(1L)
-      .dateTo(3L)
+      .onlyRootFolder(true)
+      .dateFrom(5L)
+      .dateTo(9L)
       .uid("uid")
-      .first(7L)
-      .last(8L)
+      .first(9L)
+      .last(7L)
       .after("after")
       .before("before")
       .orderField(EnvelopeOrderField.CREATION_DATE)
@@ -621,6 +626,156 @@ public class Main {
 
 ```
 
+## setEnvelopeAttachmentsSettings
+
+Set envelope attachment settings
+
+- HTTP Method: `PUT`
+- Endpoint: `/envelope/{envelope_id}/attachments/settings`
+
+**Parameters**
+
+| Name                                  | Type                                                                                        | Required | Description  |
+| :------------------------------------ | :------------------------------------------------------------------------------------------ | :------- | :----------- |
+| envelopeId                            | String                                                                                      | ✅       |              |
+| setEnvelopeAttachmentsSettingsRequest | [SetEnvelopeAttachmentsSettingsRequest](../models/SetEnvelopeAttachmentsSettingsRequest.md) | ✅       | Request Body |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```java
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AttachmentSettings;
+import com.alohi.signplus.models.EnvelopeAttachments;
+import com.alohi.signplus.models.SetEnvelopeAttachmentsSettingsRequest;
+
+public class Main {
+
+  public static void main(String[] args) {
+    SignplusConfig config = SignplusConfig.builder().accessToken("YOUR_ACCESS_TOKEN").build();
+
+    Signplus signplus = new Signplus(config);
+
+    AttachmentSettings attachmentSettings = AttachmentSettings.builder().visibleToRecipients(false).build();
+
+    SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest =
+      SetEnvelopeAttachmentsSettingsRequest.builder().settings(attachmentSettings).build();
+
+    EnvelopeAttachments response = signplus.signplus.setEnvelopeAttachmentsSettings(
+      "envelope_id",
+      setEnvelopeAttachmentsSettingsRequest
+    );
+
+    System.out.println(response);
+  }
+}
+
+```
+
+## setEnvelopeAttachmentsPlaceholders
+
+Placeholders to be set, completely replacing the existing ones.
+
+- HTTP Method: `PUT`
+- Endpoint: `/envelope/{envelope_id}/attachments/placeholders`
+
+**Parameters**
+
+| Name                                      | Type                                                                                                | Required | Description  |
+| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :----------- |
+| envelopeId                                | String                                                                                              | ✅       |              |
+| setEnvelopeAttachmentsPlaceholdersRequest | [SetEnvelopeAttachmentsPlaceholdersRequest](../models/SetEnvelopeAttachmentsPlaceholdersRequest.md) | ✅       | Request Body |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```java
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AttachmentPlaceholderRequest;
+import com.alohi.signplus.models.EnvelopeAttachments;
+import com.alohi.signplus.models.SetEnvelopeAttachmentsPlaceholdersRequest;
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+
+  public static void main(String[] args) {
+    SignplusConfig config = SignplusConfig.builder().accessToken("YOUR_ACCESS_TOKEN").build();
+
+    Signplus signplus = new Signplus(config);
+
+    AttachmentPlaceholderRequest attachmentPlaceholderRequest = AttachmentPlaceholderRequest.builder()
+      .recipientId("recipient_id")
+      .id("id")
+      .name("name")
+      .hint("hint")
+      .required(false)
+      .multiple(true)
+      .build();
+
+    List<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(attachmentPlaceholderRequest);
+
+    SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest =
+      SetEnvelopeAttachmentsPlaceholdersRequest.builder().placeholders(placeholdersList).build();
+
+    EnvelopeAttachments response = signplus.signplus.setEnvelopeAttachmentsPlaceholders(
+      "envelope_id",
+      setEnvelopeAttachmentsPlaceholdersRequest
+    );
+
+    System.out.println(response);
+  }
+}
+
+```
+
+## getAttachmentFile
+
+Get envelope attachment file
+
+- HTTP Method: `GET`
+- Endpoint: `/envelope/{envelope_id}/attachments/{file_id}`
+
+**Parameters**
+
+| Name       | Type   | Required | Description |
+| :--------- | :----- | :------- | :---------- |
+| envelopeId | String | ✅       |             |
+| fileId     | String | ✅       |             |
+
+**Return Type**
+
+`byte[]`
+
+**Example Usage Code Snippet**
+
+```java
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+
+public class Main {
+
+  public static void main(String[] args) {
+    SignplusConfig config = SignplusConfig.builder().accessToken("YOUR_ACCESS_TOKEN").build();
+
+    Signplus signplus = new Signplus(config);
+
+    byte[] response = signplus.signplus.getAttachmentFile("envelope_id", "file_id");
+
+    System.out.println(response);
+  }
+}
+
+```
+
 ## sendEnvelope
 
 Send envelope for signature
@@ -862,7 +1017,7 @@ public class Main {
     EnvelopeNotification envelopeNotification = EnvelopeNotification.builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(5L)
+      .reminderInterval(1L)
       .build();
 
     Envelope response = signplus.signplus.setEnvelopeNotification("envelope_id", envelopeNotification);
@@ -907,7 +1062,7 @@ public class Main {
     Signplus signplus = new Signplus(config);
 
     SetEnvelopeExpirationRequest setEnvelopeExpirationRequest = SetEnvelopeExpirationRequest.builder()
-      .expiresAt(1L)
+      .expiresAt(0L)
       .build();
 
     Envelope response = signplus.signplus.setEnvelopeExpirationDate("envelope_id", setEnvelopeExpirationRequest);
@@ -1097,12 +1252,12 @@ public class Main {
     AnnotationFont annotationFont = AnnotationFont.builder()
       .family(AnnotationFontFamily.UNKNOWN)
       .italic(true)
-      .bold(false)
+      .bold(true)
       .build();
 
     AnnotationText annotationText = AnnotationText.builder()
-      .size(5.93D)
-      .color(4.37D)
+      .size(5.96D)
+      .color(8.73D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
@@ -1110,12 +1265,12 @@ public class Main {
       .build();
 
     AnnotationDateTime annotationDateTime = AnnotationDateTime.builder()
-      .size(1.04D)
+      .size(0.26D)
       .font(annotationFont)
       .color("color")
-      .autoFill(false)
+      .autoFill(true)
       .timezone("timezone")
-      .timestamp(0L)
+      .timestamp(1L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
@@ -1127,12 +1282,12 @@ public class Main {
     AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(6L)
-      .x(7.94D)
-      .y(1.77D)
-      .width(2.67D)
-      .height(5.4D)
-      .required(true)
+      .page(2L)
+      .x(1.99D)
+      .y(8.2D)
+      .width(4.89D)
+      .height(9.43D)
+      .required(false)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
       .initials(annotationInitials)
@@ -1267,12 +1422,12 @@ public class Main {
       .name("name")
       .tags(tagsList)
       .ids(idsList)
-      .first(5L)
-      .last(8L)
+      .first(1L)
+      .last(6L)
       .after("after")
       .before("before")
       .orderField(TemplateOrderField.TEMPLATE_ID)
-      .ascending(true)
+      .ascending(false)
       .build();
 
     ListTemplatesResponse response = signplus.signplus.listTemplates(listTemplatesRequest);
@@ -1709,7 +1864,7 @@ public class Main {
     EnvelopeNotification envelopeNotification = EnvelopeNotification.builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(5L)
+      .reminderInterval(1L)
       .build();
 
     Template response = signplus.signplus.setTemplateNotification("template_id", envelopeNotification);
@@ -1852,12 +2007,12 @@ public class Main {
     AnnotationFont annotationFont = AnnotationFont.builder()
       .family(AnnotationFontFamily.UNKNOWN)
       .italic(true)
-      .bold(false)
+      .bold(true)
       .build();
 
     AnnotationText annotationText = AnnotationText.builder()
-      .size(5.93D)
-      .color(4.37D)
+      .size(5.96D)
+      .color(8.73D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
@@ -1865,12 +2020,12 @@ public class Main {
       .build();
 
     AnnotationDateTime annotationDateTime = AnnotationDateTime.builder()
-      .size(1.04D)
+      .size(0.26D)
       .font(annotationFont)
       .color("color")
-      .autoFill(false)
+      .autoFill(true)
       .timezone("timezone")
-      .timestamp(0L)
+      .timestamp(1L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
@@ -1882,12 +2037,12 @@ public class Main {
     AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(6L)
-      .x(7.94D)
-      .y(1.77D)
-      .width(2.67D)
-      .height(5.4D)
-      .required(true)
+      .page(2L)
+      .x(1.99D)
+      .y(8.2D)
+      .width(4.89D)
+      .height(9.43D)
+      .required(false)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
       .initials(annotationInitials)
@@ -1932,6 +2087,117 @@ public class Main {
     Signplus signplus = new Signplus(config);
 
     signplus.signplus.deleteTemplateAnnotation("template_id", "annotation_id");
+  }
+}
+
+```
+
+## setTemplateAttachmentsSettings
+
+Set template attachment settings
+
+- HTTP Method: `PUT`
+- Endpoint: `/template/{template_id}/attachments/settings`
+
+**Parameters**
+
+| Name                                  | Type                                                                                        | Required | Description  |
+| :------------------------------------ | :------------------------------------------------------------------------------------------ | :------- | :----------- |
+| templateId                            | String                                                                                      | ✅       |              |
+| setEnvelopeAttachmentsSettingsRequest | [SetEnvelopeAttachmentsSettingsRequest](../models/SetEnvelopeAttachmentsSettingsRequest.md) | ✅       | Request Body |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```java
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AttachmentSettings;
+import com.alohi.signplus.models.EnvelopeAttachments;
+import com.alohi.signplus.models.SetEnvelopeAttachmentsSettingsRequest;
+
+public class Main {
+
+  public static void main(String[] args) {
+    SignplusConfig config = SignplusConfig.builder().accessToken("YOUR_ACCESS_TOKEN").build();
+
+    Signplus signplus = new Signplus(config);
+
+    AttachmentSettings attachmentSettings = AttachmentSettings.builder().visibleToRecipients(false).build();
+
+    SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest =
+      SetEnvelopeAttachmentsSettingsRequest.builder().settings(attachmentSettings).build();
+
+    EnvelopeAttachments response = signplus.signplus.setTemplateAttachmentsSettings(
+      "template_id",
+      setEnvelopeAttachmentsSettingsRequest
+    );
+
+    System.out.println(response);
+  }
+}
+
+```
+
+## setTemplateAttachmentsPlaceholders
+
+Placeholders to be set, completely replacing the existing ones.
+
+- HTTP Method: `PUT`
+- Endpoint: `/template/{template_id}/attachments/placeholders`
+
+**Parameters**
+
+| Name                                      | Type                                                                                                | Required | Description  |
+| :---------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------- | :----------- |
+| templateId                                | String                                                                                              | ✅       |              |
+| setEnvelopeAttachmentsPlaceholdersRequest | [SetEnvelopeAttachmentsPlaceholdersRequest](../models/SetEnvelopeAttachmentsPlaceholdersRequest.md) | ✅       | Request Body |
+
+**Return Type**
+
+`EnvelopeAttachments`
+
+**Example Usage Code Snippet**
+
+```java
+import com.alohi.signplus.Signplus;
+import com.alohi.signplus.config.SignplusConfig;
+import com.alohi.signplus.models.AttachmentPlaceholderRequest;
+import com.alohi.signplus.models.EnvelopeAttachments;
+import com.alohi.signplus.models.SetEnvelopeAttachmentsPlaceholdersRequest;
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+
+  public static void main(String[] args) {
+    SignplusConfig config = SignplusConfig.builder().accessToken("YOUR_ACCESS_TOKEN").build();
+
+    Signplus signplus = new Signplus(config);
+
+    AttachmentPlaceholderRequest attachmentPlaceholderRequest = AttachmentPlaceholderRequest.builder()
+      .recipientId("recipient_id")
+      .id("id")
+      .name("name")
+      .hint("hint")
+      .required(false)
+      .multiple(true)
+      .build();
+
+    List<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(attachmentPlaceholderRequest);
+
+    SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest =
+      SetEnvelopeAttachmentsPlaceholdersRequest.builder().placeholders(placeholdersList).build();
+
+    EnvelopeAttachments response = signplus.signplus.setTemplateAttachmentsPlaceholders(
+      "template_id",
+      setEnvelopeAttachmentsPlaceholdersRequest
+    );
+
+    System.out.println(response);
   }
 }
 
