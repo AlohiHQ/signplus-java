@@ -18,9 +18,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class RenameEnvelopeRequest {
 
-  /**
-   * Name of the envelope
-   */
   @JsonProperty("name")
   private JsonNullable<String> name;
 
@@ -36,9 +33,6 @@ public class RenameEnvelopeRequest {
 
     @JsonProperty("name")
     public RenameEnvelopeRequestBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
