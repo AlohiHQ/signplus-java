@@ -4,21 +4,50 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Utility class for serializing parameters according to OpenAPI serialization styles.
+ * Supports simple, label, matrix, form, pipe-delimited, space-delimited, and deep object styles.
+ * Handles primitives, strings, lists, and complex objects with proper encoding.
+ */
 public class Serializer {
 
+  /**
+   * Serializes a long value to a string with the specified style and encoding.
+   *
+   * @param key The parameter name
+   * @param value The long value to serialize
+   * @param style The serialization style to use
+   * @param encode Whether to URL-encode the value
+   * @return The serialized parameter string
+   */
   public static String serialize(String key, long value, SerializationStyle style, boolean encode) {
     return serialize(key, String.valueOf(value), style, encode);
   }
 
-  public static String serialize(String key, double value, SerializationStyle style, boolean encode) {
+  public static String serialize(
+    String key,
+    double value,
+    SerializationStyle style,
+    boolean encode
+  ) {
     return serialize(key, String.valueOf(value), style, encode);
   }
 
-  public static String serialize(String key, boolean value, SerializationStyle style, boolean encode) {
+  public static String serialize(
+    String key,
+    boolean value,
+    SerializationStyle style,
+    boolean encode
+  ) {
     return serialize(key, String.valueOf(value), style, encode);
   }
 
-  public static String serialize(String key, String value, SerializationStyle style, boolean encode) {
+  public static String serialize(
+    String key,
+    String value,
+    SerializationStyle style,
+    boolean encode
+  ) {
     if (value == null) {
       value = "null";
     }
@@ -35,7 +64,24 @@ public class Serializer {
     }
   }
 
-  public static String serialize(String key, Object value, SerializationStyle style, boolean explode, boolean encode) {
+  /**
+   * Serializes any object value according to the specified serialization style.
+   * Handles primitives, strings, lists, and complex objects with proper OpenAPI serialization.
+   *
+   * @param key The parameter name
+   * @param value The value to serialize (can be primitive, String, List, or object)
+   * @param style The serialization style to use (SIMPLE, LABEL, MATRIX, FORM, etc.)
+   * @param explode Whether to use exploded form for arrays/objects
+   * @param encode Whether to URL-encode values
+   * @return The serialized parameter string
+   */
+  public static String serialize(
+    String key,
+    Object value,
+    SerializationStyle style,
+    boolean explode,
+    boolean encode
+  ) {
     if (value == null) {
       return serialize(key, "null", style, encode);
     }
@@ -77,7 +123,10 @@ public class Serializer {
       return "";
     }
 
-    List<String> serializedValues = value.stream().map(v -> serializeValue(v, encode)).collect(Collectors.toList());
+    List<String> serializedValues = value
+      .stream()
+      .map(v -> serializeValue(v, encode))
+      .collect(Collectors.toList());
     switch (style) {
       case SIMPLE:
         return String.join(",", serializedValues);
@@ -87,7 +136,10 @@ public class Serializer {
         return String.format(".%s", String.join(separator, serializedValues));
       case MATRIX:
         return explode
-          ? serializedValues.stream().map(v -> String.format(";%s=%s", key, v)).collect(Collectors.joining(""))
+          ? serializedValues
+            .stream()
+            .map(v -> String.format(";%s=%s", key, v))
+            .collect(Collectors.joining(""))
           : String.format(";%s=", key) + String.join(",", serializedValues);
     }
 
@@ -185,7 +237,22 @@ public class Serializer {
     }
   }
 
-  public static String serializeDeepObject(String key, Object value, boolean topLevel, boolean encode) {
+  /**
+   * Serializes an object using deep object style (e.g., id[key]=value&id[key][deepKey]=deepValue).
+   * Recursively handles nested objects with bracket notation.
+   *
+   * @param key The parameter name
+   * @param value The value to serialize
+   * @param topLevel Whether this is the top-level call (affects bracket notation)
+   * @param encode Whether to URL-encode values
+   * @return The serialized deep object string
+   */
+  public static String serializeDeepObject(
+    String key,
+    Object value,
+    boolean topLevel,
+    boolean encode
+  ) {
     if (!Util.isObject(value)) {
       return String.format("[%s]=%s", key, serializeValue(value, encode));
     }

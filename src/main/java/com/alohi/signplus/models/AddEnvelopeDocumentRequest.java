@@ -18,9 +18,6 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class AddEnvelopeDocumentRequest {
 
-  /**
-   * File to upload in binary format
-   */
   @JsonProperty("file")
   private JsonNullable<byte[]> file;
 
@@ -36,9 +33,6 @@ public class AddEnvelopeDocumentRequest {
 
     @JsonProperty("file")
     public AddEnvelopeDocumentRequestBuilder file(byte[] value) {
-      if (value == null) {
-        throw new IllegalStateException("file cannot be null");
-      }
       this.file = JsonNullable.of(value);
       return this;
     }

@@ -18,17 +18,11 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class ListWebhooksRequest {
 
-  /**
-   * ID of the webhook
-   */
   @JsonProperty("webhook_id")
   private JsonNullable<String> webhookId;
 
-  /**
-   * Event of the webhook
-   */
   @JsonProperty("event")
-  private JsonNullable<WebhookEvent> event;
+  private JsonNullable<String> event;
 
   @JsonIgnore
   public String getWebhookId() {
@@ -36,7 +30,7 @@ public class ListWebhooksRequest {
   }
 
   @JsonIgnore
-  public WebhookEvent getEvent() {
+  public String getEvent() {
     return event.orElse(null);
   }
 
@@ -47,20 +41,14 @@ public class ListWebhooksRequest {
 
     @JsonProperty("webhook_id")
     public ListWebhooksRequestBuilder webhookId(String value) {
-      if (value == null) {
-        throw new IllegalStateException("webhookId cannot be null");
-      }
       this.webhookId = JsonNullable.of(value);
       return this;
     }
 
-    private JsonNullable<WebhookEvent> event = JsonNullable.undefined();
+    private JsonNullable<String> event = JsonNullable.undefined();
 
     @JsonProperty("event")
-    public ListWebhooksRequestBuilder event(WebhookEvent value) {
-      if (value == null) {
-        throw new IllegalStateException("event cannot be null");
-      }
+    public ListWebhooksRequestBuilder event(String value) {
       this.event = JsonNullable.of(value);
       return this;
     }

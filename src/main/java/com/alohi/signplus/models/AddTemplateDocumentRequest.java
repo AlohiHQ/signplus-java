@@ -1,12 +1,14 @@
 package com.alohi.signplus.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 @Data
 @Builder
@@ -16,9 +18,23 @@ import lombok.extern.jackson.Jacksonized;
 @Jacksonized
 public class AddTemplateDocumentRequest {
 
-  /**
-   * File to upload in binary format
-   */
-  @NonNull
-  private byte[] file;
+  @JsonProperty("file")
+  private JsonNullable<byte[]> file;
+
+  @JsonIgnore
+  public byte[] getFile() {
+    return file.orElse(null);
+  }
+
+  // Overwrite lombok builder methods
+  public static class AddTemplateDocumentRequestBuilder {
+
+    private JsonNullable<byte[]> file = JsonNullable.undefined();
+
+    @JsonProperty("file")
+    public AddTemplateDocumentRequestBuilder file(byte[] value) {
+      this.file = JsonNullable.of(value);
+      return this;
+    }
+  }
 }
