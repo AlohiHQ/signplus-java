@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name | Type   | Required | Description                     |
-| :--- | :----- | :------- | :------------------------------ |
-| file | byte[] | ❌       | File to upload in binary format |
+| Name | Type   | Required | Description |
+| :--- | :----- | :------- | :---------- |
+| file | byte[] | ❌       |             |

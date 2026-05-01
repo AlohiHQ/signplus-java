@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.ToString;
 import lombok.With;
 import lombok.extern.jackson.Jacksonized;
@@ -19,39 +18,33 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class CreateEnvelopeRequest {
 
-  /**
-   * Name of the envelope
-   */
-  @NonNull
-  private String name;
+  @JsonProperty("name")
+  private JsonNullable<String> name;
 
-  /**
-   * Legal level of the envelope (SES is Simple Electronic Signature, QES_EIDAS is Qualified Electronic Signature, QES_ZERTES is Qualified Electronic Signature with Zertes)
-   */
-  @NonNull
   @JsonProperty("legality_level")
-  private EnvelopeLegalityLevel legalityLevel;
+  private JsonNullable<String> legalityLevel;
 
-  /**
-   * Unix timestamp of the expiration date
-   */
   @JsonProperty("expires_at")
-  private JsonNullable<Long> expiresAt;
+  private JsonNullable<String> expiresAt;
 
-  /**
-   * Comment for the envelope
-   */
   @JsonProperty("comment")
   private JsonNullable<String> comment;
 
-  /**
-   * Whether the envelope is created in sandbox mode
-   */
   @JsonProperty("sandbox")
   private JsonNullable<Boolean> sandbox;
 
   @JsonIgnore
-  public Long getExpiresAt() {
+  public String getName() {
+    return name.orElse(null);
+  }
+
+  @JsonIgnore
+  public String getLegalityLevel() {
+    return legalityLevel.orElse(null);
+  }
+
+  @JsonIgnore
+  public String getExpiresAt() {
     return expiresAt.orElse(null);
   }
 
@@ -68,13 +61,26 @@ public class CreateEnvelopeRequest {
   // Overwrite lombok builder methods
   public static class CreateEnvelopeRequestBuilder {
 
-    private JsonNullable<Long> expiresAt = JsonNullable.undefined();
+    private JsonNullable<String> name = JsonNullable.undefined();
+
+    @JsonProperty("name")
+    public CreateEnvelopeRequestBuilder name(String value) {
+      this.name = JsonNullable.of(value);
+      return this;
+    }
+
+    private JsonNullable<String> legalityLevel = JsonNullable.undefined();
+
+    @JsonProperty("legality_level")
+    public CreateEnvelopeRequestBuilder legalityLevel(String value) {
+      this.legalityLevel = JsonNullable.of(value);
+      return this;
+    }
+
+    private JsonNullable<String> expiresAt = JsonNullable.undefined();
 
     @JsonProperty("expires_at")
-    public CreateEnvelopeRequestBuilder expiresAt(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("expiresAt cannot be null");
-      }
+    public CreateEnvelopeRequestBuilder expiresAt(String value) {
       this.expiresAt = JsonNullable.of(value);
       return this;
     }
@@ -83,9 +89,6 @@ public class CreateEnvelopeRequest {
 
     @JsonProperty("comment")
     public CreateEnvelopeRequestBuilder comment(String value) {
-      if (value == null) {
-        throw new IllegalStateException("comment cannot be null");
-      }
       this.comment = JsonNullable.of(value);
       return this;
     }
@@ -94,9 +97,6 @@ public class CreateEnvelopeRequest {
 
     @JsonProperty("sandbox")
     public CreateEnvelopeRequestBuilder sandbox(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("sandbox cannot be null");
-      }
       this.sandbox = JsonNullable.of(value);
       return this;
     }

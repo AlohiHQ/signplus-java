@@ -18,27 +18,21 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class SetEnvelopeLegalityLevelRequest {
 
-  /**
-   * Legal level of the envelope (SES is Simple Electronic Signature, QES_EIDAS is Qualified Electronic Signature, QES_ZERTES is Qualified Electronic Signature with Zertes)
-   */
   @JsonProperty("legality_level")
-  private JsonNullable<EnvelopeLegalityLevel> legalityLevel;
+  private JsonNullable<String> legalityLevel;
 
   @JsonIgnore
-  public EnvelopeLegalityLevel getLegalityLevel() {
+  public String getLegalityLevel() {
     return legalityLevel.orElse(null);
   }
 
   // Overwrite lombok builder methods
   public static class SetEnvelopeLegalityLevelRequestBuilder {
 
-    private JsonNullable<EnvelopeLegalityLevel> legalityLevel = JsonNullable.undefined();
+    private JsonNullable<String> legalityLevel = JsonNullable.undefined();
 
     @JsonProperty("legality_level")
-    public SetEnvelopeLegalityLevelRequestBuilder legalityLevel(EnvelopeLegalityLevel value) {
-      if (value == null) {
-        throw new IllegalStateException("legalityLevel cannot be null");
-      }
+    public SetEnvelopeLegalityLevelRequestBuilder legalityLevel(String value) {
       this.legalityLevel = JsonNullable.of(value);
       return this;
     }

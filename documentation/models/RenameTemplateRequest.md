@@ -2,6 +2,6 @@
 
 **Properties**
 
-| Name | Type   | Required | Description          |
-| :--- | :----- | :------- | :------------------- |
-| name | String | ✅       | Name of the template |
+| Name | Type   | Required | Description |
+| :--- | :----- | :------- | :---------- |
+| name | String | ❌       |             |

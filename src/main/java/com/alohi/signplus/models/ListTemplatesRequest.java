@@ -19,29 +19,20 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class ListTemplatesRequest {
 
-  /**
-   * Name of the template
-   */
   @JsonProperty("name")
   private JsonNullable<String> name;
 
-  /**
-   * List of tag templates
-   */
   @JsonProperty("tags")
   private JsonNullable<List<String>> tags;
 
-  /**
-   * List of templates IDs
-   */
   @JsonProperty("ids")
   private JsonNullable<List<String>> ids;
 
   @JsonProperty("first")
-  private JsonNullable<Long> first;
+  private JsonNullable<String> first;
 
   @JsonProperty("last")
-  private JsonNullable<Long> last;
+  private JsonNullable<String> last;
 
   @JsonProperty("after")
   private JsonNullable<String> after;
@@ -49,17 +40,11 @@ public class ListTemplatesRequest {
   @JsonProperty("before")
   private JsonNullable<String> before;
 
-  /**
-   * Field to order templates by
-   */
   @JsonProperty("order_field")
-  private JsonNullable<TemplateOrderField> orderField;
+  private JsonNullable<String> orderField;
 
-  /**
-   * Whether to order templates in ascending order
-   */
   @JsonProperty("ascending")
-  private JsonNullable<Boolean> ascending;
+  private JsonNullable<String> ascending;
 
   @JsonIgnore
   public String getName() {
@@ -77,12 +62,12 @@ public class ListTemplatesRequest {
   }
 
   @JsonIgnore
-  public Long getFirst() {
+  public String getFirst() {
     return first.orElse(null);
   }
 
   @JsonIgnore
-  public Long getLast() {
+  public String getLast() {
     return last.orElse(null);
   }
 
@@ -97,12 +82,12 @@ public class ListTemplatesRequest {
   }
 
   @JsonIgnore
-  public TemplateOrderField getOrderField() {
+  public String getOrderField() {
     return orderField.orElse(null);
   }
 
   @JsonIgnore
-  public Boolean getAscending() {
+  public String getAscending() {
     return ascending.orElse(null);
   }
 
@@ -113,9 +98,6 @@ public class ListTemplatesRequest {
 
     @JsonProperty("name")
     public ListTemplatesRequestBuilder name(String value) {
-      if (value == null) {
-        throw new IllegalStateException("name cannot be null");
-      }
       this.name = JsonNullable.of(value);
       return this;
     }
@@ -124,9 +106,6 @@ public class ListTemplatesRequest {
 
     @JsonProperty("tags")
     public ListTemplatesRequestBuilder tags(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("tags cannot be null");
-      }
       this.tags = JsonNullable.of(value);
       return this;
     }
@@ -135,31 +114,22 @@ public class ListTemplatesRequest {
 
     @JsonProperty("ids")
     public ListTemplatesRequestBuilder ids(List<String> value) {
-      if (value == null) {
-        throw new IllegalStateException("ids cannot be null");
-      }
       this.ids = JsonNullable.of(value);
       return this;
     }
 
-    private JsonNullable<Long> first = JsonNullable.undefined();
+    private JsonNullable<String> first = JsonNullable.undefined();
 
     @JsonProperty("first")
-    public ListTemplatesRequestBuilder first(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("first cannot be null");
-      }
+    public ListTemplatesRequestBuilder first(String value) {
       this.first = JsonNullable.of(value);
       return this;
     }
 
-    private JsonNullable<Long> last = JsonNullable.undefined();
+    private JsonNullable<String> last = JsonNullable.undefined();
 
     @JsonProperty("last")
-    public ListTemplatesRequestBuilder last(Long value) {
-      if (value == null) {
-        throw new IllegalStateException("last cannot be null");
-      }
+    public ListTemplatesRequestBuilder last(String value) {
       this.last = JsonNullable.of(value);
       return this;
     }
@@ -168,9 +138,6 @@ public class ListTemplatesRequest {
 
     @JsonProperty("after")
     public ListTemplatesRequestBuilder after(String value) {
-      if (value == null) {
-        throw new IllegalStateException("after cannot be null");
-      }
       this.after = JsonNullable.of(value);
       return this;
     }
@@ -179,31 +146,22 @@ public class ListTemplatesRequest {
 
     @JsonProperty("before")
     public ListTemplatesRequestBuilder before(String value) {
-      if (value == null) {
-        throw new IllegalStateException("before cannot be null");
-      }
       this.before = JsonNullable.of(value);
       return this;
     }
 
-    private JsonNullable<TemplateOrderField> orderField = JsonNullable.undefined();
+    private JsonNullable<String> orderField = JsonNullable.undefined();
 
     @JsonProperty("order_field")
-    public ListTemplatesRequestBuilder orderField(TemplateOrderField value) {
-      if (value == null) {
-        throw new IllegalStateException("orderField cannot be null");
-      }
+    public ListTemplatesRequestBuilder orderField(String value) {
       this.orderField = JsonNullable.of(value);
       return this;
     }
 
-    private JsonNullable<Boolean> ascending = JsonNullable.undefined();
+    private JsonNullable<String> ascending = JsonNullable.undefined();
 
     @JsonProperty("ascending")
-    public ListTemplatesRequestBuilder ascending(Boolean value) {
-      if (value == null) {
-        throw new IllegalStateException("ascending cannot be null");
-      }
+    public ListTemplatesRequestBuilder ascending(String value) {
       this.ascending = JsonNullable.of(value);
       return this;
     }
