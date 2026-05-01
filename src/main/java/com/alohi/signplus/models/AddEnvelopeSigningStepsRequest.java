@@ -19,27 +19,24 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @Jacksonized
 public class AddEnvelopeSigningStepsRequest {
 
-  /**
-   * List of signing steps
-   */
   @JsonProperty("signing_steps")
-  private JsonNullable<List<SigningStep>> signingSteps;
+  private JsonNullable<List<AddEnvelopeSigningStepsRequestSigningSteps>> signingSteps;
 
   @JsonIgnore
-  public List<SigningStep> getSigningSteps() {
+  public List<AddEnvelopeSigningStepsRequestSigningSteps> getSigningSteps() {
     return signingSteps.orElse(null);
   }
 
   // Overwrite lombok builder methods
   public static class AddEnvelopeSigningStepsRequestBuilder {
 
-    private JsonNullable<List<SigningStep>> signingSteps = JsonNullable.undefined();
+    private JsonNullable<List<AddEnvelopeSigningStepsRequestSigningSteps>> signingSteps =
+      JsonNullable.undefined();
 
     @JsonProperty("signing_steps")
-    public AddEnvelopeSigningStepsRequestBuilder signingSteps(List<SigningStep> value) {
-      if (value == null) {
-        throw new IllegalStateException("signingSteps cannot be null");
-      }
+    public AddEnvelopeSigningStepsRequestBuilder signingSteps(
+      List<AddEnvelopeSigningStepsRequestSigningSteps> value
+    ) {
       this.signingSteps = JsonNullable.of(value);
       return this;
     }
