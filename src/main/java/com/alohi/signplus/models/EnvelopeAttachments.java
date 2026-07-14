@@ -49,7 +49,8 @@ public class EnvelopeAttachments {
       return this;
     }
 
-    private JsonNullable<List<AttachmentPlaceholdersPerRecipient>> recipients = JsonNullable.undefined();
+    private JsonNullable<List<AttachmentPlaceholdersPerRecipient>> recipients =
+      JsonNullable.undefined();
 
     @JsonProperty("recipients")
     public EnvelopeAttachmentsBuilder recipients(List<AttachmentPlaceholdersPerRecipient> value) {

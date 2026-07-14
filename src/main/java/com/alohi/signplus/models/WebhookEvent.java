@@ -23,6 +23,9 @@ public enum WebhookEvent {
 
   @JsonCreator
   public static WebhookEvent fromValue(String value) {
-    return Arrays.stream(WebhookEvent.values()).filter(item -> item.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(WebhookEvent.values())
+      .filter(item -> item.value.equals(value))
+      .findFirst()
+      .orElse(null);
   }
 }

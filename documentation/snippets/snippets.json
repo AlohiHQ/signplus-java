@@ -1,0 +1,282 @@
+{
+  "endpoints": {
+    "/envelope": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.CreateEnvelopeRequest;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.EnvelopeLegalityLevel;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tCreateEnvelopeRequest createEnvelopeRequest = CreateEnvelopeRequest.builder()\n\t\t\t.name(\"name\")\n\t\t\t.legalityLevel(EnvelopeLegalityLevel.SES)\n\t\t\t.expiresAt(8L)\n\t\t\t.comment(\"comment\")\n\t\t\t.sandbox(false)\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.createEnvelope(createEnvelopeRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/from_template/{template_id}": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.CreateEnvelopeFromTemplateRequest;\nimport com.alohi.signplus.models.Envelope;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tCreateEnvelopeFromTemplateRequest createEnvelopeFromTemplateRequest = CreateEnvelopeFromTemplateRequest.builder()\n\t\t\t.name(\"name\")\n\t\t\t.comment(\"comment\")\n\t\t\t.sandbox(true)\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.createEnvelopeFromTemplate(\"template_id\", createEnvelopeFromTemplateRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelopes": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.EnvelopeOrderField;\nimport com.alohi.signplus.models.EnvelopeStatus;\nimport com.alohi.signplus.models.ListEnvelopesRequest;\nimport com.alohi.signplus.models.ListEnvelopesResponse;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tList<String> tagsList = Arrays.asList(\"tags\");\n\t\t\n\t\tList<String> idsList = Arrays.asList(\"ids\");\n\t\t\n\t\tList<EnvelopeStatus> statusesList = Arrays.asList(EnvelopeStatus.DRAFT);\n\t\t\n\t\tList<String> folderIdsList = Arrays.asList(\"folder_ids\");\n\t\t\n\t\tListEnvelopesRequest listEnvelopesRequest = ListEnvelopesRequest.builder()\n\t\t\t.name(\"name\")\n\t\t\t.tags(tagsList)\n\t\t\t.comment(\"comment\")\n\t\t\t.ids(idsList)\n\t\t\t.statuses(statusesList)\n\t\t\t.folderIds(folderIdsList)\n\t\t\t.onlyRootFolder(true)\n\t\t\t.dateFrom(8L)\n\t\t\t.dateTo(5L)\n\t\t\t.uid(\"uid\")\n\t\t\t.first(9L)\n\t\t\t.last(9L)\n\t\t\t.after(\"after\")\n\t\t\t.before(\"before\")\n\t\t\t.orderField(EnvelopeOrderField.CREATION_DATE)\n\t\t\t.ascending(false)\n\t\t\t.includeTrash(false)\n\t\t\t.build();\n\n\t\tListEnvelopesResponse response = signplus.signplus.listEnvelopes(listEnvelopesRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tEnvelope response = signplus.signplus.getEnvelope(\"envelope_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "delete": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tsignplus.signplus.deleteEnvelope(\"envelope_id\");\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/signed_documents": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.DownloadEnvelopeSignedDocumentsParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tDownloadEnvelopeSignedDocumentsParameters requestParameters = DownloadEnvelopeSignedDocumentsParameters.builder()\n\t\t\t.certificateOfCompletion(true)\n\t\t\t.build();\n\n\t\tbyte[] response = signplus.signplus.downloadEnvelopeSignedDocuments(\"envelope_id\", requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/certificate": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tbyte[] response = signplus.signplus.downloadEnvelopeCertificate(\"envelope_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/document/{document_id}": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Document;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tDocument response = signplus.signplus.getEnvelopeDocument(\"envelope_id\", \"document_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/documents": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.ListEnvelopeDocumentsResponse;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tListEnvelopeDocumentsResponse response = signplus.signplus.getEnvelopeDocuments(\"envelope_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/document": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AddEnvelopeDocumentRequest;\nimport com.alohi.signplus.models.Document;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tbyte[] file = new byte[] { 0, 1, 2, 3, 4, 5 };\n\t\t\n\t\tAddEnvelopeDocumentRequest addEnvelopeDocumentRequest = AddEnvelopeDocumentRequest.builder()\n\t\t\t.file(file)\n\t\t\t.build();\n\n\t\tDocument response = signplus.signplus.addEnvelopeDocument(\"envelope_id\", addEnvelopeDocumentRequest, \"filename.txt\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/dynamic_fields": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.DynamicField;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.SetEnvelopeDynamicFieldsRequest;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tDynamicField dynamicField = DynamicField.builder()\n\t\t\t.name(\"name\")\n\t\t\t.value(\"value\")\n\t\t\t.build();\n\t\t\n\t\tList<DynamicField> dynamicFieldsList = Arrays.asList(dynamicField);\n\t\t\n\t\tSetEnvelopeDynamicFieldsRequest setEnvelopeDynamicFieldsRequest = SetEnvelopeDynamicFieldsRequest.builder()\n\t\t\t.dynamicFields(dynamicFieldsList)\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.setEnvelopeDynamicFields(\"envelope_id\", setEnvelopeDynamicFieldsRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/signing_steps": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AddEnvelopeSigningStepsRequest;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.Recipient;\nimport com.alohi.signplus.models.RecipientRole;\nimport com.alohi.signplus.models.RecipientVerification;\nimport com.alohi.signplus.models.RecipientVerificationType;\nimport com.alohi.signplus.models.SigningStep;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tRecipientVerification recipientVerification = RecipientVerification.builder()\n\t\t\t.type(RecipientVerificationType.SMS)\n\t\t\t.value(\"value\")\n\t\t\t.build();\n\t\t\n\t\tRecipient recipient = Recipient.builder()\n\t\t\t.id(\"id\")\n\t\t\t.uid(\"uid\")\n\t\t\t.name(\"name\")\n\t\t\t.email(\"email\")\n\t\t\t.role(RecipientRole.SIGNER)\n\t\t\t.verification(recipientVerification)\n\t\t\t.build();\n\t\t\n\t\tList<Recipient> recipientsList = Arrays.asList(recipient);\n\t\t\n\t\tSigningStep signingStep = SigningStep.builder()\n\t\t\t.recipients(recipientsList)\n\t\t\t.build();\n\t\t\n\t\tList<SigningStep> signingStepsList = Arrays.asList(signingStep);\n\t\t\n\t\tAddEnvelopeSigningStepsRequest addEnvelopeSigningStepsRequest = AddEnvelopeSigningStepsRequest.builder()\n\t\t\t.signingSteps(signingStepsList)\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.addEnvelopeSigningSteps(\"envelope_id\", addEnvelopeSigningStepsRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/attachments/settings": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AttachmentSettings;\nimport com.alohi.signplus.models.EnvelopeAttachments;\nimport com.alohi.signplus.models.SetEnvelopeAttachmentsSettingsRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tAttachmentSettings attachmentSettings = AttachmentSettings.builder()\n\t\t\t.visibleToRecipients(true)\n\t\t\t.build();\n\t\t\n\t\tSetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest = SetEnvelopeAttachmentsSettingsRequest.builder()\n\t\t\t.settings(attachmentSettings)\n\t\t\t.build();\n\n\t\tEnvelopeAttachments response = signplus.signplus.setEnvelopeAttachmentsSettings(\"envelope_id\", setEnvelopeAttachmentsSettingsRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/attachments/placeholders": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AttachmentPlaceholderRequest;\nimport com.alohi.signplus.models.EnvelopeAttachments;\nimport com.alohi.signplus.models.SetEnvelopeAttachmentsPlaceholdersRequest;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tAttachmentPlaceholderRequest attachmentPlaceholderRequest = AttachmentPlaceholderRequest.builder()\n\t\t\t.recipientId(\"recipient_id\")\n\t\t\t.id(\"id\")\n\t\t\t.name(\"name\")\n\t\t\t.hint(\"hint\")\n\t\t\t.required(false)\n\t\t\t.multiple(true)\n\t\t\t.build();\n\t\t\n\t\tList<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(attachmentPlaceholderRequest);\n\t\t\n\t\tSetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest = SetEnvelopeAttachmentsPlaceholdersRequest.builder()\n\t\t\t.placeholders(placeholdersList)\n\t\t\t.build();\n\n\t\tEnvelopeAttachments response = signplus.signplus.setEnvelopeAttachmentsPlaceholders(\"envelope_id\", setEnvelopeAttachmentsPlaceholdersRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/attachments/{file_id}": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tbyte[] response = signplus.signplus.getAttachmentFile(\"envelope_id\", \"file_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/send": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tEnvelope response = signplus.signplus.sendEnvelope(\"envelope_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/duplicate": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tEnvelope response = signplus.signplus.duplicateEnvelope(\"envelope_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/void": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tEnvelope response = signplus.signplus.voidEnvelope(\"envelope_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/rename": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.RenameEnvelopeRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tRenameEnvelopeRequest renameEnvelopeRequest = RenameEnvelopeRequest.builder()\n\t\t\t.name(\"name\")\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.renameEnvelope(\"envelope_id\", renameEnvelopeRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/set_comment": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.SetEnvelopeCommentRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tSetEnvelopeCommentRequest setEnvelopeCommentRequest = SetEnvelopeCommentRequest.builder()\n\t\t\t.comment(\"comment\")\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.setEnvelopeComment(\"envelope_id\", setEnvelopeCommentRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/set_notification": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.EnvelopeNotification;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tEnvelopeNotification envelopeNotification = EnvelopeNotification.builder()\n\t\t\t.subject(\"subject\")\n\t\t\t.message(\"message\")\n\t\t\t.reminderInterval(9L)\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.setEnvelopeNotification(\"envelope_id\", envelopeNotification);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/set_expiration_date": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.SetEnvelopeExpirationRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tSetEnvelopeExpirationRequest setEnvelopeExpirationRequest = SetEnvelopeExpirationRequest.builder()\n\t\t\t.expiresAt(10L)\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.setEnvelopeExpirationDate(\"envelope_id\", setEnvelopeExpirationRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/set_legality_level": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Envelope;\nimport com.alohi.signplus.models.EnvelopeLegalityLevel;\nimport com.alohi.signplus.models.SetEnvelopeLegalityLevelRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tSetEnvelopeLegalityLevelRequest setEnvelopeLegalityLevelRequest = SetEnvelopeLegalityLevelRequest.builder()\n\t\t\t.legalityLevel(EnvelopeLegalityLevel.SES)\n\t\t\t.build();\n\n\t\tEnvelope response = signplus.signplus.setEnvelopeLegalityLevel(\"envelope_id\", setEnvelopeLegalityLevelRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/annotations": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Annotation;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tList<Annotation> response = signplus.signplus.getEnvelopeAnnotations(\"envelope_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/annotations/{document_id}": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.ListEnvelopeDocumentAnnotationsResponse;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tListEnvelopeDocumentAnnotationsResponse response = signplus.signplus.getEnvelopeDocumentAnnotations(\"envelope_id\", \"document_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/annotation": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AddAnnotationRequest;\nimport com.alohi.signplus.models.Annotation;\nimport com.alohi.signplus.models.AnnotationCheckbox;\nimport com.alohi.signplus.models.AnnotationCheckboxStyle;\nimport com.alohi.signplus.models.AnnotationDateTime;\nimport com.alohi.signplus.models.AnnotationDateTimeFormat;\nimport com.alohi.signplus.models.AnnotationFont;\nimport com.alohi.signplus.models.AnnotationFontFamily;\nimport com.alohi.signplus.models.AnnotationInitials;\nimport com.alohi.signplus.models.AnnotationSignature;\nimport com.alohi.signplus.models.AnnotationText;\nimport com.alohi.signplus.models.AnnotationType;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tAnnotationSignature annotationSignature = AnnotationSignature.builder()\n\t\t\t.id(\"id\")\n\t\t\t.build();\n\t\t\n\t\tAnnotationInitials annotationInitials = AnnotationInitials.builder()\n\t\t\t.id(\"id\")\n\t\t\t.build();\n\t\t\n\t\tAnnotationFont annotationFont = AnnotationFont.builder()\n\t\t\t.family(AnnotationFontFamily.UNKNOWN)\n\t\t\t.italic(false)\n\t\t\t.bold(false)\n\t\t\t.build();\n\t\t\n\t\tAnnotationText annotationText = AnnotationText.builder()\n\t\t\t.size(5.86D)\n\t\t\t.color(4.1D)\n\t\t\t.value(\"value\")\n\t\t\t.tooltip(\"tooltip\")\n\t\t\t.dynamicFieldName(\"dynamic_field_name\")\n\t\t\t.font(annotationFont)\n\t\t\t.build();\n\t\t\n\t\tAnnotationDateTime annotationDateTime = AnnotationDateTime.builder()\n\t\t\t.size(4.5D)\n\t\t\t.font(annotationFont)\n\t\t\t.color(\"color\")\n\t\t\t.autoFill(false)\n\t\t\t.timezone(\"timezone\")\n\t\t\t.timestamp(10L)\n\t\t\t.format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)\n\t\t\t.build();\n\t\t\n\t\tAnnotationCheckbox annotationCheckbox = AnnotationCheckbox.builder()\n\t\t\t.checked(false)\n\t\t\t.style(AnnotationCheckboxStyle.CIRCLE_CHECK)\n\t\t\t.build();\n\t\t\n\t\tAddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()\n\t\t\t.recipientId(\"recipient_id\")\n\t\t\t.documentId(\"document_id\")\n\t\t\t.page(7L)\n\t\t\t.x(8.57D)\n\t\t\t.y(4.21D)\n\t\t\t.width(6.37D)\n\t\t\t.height(2.63D)\n\t\t\t.required(true)\n\t\t\t.type(AnnotationType.TEXT)\n\t\t\t.signature(annotationSignature)\n\t\t\t.initials(annotationInitials)\n\t\t\t.text(annotationText)\n\t\t\t.datetime(annotationDateTime)\n\t\t\t.checkbox(annotationCheckbox)\n\t\t\t.build();\n\n\t\tAnnotation response = signplus.signplus.addEnvelopeAnnotation(\"envelope_id\", addAnnotationRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/envelope/{envelope_id}/annotation/{annotation_id}": {
+      "delete": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tsignplus.signplus.deleteEnvelopeAnnotation(\"envelope_id\", \"annotation_id\");\n    }\n}\n"
+    },
+    "/template": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.CreateTemplateRequest;\nimport com.alohi.signplus.models.Template;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tCreateTemplateRequest createTemplateRequest = CreateTemplateRequest.builder()\n\t\t\t.name(\"name\")\n\t\t\t.build();\n\n\t\tTemplate response = signplus.signplus.createTemplate(createTemplateRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/templates": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.ListTemplatesRequest;\nimport com.alohi.signplus.models.ListTemplatesResponse;\nimport com.alohi.signplus.models.TemplateOrderField;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tList<String> tagsList = Arrays.asList(\"tags\");\n\t\t\n\t\tList<String> idsList = Arrays.asList(\"ids\");\n\t\t\n\t\tListTemplatesRequest listTemplatesRequest = ListTemplatesRequest.builder()\n\t\t\t.name(\"name\")\n\t\t\t.tags(tagsList)\n\t\t\t.ids(idsList)\n\t\t\t.first(4L)\n\t\t\t.last(3L)\n\t\t\t.after(\"after\")\n\t\t\t.before(\"before\")\n\t\t\t.orderField(TemplateOrderField.TEMPLATE_ID)\n\t\t\t.ascending(true)\n\t\t\t.build();\n\n\t\tListTemplatesResponse response = signplus.signplus.listTemplates(listTemplatesRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Template;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tTemplate response = signplus.signplus.getTemplate(\"template_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "delete": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tsignplus.signplus.deleteTemplate(\"template_id\");\n    }\n}\n"
+    },
+    "/template/{template_id}/duplicate": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Template;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tTemplate response = signplus.signplus.duplicateTemplate(\"template_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/document": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AddTemplateDocumentRequest;\nimport com.alohi.signplus.models.Document;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tbyte[] file = new byte[] { 0, 1, 2, 3, 4, 5 };\n\t\t\n\t\tAddTemplateDocumentRequest addTemplateDocumentRequest = AddTemplateDocumentRequest.builder()\n\t\t\t.file(file)\n\t\t\t.build();\n\n\t\tDocument response = signplus.signplus.addTemplateDocument(\"template_id\", addTemplateDocumentRequest, \"filename.txt\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/document/{document_id}": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.Document;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tDocument response = signplus.signplus.getTemplateDocument(\"template_id\", \"document_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/documents": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.ListTemplateDocumentsResponse;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tListTemplateDocumentsResponse response = signplus.signplus.getTemplateDocuments(\"template_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/signing_steps": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AddTemplateSigningStepsRequest;\nimport com.alohi.signplus.models.Template;\nimport com.alohi.signplus.models.TemplateRecipient;\nimport com.alohi.signplus.models.TemplateRecipientRole;\nimport com.alohi.signplus.models.TemplateSigningStep;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tTemplateRecipient templateRecipient = TemplateRecipient.builder()\n\t\t\t.id(\"id\")\n\t\t\t.uid(\"uid\")\n\t\t\t.name(\"name\")\n\t\t\t.email(\"email\")\n\t\t\t.role(TemplateRecipientRole.SIGNER)\n\t\t\t.build();\n\t\t\n\t\tList<TemplateRecipient> recipientsList = Arrays.asList(templateRecipient);\n\t\t\n\t\tTemplateSigningStep templateSigningStep = TemplateSigningStep.builder()\n\t\t\t.recipients(recipientsList)\n\t\t\t.build();\n\t\t\n\t\tList<TemplateSigningStep> signingStepsList = Arrays.asList(templateSigningStep);\n\t\t\n\t\tAddTemplateSigningStepsRequest addTemplateSigningStepsRequest = AddTemplateSigningStepsRequest.builder()\n\t\t\t.signingSteps(signingStepsList)\n\t\t\t.build();\n\n\t\tTemplate response = signplus.signplus.addTemplateSigningSteps(\"template_id\", addTemplateSigningStepsRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/rename": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.RenameTemplateRequest;\nimport com.alohi.signplus.models.Template;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tRenameTemplateRequest renameTemplateRequest = RenameTemplateRequest.builder()\n\t\t\t.name(\"name\")\n\t\t\t.build();\n\n\t\tTemplate response = signplus.signplus.renameTemplate(\"template_id\", renameTemplateRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/set_comment": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.SetTemplateCommentRequest;\nimport com.alohi.signplus.models.Template;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tSetTemplateCommentRequest setTemplateCommentRequest = SetTemplateCommentRequest.builder()\n\t\t\t.comment(\"comment\")\n\t\t\t.build();\n\n\t\tTemplate response = signplus.signplus.setTemplateComment(\"template_id\", setTemplateCommentRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/set_notification": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.EnvelopeNotification;\nimport com.alohi.signplus.models.Template;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tEnvelopeNotification envelopeNotification = EnvelopeNotification.builder()\n\t\t\t.subject(\"subject\")\n\t\t\t.message(\"message\")\n\t\t\t.reminderInterval(9L)\n\t\t\t.build();\n\n\t\tTemplate response = signplus.signplus.setTemplateNotification(\"template_id\", envelopeNotification);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/annotations": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.ListTemplateAnnotationsResponse;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tListTemplateAnnotationsResponse response = signplus.signplus.getTemplateAnnotations(\"template_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/annotations/{document_id}": {
+      "get": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.ListTemplateDocumentAnnotationsResponse;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tListTemplateDocumentAnnotationsResponse response = signplus.signplus.getDocumentTemplateAnnotations(\"template_id\", \"document_id\");\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/annotation": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AddAnnotationRequest;\nimport com.alohi.signplus.models.Annotation;\nimport com.alohi.signplus.models.AnnotationCheckbox;\nimport com.alohi.signplus.models.AnnotationCheckboxStyle;\nimport com.alohi.signplus.models.AnnotationDateTime;\nimport com.alohi.signplus.models.AnnotationDateTimeFormat;\nimport com.alohi.signplus.models.AnnotationFont;\nimport com.alohi.signplus.models.AnnotationFontFamily;\nimport com.alohi.signplus.models.AnnotationInitials;\nimport com.alohi.signplus.models.AnnotationSignature;\nimport com.alohi.signplus.models.AnnotationText;\nimport com.alohi.signplus.models.AnnotationType;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tAnnotationSignature annotationSignature = AnnotationSignature.builder()\n\t\t\t.id(\"id\")\n\t\t\t.build();\n\t\t\n\t\tAnnotationInitials annotationInitials = AnnotationInitials.builder()\n\t\t\t.id(\"id\")\n\t\t\t.build();\n\t\t\n\t\tAnnotationFont annotationFont = AnnotationFont.builder()\n\t\t\t.family(AnnotationFontFamily.UNKNOWN)\n\t\t\t.italic(false)\n\t\t\t.bold(false)\n\t\t\t.build();\n\t\t\n\t\tAnnotationText annotationText = AnnotationText.builder()\n\t\t\t.size(5.86D)\n\t\t\t.color(4.1D)\n\t\t\t.value(\"value\")\n\t\t\t.tooltip(\"tooltip\")\n\t\t\t.dynamicFieldName(\"dynamic_field_name\")\n\t\t\t.font(annotationFont)\n\t\t\t.build();\n\t\t\n\t\tAnnotationDateTime annotationDateTime = AnnotationDateTime.builder()\n\t\t\t.size(4.5D)\n\t\t\t.font(annotationFont)\n\t\t\t.color(\"color\")\n\t\t\t.autoFill(false)\n\t\t\t.timezone(\"timezone\")\n\t\t\t.timestamp(10L)\n\t\t\t.format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)\n\t\t\t.build();\n\t\t\n\t\tAnnotationCheckbox annotationCheckbox = AnnotationCheckbox.builder()\n\t\t\t.checked(false)\n\t\t\t.style(AnnotationCheckboxStyle.CIRCLE_CHECK)\n\t\t\t.build();\n\t\t\n\t\tAddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()\n\t\t\t.recipientId(\"recipient_id\")\n\t\t\t.documentId(\"document_id\")\n\t\t\t.page(7L)\n\t\t\t.x(8.57D)\n\t\t\t.y(4.21D)\n\t\t\t.width(6.37D)\n\t\t\t.height(2.63D)\n\t\t\t.required(true)\n\t\t\t.type(AnnotationType.TEXT)\n\t\t\t.signature(annotationSignature)\n\t\t\t.initials(annotationInitials)\n\t\t\t.text(annotationText)\n\t\t\t.datetime(annotationDateTime)\n\t\t\t.checkbox(annotationCheckbox)\n\t\t\t.build();\n\n\t\tAnnotation response = signplus.signplus.addTemplateAnnotation(\"template_id\", addAnnotationRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/annotation/{annotation_id}": {
+      "delete": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tsignplus.signplus.deleteTemplateAnnotation(\"template_id\", \"annotation_id\");\n    }\n}\n"
+    },
+    "/template/{template_id}/attachments/settings": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AttachmentSettings;\nimport com.alohi.signplus.models.EnvelopeAttachments;\nimport com.alohi.signplus.models.SetEnvelopeAttachmentsSettingsRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tAttachmentSettings attachmentSettings = AttachmentSettings.builder()\n\t\t\t.visibleToRecipients(true)\n\t\t\t.build();\n\t\t\n\t\tSetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest = SetEnvelopeAttachmentsSettingsRequest.builder()\n\t\t\t.settings(attachmentSettings)\n\t\t\t.build();\n\n\t\tEnvelopeAttachments response = signplus.signplus.setTemplateAttachmentsSettings(\"template_id\", setEnvelopeAttachmentsSettingsRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/template/{template_id}/attachments/placeholders": {
+      "put": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.AttachmentPlaceholderRequest;\nimport com.alohi.signplus.models.EnvelopeAttachments;\nimport com.alohi.signplus.models.SetEnvelopeAttachmentsPlaceholdersRequest;\nimport java.util.Arrays;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tAttachmentPlaceholderRequest attachmentPlaceholderRequest = AttachmentPlaceholderRequest.builder()\n\t\t\t.recipientId(\"recipient_id\")\n\t\t\t.id(\"id\")\n\t\t\t.name(\"name\")\n\t\t\t.hint(\"hint\")\n\t\t\t.required(false)\n\t\t\t.multiple(true)\n\t\t\t.build();\n\t\t\n\t\tList<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(attachmentPlaceholderRequest);\n\t\t\n\t\tSetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest = SetEnvelopeAttachmentsPlaceholdersRequest.builder()\n\t\t\t.placeholders(placeholdersList)\n\t\t\t.build();\n\n\t\tEnvelopeAttachments response = signplus.signplus.setTemplateAttachmentsPlaceholders(\"template_id\", setEnvelopeAttachmentsPlaceholdersRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/webhook": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.CreateWebhookRequest;\nimport com.alohi.signplus.models.Webhook;\nimport com.alohi.signplus.models.WebhookEvent;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tCreateWebhookRequest createWebhookRequest = CreateWebhookRequest.builder()\n\t\t\t.event(WebhookEvent.ENVELOPE_EXPIRED)\n\t\t\t.target(\"target\")\n\t\t\t.build();\n\n\t\tWebhook response = signplus.signplus.createWebhook(createWebhookRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/webhooks": {
+      "post": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.models.ListWebhooksRequest;\nimport com.alohi.signplus.models.ListWebhooksResponse;\nimport com.alohi.signplus.models.WebhookEvent;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tListWebhooksRequest listWebhooksRequest = ListWebhooksRequest.builder()\n\t\t\t.webhookId(\"webhook_id\")\n\t\t\t.event(WebhookEvent.ENVELOPE_EXPIRED)\n\t\t\t.build();\n\n\t\tListWebhooksResponse response = signplus.signplus.listWebhooks(listWebhooksRequest);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/webhook/{webhook_id}": {
+      "delete": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\n\t\tsignplus.signplus.deleteWebhook(\"webhook_id\");\n    }\n}\n"
+    }
+  },
+  "methodResponses": {
+    "/envelope": {
+      "post": "System.out.println(response);"
+    },
+    "/envelope/from_template/{template_id}": {
+      "post": "System.out.println(response);"
+    },
+    "/envelopes": {
+      "post": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/signed_documents": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/certificate": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/document/{document_id}": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/documents": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/document": {
+      "post": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/dynamic_fields": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/signing_steps": {
+      "post": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/attachments/settings": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/attachments/placeholders": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/attachments/{file_id}": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/send": {
+      "post": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/duplicate": {
+      "post": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/void": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/rename": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/set_comment": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/set_notification": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/set_expiration_date": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/set_legality_level": {
+      "put": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/annotations": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/annotations/{document_id}": {
+      "get": "System.out.println(response);"
+    },
+    "/envelope/{envelope_id}/annotation": {
+      "post": "System.out.println(response);"
+    },
+    "/template": {
+      "post": "System.out.println(response);"
+    },
+    "/templates": {
+      "post": "System.out.println(response);"
+    },
+    "/template/{template_id}": {
+      "get": "System.out.println(response);"
+    },
+    "/template/{template_id}/duplicate": {
+      "post": "System.out.println(response);"
+    },
+    "/template/{template_id}/document": {
+      "post": "System.out.println(response);"
+    },
+    "/template/{template_id}/document/{document_id}": {
+      "get": "System.out.println(response);"
+    },
+    "/template/{template_id}/documents": {
+      "get": "System.out.println(response);"
+    },
+    "/template/{template_id}/signing_steps": {
+      "post": "System.out.println(response);"
+    },
+    "/template/{template_id}/rename": {
+      "put": "System.out.println(response);"
+    },
+    "/template/{template_id}/set_comment": {
+      "put": "System.out.println(response);"
+    },
+    "/template/{template_id}/set_notification": {
+      "put": "System.out.println(response);"
+    },
+    "/template/{template_id}/annotations": {
+      "get": "System.out.println(response);"
+    },
+    "/template/{template_id}/annotations/{document_id}": {
+      "get": "System.out.println(response);"
+    },
+    "/template/{template_id}/annotation": {
+      "post": "System.out.println(response);"
+    },
+    "/template/{template_id}/attachments/settings": {
+      "put": "System.out.println(response);"
+    },
+    "/template/{template_id}/attachments/placeholders": {
+      "put": "System.out.println(response);"
+    },
+    "/webhook": {
+      "post": "System.out.println(response);"
+    },
+    "/webhooks": {
+      "post": "System.out.println(response);"
+    }
+  },
+  "example": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\nimport com.alohi.signplus.exceptions.ApiError;\nimport com.alohi.signplus.models.Envelope;\n  \npublic class Main {\n  public static void main(String[] args) {\n    SignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n    Signplus signplus = new Signplus(config);\n\n\n    try {\n      Envelope response = signplus.signplus.getEnvelope(\"envelope_id\");\n        \n      System.out.println(response);\n    } catch (ApiError e) {\n      e.printStackTrace();\n    }\n\n    System.exit(0);\n  }\n}\n",
+  "authentication": {
+    "bearer": {
+      "constructor": "import com.alohi.signplus.Signplus;\nimport com.alohi.signplus.config.SignplusConfig;\n\npublic class Main {\n\tpublic static void main(String[] args) {\n\t\tSignplusConfig config = SignplusConfig.builder()\n\t\t\t.accessToken(\"YOUR_ACCESS_TOKEN\")\n\t\t\t.build();\n\n\t\tSignplus signplus = new Signplus(config);\n\t}\n}",
+      "setter": "signplus.setAccessToken('YOUR_ACCESS_TOKEN');"
+    }
+  }
+}

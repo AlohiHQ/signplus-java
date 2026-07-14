@@ -5,14 +5,32 @@ import com.alohi.signplus.validation.Violation;
 import com.alohi.signplus.validation.ViolationAggregator;
 import com.alohi.signplus.validation.validators.StringValidator;
 
+/**
+ * Validator implementation for CreateEnvelopeRequest model.
+ * Validates all fields and nested structures according to the model's constraints.
+ */
 public class CreateEnvelopeRequestValidator extends AbstractModelValidator<CreateEnvelopeRequest> {
 
+  /**
+   * Creates a validator with a field name for nested validation paths.
+   *
+   * @param fieldName The field name to use in violation paths
+   */
   public CreateEnvelopeRequestValidator(String fieldName) {
     super(fieldName);
   }
 
+  /**
+   * Creates a validator for root-level validation.
+   */
   public CreateEnvelopeRequestValidator() {}
 
+  /**
+   * Validates the CreateEnvelopeRequest model's fields and constraints.
+   *
+   * @param createEnvelopeRequest The model instance to validate
+   * @return Array of violations found during validation
+   */
   @Override
   protected Violation[] validateModel(CreateEnvelopeRequest createEnvelopeRequest) {
     return new ViolationAggregator()

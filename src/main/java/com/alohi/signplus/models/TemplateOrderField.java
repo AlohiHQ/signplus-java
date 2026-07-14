@@ -22,6 +22,9 @@ public enum TemplateOrderField {
 
   @JsonCreator
   public static TemplateOrderField fromValue(String value) {
-    return Arrays.stream(TemplateOrderField.values()).filter(item -> item.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(TemplateOrderField.values())
+      .filter(item -> item.value.equals(value))
+      .findFirst()
+      .orElse(null);
   }
 }

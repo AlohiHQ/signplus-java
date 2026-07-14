@@ -2,8 +2,8 @@
 
 **Properties**
 
-| Name            | Type             | Required | Description                      |
-| :-------------- | :--------------- | :------- | :------------------------------- |
-| hasNextPage     | Boolean          | ❌       | Whether there is a next page     |
-| hasPreviousPage | Boolean          | ❌       | Whether there is a previous page |
-| templates       | List\<Template\> | ❌       |                                  |
+| Name            | Type                          | Required | Description                      |
+| :-------------- | :---------------------------- | :------- | :------------------------------- |
+| hasNextPage     | Boolean                       | ❌       | Whether there is a next page     |
+| hasPreviousPage | Boolean                       | ❌       | Whether there is a previous page |
+| templates       | List<[Template](Template.md)> | ❌       |                                  |

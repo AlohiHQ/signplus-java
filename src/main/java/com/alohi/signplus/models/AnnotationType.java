@@ -23,6 +23,9 @@ public enum AnnotationType {
 
   @JsonCreator
   public static AnnotationType fromValue(String value) {
-    return Arrays.stream(AnnotationType.values()).filter(item -> item.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(AnnotationType.values())
+      .filter(item -> item.value.equals(value))
+      .findFirst()
+      .orElse(null);
   }
 }

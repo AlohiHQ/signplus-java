@@ -1,24 +1,27 @@
 {
-  "liblabVersion": "2.25.46",
-  "date": "2025-09-17T12:01:32.149Z",
+  "sdkGenVersion": "1.6.0",
+  "date": "2026-07-14T05:00:15.375Z",
   "config": {
-    "apiId": 2744,
-    "sdkName": "signplus",
-    "sdkVersion": "2.4.0",
-    "languages": ["java"],
-    "auth": ["bearer"],
-    "docs": [],
-    "liblabVersion": "2",
-    "deliveryMethods": ["zip"],
-    "rawConfig": {
-      "sdkName": "signplus",
-      "apiVersion": "2.5.0",
-      "apiName": "signplus-api",
-      "specFilePath": "openapi.yaml",
-      "languages": ["csharp", "go", "python", "typescript", "java", "php"],
-      "auth": ["bearer"],
-      "customizations": {
-        "includeOptionalSnippetParameters": true,
+    "sdkVersion": "1.0.0",
+    "auth": [
+      "bearer"
+    ],
+    "apiVersion": "2.5.0",
+    "publishing": {
+      "githubOrg": "alohihq",
+      "releaseBranch": "main"
+    },
+    "languageOptions": {
+      "java": {
+        "githubRepoName": "signplus-java",
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
         "authentication": {
           "access": {
             "prefix": "Bearer"
@@ -26,116 +29,12 @@
         },
         "devContainer": false,
         "generateEnv": true,
-        "inferServiceNames": false,
-        "injectedModels": [],
-        "license": {
-          "type": "MIT"
-        },
         "responseHeaders": false,
-        "retry": {
-          "enabled": true,
-          "maxAttempts": 3,
-          "retryDelay": 150
-        }
-      },
-      "languageOptions": {
-        "python": {
-          "alwaysInitializeOptionals": false,
-          "pypiPackageName": "signplus-python",
-          "githubRepoName": "signplus-python",
-          "ignoreFiles": [],
-          "sdkVersion": "1.4.0",
-          "liblabVersion": "2",
-          "additionalConstructorParameters": []
-        },
-        "java": {
-          "githubRepoName": "signplus-java",
-          "groupId": "com.alohi",
-          "artifactId": "signplus",
-          "sdkVersion": "2.4.0",
-          "liblabVersion": "2",
-          "developers": [
-            {
-              "name": "Alohi SA",
-              "email": "support@alohi.com",
-              "organization": "Alohi SA",
-              "organizationUrl": "https://www.alohi.com"
-            }
-          ],
-          "additionalConstructorParameters": []
-        },
-        "typescript": {
-          "bundle": false,
-          "exportClassDefault": false,
-          "httpClient": "axios",
-          "npmName": "signplus-typescript",
-          "npmOrg": "alohi",
-          "githubRepoName": "signplus-typescript",
-          "ignoreFiles": [],
-          "sdkVersion": "2.4.0",
-          "liblabVersion": "2",
-          "additionalConstructorParameters": []
-        },
-        "go": {
-          "goModuleName": "github.com/alohihq/signplus-go",
-          "githubRepoName": "signplus-go",
-          "ignoreFiles": [],
-          "sdkVersion": "1.4.0",
-          "liblabVersion": "2",
-          "additionalConstructorParameters": []
-        },
-        "php": {
-          "packageName": "alohi/signplus",
-          "githubRepoName": "signplus-php",
-          "ignoreFiles": [],
-          "sdkVersion": "2.4.0",
-          "liblabVersion": "2",
-          "additionalConstructorParameters": []
-        },
-        "csharp": {
-          "packageId": "Alohi.Signplus",
-          "githubRepoName": "signplus-sharp",
-          "ignoreFiles": [],
-          "sdkVersion": "1.4.0",
-          "liblabVersion": "2"
-        }
-      },
-      "publishing": {
-        "githubOrg": "alohihq"
-      }
-    },
-    "liblabConfigVersion": "1.0.0",
-    "apiVersion": "2.5.0",
-    "apiName": "signplus-api",
-    "specFilePath": "openapi.yaml",
-    "createDocs": false,
-    "languageOptions": {
-      "csharp": {
-        "githubRepoName": "signplus-sharp",
-        "ignoreFiles": [],
-        "liblabVersion": "2",
-        "renameIllegalModelProperties": true,
-        "sdkVersion": "1.4.0",
-        "packageId": "Alohi.Signplus"
-      },
-      "go": {
-        "githubRepoName": "signplus-go",
-        "ignoreFiles": [],
-        "liblabVersion": "2",
-        "renameIllegalModelProperties": true,
-        "sdkVersion": "1.4.0",
-        "goModuleName": "github.com/alohihq/signplus-go",
-        "additionalConstructorParameters": []
-      },
-      "java": {
-        "githubRepoName": "signplus-java",
-        "ignoreFiles": [],
-        "liblabVersion": "2",
-        "renameIllegalModelProperties": true,
-        "sdkVersion": "2.4.0",
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false,
         "groupId": "com.alohi",
         "artifactId": "signplus",
-        "includeKotlinSnippets": false,
         "developers": [
           {
             "name": "Alohi SA",
@@ -143,52 +42,243 @@
             "organization": "Alohi SA",
             "organizationUrl": "https://www.alohi.com"
           }
-        ],
-        "additionalConstructorParameters": []
-      },
-      "python": {
-        "githubRepoName": "signplus-python",
-        "ignoreFiles": [],
-        "liblabVersion": "2",
-        "renameIllegalModelProperties": true,
-        "sdkVersion": "1.4.0",
-        "alwaysInitializeOptionals": false,
-        "additionalConstructorParameters": [],
-        "pypiPackageName": "signplus-python"
-      },
-      "php": {
-        "githubRepoName": "signplus-php",
-        "ignoreFiles": [],
-        "liblabVersion": "2",
-        "renameIllegalModelProperties": true,
-        "sdkVersion": "2.4.0",
-        "additionalConstructorParameters": [],
-        "packageName": "alohi/signplus"
+        ]
       },
       "typescript": {
         "githubRepoName": "signplus-typescript",
-        "ignoreFiles": [],
-        "liblabVersion": "2",
-        "renameIllegalModelProperties": true,
-        "sdkVersion": "2.4.0",
-        "additionalConstructorParameters": [],
-        "bundle": false,
-        "denoteCommon": false,
-        "exportClassDefault": false,
-        "generateEnumAs": "enum",
-        "httpClient": "axios",
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false,
+        "npmOrg": "alohi",
         "npmName": "signplus-typescript",
-        "npmOrg": "alohi"
+        "httpClient": "axios",
+        "bundle": false,
+        "exportClassDefault": false
+      },
+      "python": {
+        "githubRepoName": "signplus-python",
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false,
+        "pypiPackageName": "signplus-python",
+        "classifiers": [
+          "Development Status :: 5 - Production/Stable",
+          "License :: OSI Approved :: MIT License",
+          "Topic :: Software Development"
+        ]
+      },
+      "kotlin": {
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false
+      },
+      "ruby": {
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false
+      },
+      "go": {
+        "githubRepoName": "signplus-sharp",
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false,
+        "goModuleName": "github.com/alohihq/signplus-go"
+      },
+      "csharp": {
+        "githubRepoName": "signplus-sharp",
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false,
+        "packageId": "Alohi.Signplus"
+      },
+      "php": {
+        "githubRepoName": "signplus-php",
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false,
+        "packageName": "alohi/signplus"
+      },
+      "cli": {
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false
+      },
+      "rust": {
+        "retry": {
+          "enabled": true,
+          "maxAttempts": 3,
+          "retryDelay": 150
+        },
+        "license": {
+          "type": "MIT"
+        },
+        "authentication": {
+          "access": {
+            "prefix": "Bearer"
+          }
+        },
+        "devContainer": false,
+        "generateEnv": true,
+        "responseHeaders": false,
+        "includeOptionalSnippetParameters": true,
+        "injectedModels": [],
+        "inferServiceNames": false
       }
     },
-    "validationsToIgnore": [],
-    "publishing": {
-      "githubOrg": "alohihq",
-      "platform": "github"
+    "customCode": {
+      "trackChanges": true,
+      "conflictStrategy": "mark"
     },
-    "analytics": {
-      "streaming": false,
-      "pagination": false
+    "retry": {
+      "enabled": true,
+      "maxAttempts": 3,
+      "retryDelay": 150,
+      "maxDelay": 5000,
+      "retryDelayJitter": 50,
+      "backOffFactor": 2,
+      "httpMethodsToRetry": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ]
+    },
+    "license": {
+      "type": "MIT",
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT",
+      "path": "MIT.ejs"
     },
     "authentication": {
       "access": {
@@ -197,33 +287,20 @@
     },
     "devContainer": false,
     "generateEnv": true,
-    "includeOptionalSnippetParameters": true,
-    "license": {
-      "type": "MIT",
-      "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT",
-      "path": "MIT.ejs"
-    },
     "responseHeaders": false,
-    "buildAllModels": false,
-    "retry": {
-      "enabled": true,
-      "maxAttempts": 3,
-      "retryDelay": 150,
-      "maxDelay": 5000,
-      "retryDelayJitter": 50,
-      "backOffFactor": 2,
-      "httpCodesToRetry": [408, 429, 500, 502, 503, 504],
-      "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
-    },
-    "multiTenant": true,
-    "includeWatermark": false,
+    "includeOptionalSnippetParameters": true,
+    "injectedModels": [],
+    "inferServiceNames": false,
+    "languages": [
+      "java"
+    ],
+    "deliveryMethods": [
+      "zip"
+    ],
+    "sdkName": "signplus",
     "githubRepoName": "signplus-java",
-    "ignoreFiles": [],
-    "renameIllegalModelProperties": true,
     "groupId": "com.alohi",
     "artifactId": "signplus",
-    "includeKotlinSnippets": false,
     "developers": [
       {
         "name": "Alohi SA",
@@ -232,24 +309,24 @@
         "organizationUrl": "https://www.alohi.com"
       }
     ],
-    "additionalConstructorParameters": [],
     "language": "java",
     "deliveryMethod": "zip",
     "hooks": {
       "enabled": false,
       "sourceDir": ""
     },
+    "validateResponses": false,
     "usesFormData": false,
     "environmentVariables": [],
     "fileOutput": "/tmp",
-    "inferServiceNames": false,
     "httpLibrary": {
       "name": "axios",
-      "packages": {
-        "axios": "^1.9.0"
-      },
-      "languages": ["typescript"]
+      "packages": {},
+      "languages": [
+        "typescript"
+      ]
     },
+    "multiTenant": false,
     "customQueries": {
       "paths": [],
       "rawQueries": [],
@@ -259,11 +336,15 @@
     "specType": "openapi",
     "deprecatedOperations": {
       "include": true
+    },
+    "multipleResponses": {
+      "enabled": false
     }
   },
   "files": [
     "pom.xml",
     ".gitignore",
+    ".github/workflows/release.yml",
     "src/main/java/com/alohi/signplus/validation/Violation.java",
     "src/main/java/com/alohi/signplus/validation/ViolationAggregator.java",
     "src/main/java/com/alohi/signplus/validation/validators/AbstractValidator.java",
@@ -276,6 +357,7 @@
     "src/main/java/com/alohi/signplus/services/BaseService.java",
     "src/main/java/com/alohi/signplus/http/HttpMethod.java",
     "src/main/java/com/alohi/signplus/http/ModelConverter.java",
+    "src/main/java/com/alohi/signplus/http/util/ContentTypes.java",
     "src/main/java/com/alohi/signplus/http/util/HttpArgumentConverter.java",
     "src/main/java/com/alohi/signplus/http/serialization/PathSerializationStyle.java",
     "src/main/java/com/alohi/signplus/http/serialization/QuerySerializationStyle.java",
@@ -283,7 +365,6 @@
     "src/main/java/com/alohi/signplus/http/serialization/Serializer.java",
     "src/main/java/com/alohi/signplus/http/serialization/Util.java",
     "src/main/java/com/alohi/signplus/http/interceptors/DefaultHeadersInterceptor.java",
-    "src/main/java/com/alohi/signplus/hook/Hook.java",
     "src/main/java/com/alohi/signplus/exceptions/ApiError.java",
     "src/main/java/com/alohi/signplus/http/Environment.java",
     "src/main/java/com/alohi/signplus/Signplus.java",
@@ -291,31 +372,64 @@
     "src/main/java/com/alohi/signplus/http/interceptors/RetryInterceptor.java",
     "src/main/java/com/alohi/signplus/config/RetryConfig.java",
     "src/main/java/com/alohi/signplus/config/SignplusConfig.java",
-    "documentation/models/CreateEnvelopeRequest.md",
+    "src/main/java/com/alohi/signplus/config/RequestConfig.java",
+    "documentation/snippets/snippets.json",
     "documentation/models/Envelope.md",
-    "documentation/models/CreateEnvelopeFromTemplateRequest.md",
-    "documentation/models/ListEnvelopesRequest.md",
-    "documentation/models/ListEnvelopesResponse.md",
+    "documentation/models/EnvelopeFlowType.md",
+    "documentation/models/EnvelopeLegalityLevel.md",
+    "documentation/models/EnvelopeStatus.md",
+    "documentation/models/SigningStep.md",
+    "documentation/models/Recipient.md",
+    "documentation/models/RecipientRole.md",
+    "documentation/models/RecipientVerification.md",
+    "documentation/models/RecipientVerificationType.md",
     "documentation/models/Document.md",
+    "documentation/models/Page.md",
+    "documentation/models/EnvelopeNotification.md",
+    "documentation/models/EnvelopeAttachments.md",
+    "documentation/models/AttachmentSettings.md",
+    "documentation/models/AttachmentPlaceholdersPerRecipient.md",
+    "documentation/models/AttachmentPlaceholder.md",
+    "documentation/models/AttachmentPlaceholderFile.md",
+    "documentation/models/CreateEnvelopeRequest.md",
+    "documentation/models/CreateEnvelopeFromTemplateRequest.md",
+    "documentation/models/ListEnvelopesResponse.md",
+    "documentation/models/ListEnvelopesRequest.md",
+    "documentation/models/EnvelopeOrderField.md",
+    "documentation/models/DownloadEnvelopeSignedDocumentsParameters.md",
     "documentation/models/ListEnvelopeDocumentsResponse.md",
     "documentation/models/AddEnvelopeDocumentRequest.md",
     "documentation/models/SetEnvelopeDynamicFieldsRequest.md",
+    "documentation/models/DynamicField.md",
     "documentation/models/AddEnvelopeSigningStepsRequest.md",
     "documentation/models/SetEnvelopeAttachmentsSettingsRequest.md",
-    "documentation/models/EnvelopeAttachments.md",
     "documentation/models/SetEnvelopeAttachmentsPlaceholdersRequest.md",
+    "documentation/models/AttachmentPlaceholderRequest.md",
     "documentation/models/RenameEnvelopeRequest.md",
     "documentation/models/SetEnvelopeCommentRequest.md",
-    "documentation/models/EnvelopeNotification.md",
     "documentation/models/SetEnvelopeExpirationRequest.md",
     "documentation/models/SetEnvelopeLegalityLevelRequest.md",
     "documentation/models/Annotation.md",
+    "documentation/models/AnnotationType.md",
+    "documentation/models/AnnotationSignature.md",
+    "documentation/models/AnnotationInitials.md",
+    "documentation/models/AnnotationText.md",
+    "documentation/models/AnnotationFont.md",
+    "documentation/models/AnnotationFontFamily.md",
+    "documentation/models/AnnotationDateTime.md",
+    "documentation/models/AnnotationDateTimeFormat.md",
+    "documentation/models/AnnotationCheckbox.md",
+    "documentation/models/AnnotationCheckboxStyle.md",
     "documentation/models/ListEnvelopeDocumentAnnotationsResponse.md",
     "documentation/models/AddAnnotationRequest.md",
-    "documentation/models/CreateTemplateRequest.md",
     "documentation/models/Template.md",
-    "documentation/models/ListTemplatesRequest.md",
+    "documentation/models/TemplateSigningStep.md",
+    "documentation/models/TemplateRecipient.md",
+    "documentation/models/TemplateRecipientRole.md",
+    "documentation/models/CreateTemplateRequest.md",
     "documentation/models/ListTemplatesResponse.md",
+    "documentation/models/ListTemplatesRequest.md",
+    "documentation/models/TemplateOrderField.md",
     "documentation/models/AddTemplateDocumentRequest.md",
     "documentation/models/ListTemplateDocumentsResponse.md",
     "documentation/models/AddTemplateSigningStepsRequest.md",
@@ -323,42 +437,11 @@
     "documentation/models/SetTemplateCommentRequest.md",
     "documentation/models/ListTemplateAnnotationsResponse.md",
     "documentation/models/ListTemplateDocumentAnnotationsResponse.md",
-    "documentation/models/CreateWebhookRequest.md",
     "documentation/models/Webhook.md",
-    "documentation/models/ListWebhooksRequest.md",
-    "documentation/models/ListWebhooksResponse.md",
-    "documentation/models/EnvelopeLegalityLevel.md",
-    "documentation/models/EnvelopeFlowType.md",
-    "documentation/models/EnvelopeStatus.md",
-    "documentation/models/SigningStep.md",
-    "documentation/models/Recipient.md",
-    "documentation/models/RecipientRole.md",
-    "documentation/models/RecipientVerification.md",
-    "documentation/models/RecipientVerificationType.md",
-    "documentation/models/Page.md",
-    "documentation/models/AttachmentSettings.md",
-    "documentation/models/AttachmentPlaceholdersPerRecipient.md",
-    "documentation/models/AttachmentPlaceholder.md",
-    "documentation/models/AttachmentPlaceholderFile.md",
-    "documentation/models/EnvelopeOrderField.md",
-    "documentation/models/DynamicField.md",
-    "documentation/models/AttachmentPlaceholderRequest.md",
-    "documentation/models/AnnotationType.md",
-    "documentation/models/AnnotationSignature.md",
-    "documentation/models/AnnotationInitials.md",
-    "documentation/models/AnnotationText.md",
-    "documentation/models/AnnotationDateTime.md",
-    "documentation/models/AnnotationCheckbox.md",
-    "documentation/models/AnnotationFont.md",
-    "documentation/models/AnnotationFontFamily.md",
-    "documentation/models/AnnotationDateTimeFormat.md",
-    "documentation/models/AnnotationCheckboxStyle.md",
-    "documentation/models/TemplateSigningStep.md",
-    "documentation/models/TemplateRecipient.md",
-    "documentation/models/TemplateRecipientRole.md",
-    "documentation/models/TemplateOrderField.md",
     "documentation/models/WebhookEvent.md",
-    "documentation/models/DownloadEnvelopeSignedDocumentsParameters.md",
+    "documentation/models/CreateWebhookRequest.md",
+    "documentation/models/ListWebhooksResponse.md",
+    "documentation/models/ListWebhooksRequest.md",
     "src/main/java/com/alohi/signplus/json/TypeUtils.java",
     "examples/pom.xml",
     "examples/run.sh",
@@ -375,8 +458,8 @@
     "src/main/java/com/alohi/signplus/http/util/RequestBuilder.java",
     "examples/README.md",
     ".env.example",
-    "src/main/java/com/alohi/signplus/models/EnvelopeLegalityLevel.java",
     "src/main/java/com/alohi/signplus/models/EnvelopeFlowType.java",
+    "src/main/java/com/alohi/signplus/models/EnvelopeLegalityLevel.java",
     "src/main/java/com/alohi/signplus/models/EnvelopeStatus.java",
     "src/main/java/com/alohi/signplus/models/RecipientRole.java",
     "src/main/java/com/alohi/signplus/models/RecipientVerificationType.java",
@@ -398,39 +481,39 @@
     "src/main/java/com/alohi/signplus/models/AddTemplateSigningStepsRequest.java",
     "src/main/java/com/alohi/signplus/models/RenameTemplateRequest.java",
     "src/main/java/com/alohi/signplus/models/SetTemplateCommentRequest.java",
+    "src/main/java/com/alohi/signplus/models/SigningStep.java",
+    "src/main/java/com/alohi/signplus/models/AttachmentSettings.java",
+    "src/main/java/com/alohi/signplus/models/DownloadEnvelopeSignedDocumentsParameters.java",
     "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentsResponse.java",
     "src/main/java/com/alohi/signplus/models/AddEnvelopeDocumentRequest.java",
     "src/main/java/com/alohi/signplus/models/AddEnvelopeSigningStepsRequest.java",
     "src/main/java/com/alohi/signplus/models/RenameEnvelopeRequest.java",
     "src/main/java/com/alohi/signplus/models/SetEnvelopeLegalityLevelRequest.java",
+    "src/main/java/com/alohi/signplus/models/AnnotationSignature.java",
+    "src/main/java/com/alohi/signplus/models/AnnotationInitials.java",
     "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentAnnotationsResponse.java",
+    "src/main/java/com/alohi/signplus/models/TemplateSigningStep.java",
     "src/main/java/com/alohi/signplus/models/ListTemplateDocumentsResponse.java",
     "src/main/java/com/alohi/signplus/models/ListTemplateAnnotationsResponse.java",
     "src/main/java/com/alohi/signplus/models/ListTemplateDocumentAnnotationsResponse.java",
     "src/main/java/com/alohi/signplus/models/CreateWebhookRequest.java",
     "src/main/java/com/alohi/signplus/models/ListWebhooksResponse.java",
-    "src/main/java/com/alohi/signplus/models/SigningStep.java",
-    "src/main/java/com/alohi/signplus/models/AttachmentSettings.java",
-    "src/main/java/com/alohi/signplus/models/AnnotationSignature.java",
-    "src/main/java/com/alohi/signplus/models/AnnotationInitials.java",
-    "src/main/java/com/alohi/signplus/models/TemplateSigningStep.java",
-    "src/main/java/com/alohi/signplus/models/DownloadEnvelopeSignedDocumentsParameters.java",
-    "src/main/java/com/alohi/signplus/models/EnvelopeAttachments.java",
-    "src/main/java/com/alohi/signplus/models/ListWebhooksRequest.java",
     "src/main/java/com/alohi/signplus/models/RecipientVerification.java",
     "src/main/java/com/alohi/signplus/models/Page.java",
+    "src/main/java/com/alohi/signplus/models/EnvelopeAttachments.java",
     "src/main/java/com/alohi/signplus/models/DynamicField.java",
     "src/main/java/com/alohi/signplus/models/AnnotationCheckbox.java",
+    "src/main/java/com/alohi/signplus/models/ListWebhooksRequest.java",
+    "src/main/java/com/alohi/signplus/models/EnvelopeNotification.java",
+    "src/main/java/com/alohi/signplus/models/AttachmentPlaceholdersPerRecipient.java",
     "src/main/java/com/alohi/signplus/models/CreateEnvelopeFromTemplateRequest.java",
     "src/main/java/com/alohi/signplus/models/ListEnvelopesResponse.java",
-    "src/main/java/com/alohi/signplus/models/EnvelopeNotification.java",
+    "src/main/java/com/alohi/signplus/models/AnnotationFont.java",
     "src/main/java/com/alohi/signplus/models/ListTemplatesResponse.java",
     "src/main/java/com/alohi/signplus/models/Webhook.java",
-    "src/main/java/com/alohi/signplus/models/AttachmentPlaceholdersPerRecipient.java",
-    "src/main/java/com/alohi/signplus/models/AnnotationFont.java",
     "src/main/java/com/alohi/signplus/models/AttachmentPlaceholderFile.java",
-    "src/main/java/com/alohi/signplus/models/CreateEnvelopeRequest.java",
     "src/main/java/com/alohi/signplus/models/Document.java",
+    "src/main/java/com/alohi/signplus/models/CreateEnvelopeRequest.java",
     "src/main/java/com/alohi/signplus/models/TemplateRecipient.java",
     "src/main/java/com/alohi/signplus/models/Recipient.java",
     "src/main/java/com/alohi/signplus/models/AttachmentPlaceholderRequest.java",
@@ -446,5 +529,195 @@
     "src/main/java/com/alohi/signplus/models/ListEnvelopesRequest.java",
     "documentation/services/SignplusService.md",
     "src/main/java/com/alohi/signplus/services/SignplusService.java"
-  ]
+  ],
+  "fileHashes": {
+    ".env.example": "deba3e289e64ed2ccb9169d2739d4db6bf8383b6cdfa5f98abd6f76010df80fd",
+    ".github/workflows/release.yml": "5f194c1154fd1e8b218a4b9a49f8b7b964465027583f33546076bbef526006a2",
+    ".gitignore": "16c2381047d584e96eb9c89da75b41f24abb5df5e1b9b770321ef9bf9f46b7b4",
+    ".idea/compiler.xml": "d4b3c50d88d994f6b45771590618d6bb974dd4686aee2207f98e4f2d6425f438",
+    ".idea/encoding.xml": "c08731aff01601ae1dce0f19fe8f058b750a167cdef4fb92b8ba104eeb7ec038",
+    ".idea/jarRepositories.xml": "9c794caa37d870d809db42aa629d5232e5f1a9a76593a28a55898244ecbc75a2",
+    ".idea/misc.xml": "042abf22dfaa2dc7e5f3d7956f778c18bdfb7404f4a9bddd388d49e48e00f90e",
+    ".idea/workspace.xml": "6ff635cc74e6a8bf1618157a9110c7a70a6d78175e0ca9065f07acdbc75aad26",
+    "LICENSE": "3ec558dc6e9c9355ab4b28c942caa92bf90b0b82c12d7838d2ef92467ad135c1",
+    "README.md": "97d7a5919bb11b83bd3929ea1ef5a0b1050466e1f174615c61e3d85cefda4dcc",
+    "documentation/models/AddAnnotationRequest.md": "1822f9d7a78452d5b2ee3bce87f8b056e73605368e282edfb964002bd57cb919",
+    "documentation/models/AddEnvelopeDocumentRequest.md": "790891c96ed5bf90452cdb3f60780b35d5291826da957eedab5cfbbb31ce5eef",
+    "documentation/models/AddEnvelopeSigningStepsRequest.md": "20c5f3d66847e9d27b77c9cd5174663c161e3fe1018364730048981faa5d93a8",
+    "documentation/models/AddTemplateDocumentRequest.md": "3695a69ede62f33c9e5bf69637b91fdb0c35227536572dee61a88630c5355c33",
+    "documentation/models/AddTemplateSigningStepsRequest.md": "ce76e3ae564967eb0307a4ddd4c9f961774a766128a06cc6f76ee241b3bfa4c2",
+    "documentation/models/Annotation.md": "6d970dfa833705a58d586df43a17e3639d8187f29a7120d3d4e167ba433e0537",
+    "documentation/models/AnnotationCheckbox.md": "0fc35b9bc12dc2cf494016e7d72196ed79be22f81a3c58237275d5676ea75849",
+    "documentation/models/AnnotationCheckboxStyle.md": "9c5732b22525d686ab724ce93848ff6672791e2128bc4214fbe4f10546368821",
+    "documentation/models/AnnotationDateTime.md": "88b269668dde28d6560ae6d7ac3bf35612f53bb2a5932f3edeb767577a3a9600",
+    "documentation/models/AnnotationDateTimeFormat.md": "a39bfcd57cdae80a6390682af7f287c28d963161a8bb4def1adeb812109f488c",
+    "documentation/models/AnnotationFont.md": "b56d1938fe3d8e8d23d0be6f0d0350318652972da4840e4ec04dd42249a741f8",
+    "documentation/models/AnnotationFontFamily.md": "9a6e3513f1d0abab964c9810cd0e60fe2f96967b2d23c645bde4fd7e63c99ff1",
+    "documentation/models/AnnotationInitials.md": "b79ac5163d05a8b588cd502cacfbb89b57bdeb7611cd0f2d575cb4ca61ad28b7",
+    "documentation/models/AnnotationSignature.md": "7ba44a393894d0732900d73f42ab81fcea984245feb8e16de6be5e3f770d085e",
+    "documentation/models/AnnotationText.md": "1fc3489b65fc030517734a6f387d43a379a7209cbd057b0a7a1f14abd8a9db4c",
+    "documentation/models/AnnotationType.md": "f0c5d796d61da29a051d41e2a1b2b1bc3885e7a7ff3ebee845c6e875d06de4e8",
+    "documentation/models/AttachmentPlaceholder.md": "becd3c408998810f2ba6e88aeeaf6f575a082833e7e19dd654ece343761b8ac8",
+    "documentation/models/AttachmentPlaceholderFile.md": "79321dbf5eb36ad54a56b9bb5312b9bb5d24f098cba86e8a7da048c0fd842a10",
+    "documentation/models/AttachmentPlaceholderRequest.md": "0de74f240998cf31d9b953dde4bfe01978ca1ee4bcd6febb3e72eb3cf4a48325",
+    "documentation/models/AttachmentPlaceholdersPerRecipient.md": "ca3e535ca0989d2383b42b56eba4270d84a01e23dd0cd8f53e7501edae0ed9b3",
+    "documentation/models/AttachmentSettings.md": "d357529ce7a784ec4284741c30c932098a34a3a07496ccd7bad5e1d230e7902a",
+    "documentation/models/CreateEnvelopeFromTemplateRequest.md": "e52ba257a88d8a080005a0a480eda61e59ed3d65f79d836ab95ed95f24a6f44e",
+    "documentation/models/CreateEnvelopeRequest.md": "4926c4ca567d8a6f7c5319ab13b851513cb7dd9c6bd78e208360a5ada3f08aff",
+    "documentation/models/CreateTemplateRequest.md": "80d58ac01c40353adc2f9e15ad71cc8be4794e991eb943af2a85727980a19d75",
+    "documentation/models/CreateWebhookRequest.md": "b71010667a79453e23b3fda135f8f9c82e0ba4125fea8d13b4073b8aba5d5f5d",
+    "documentation/models/Document.md": "be981674318ecf7626656905c2f79673e263aaec0072f9503eb933a943cabaa3",
+    "documentation/models/DownloadEnvelopeSignedDocumentsParameters.md": "f35650531132f2c104cede96925b956261621fc41a43efd02fe42f8eef9009da",
+    "documentation/models/DynamicField.md": "e36f012e14464f6cfee11242c00bf734c70457613cc0456bbbcc4beb252e0bb9",
+    "documentation/models/Envelope.md": "4622b3b4702d560365ba63834ab90bfe0466e85036a7fd2b8f327a569bdbf0d9",
+    "documentation/models/EnvelopeAttachments.md": "81ab2f35528666538dc3148f2f95b764e11ace58d85856f4ab5a71e9a1746166",
+    "documentation/models/EnvelopeFlowType.md": "a52f49c8488cb0d6c6c4e445f1a5a2e58147a4a608083756276341002a658be3",
+    "documentation/models/EnvelopeLegalityLevel.md": "84f1ae4c383abc293b45d92b9b53fe02bb8f02019d8b1c5ffc7f3ef05f698575",
+    "documentation/models/EnvelopeNotification.md": "5004e2754c8b923f8fa49c4b64cabba1496515f8260275908556e74a598f3a4e",
+    "documentation/models/EnvelopeOrderField.md": "f12890e4bad097bcbce03e7fd689bc3360915d6c5c19a691e3a4ec0ea4624481",
+    "documentation/models/EnvelopeStatus.md": "d3195b5be478ae8eab4c841a5a84b0706a2965011d994052105fae514d73fbd1",
+    "documentation/models/ListEnvelopeDocumentAnnotationsResponse.md": "da5f552e2aa3c7e6fbbf3c393b90ef07dd3519dfc698df79beca6ae3b370e715",
+    "documentation/models/ListEnvelopeDocumentsResponse.md": "5744c764a54103f31b2458e9f190fb51f79db3ed5087d581c6620c4b8642d4ac",
+    "documentation/models/ListEnvelopesRequest.md": "4eb025dd911c39ca8fd10707eb0bad75b212ea17e936c7fd9d39bdbfc512581c",
+    "documentation/models/ListEnvelopesResponse.md": "5b7c3ccf91c218d5d4e340a074c9d9de95fa53f4f916d15f1a7eb5fbba5c4ea0",
+    "documentation/models/ListTemplateAnnotationsResponse.md": "84aaeaaa5b6582792de95680784737328a85d9d147eaec5ed222b66fcb11249e",
+    "documentation/models/ListTemplateDocumentAnnotationsResponse.md": "8c5e7b712c4f544620dd9224cb6f36b4725b3eb1ffc75ae869b5848ecb26ed23",
+    "documentation/models/ListTemplateDocumentsResponse.md": "26e88c61f710f17939a037fc3c05ec550d61def6f74f23c49cc3c5abb8742d2d",
+    "documentation/models/ListTemplatesRequest.md": "7491e9bfd6dae44900d81604b4411fcb5e737da30aab12ebf849f1708786902d",
+    "documentation/models/ListTemplatesResponse.md": "7091cec03dcebdd4ee94ffa3abfb06d7f29f17ce360b26b0814f11349e89942f",
+    "documentation/models/ListWebhooksRequest.md": "7b22965b9a4e4d3e8c9a9dea95afe2f7247fc89274dc5e76035b88e2e580eb45",
+    "documentation/models/ListWebhooksResponse.md": "3b56c18f262218a963bf94ae2bea73c4d026a9e6b9a5ef2c6a049bb292c85ba8",
+    "documentation/models/Page.md": "18ad08ae751ee73b31218699656b04c196e5db76a4ffc14bf67376ceaa8c34d3",
+    "documentation/models/Recipient.md": "dceeefa2a1ee4f394cf10ea11c86ae274cc7766976d3c0f22af393dd7b6ddcf3",
+    "documentation/models/RecipientRole.md": "67d3c22ff15e5e11ccf5be47efe320d1ea31018cab371fea5e088d83d3eed10d",
+    "documentation/models/RecipientVerification.md": "c7c326b19635fbe106ae30e5935d32c5e557d4ea8e2eb1b83cf2067e3fac60a7",
+    "documentation/models/RecipientVerificationType.md": "5776f1d165673ee7f588e351d1875c2216371e62719cf78e7dcf4584c0a4454a",
+    "documentation/models/RenameEnvelopeRequest.md": "3dd466b58e842f32665f0803439c02001d38bc958ac3503e6d64f67f0fe61dde",
+    "documentation/models/RenameTemplateRequest.md": "7c9181b76aa7bd2bddb42c2bc0e46e4f030eb21bc1633c441812b00b4ddc5248",
+    "documentation/models/SetEnvelopeAttachmentsPlaceholdersRequest.md": "46b6bacbff01cd7e870c0acf7a2400648dac407a2bf3b395b68579156e2385d6",
+    "documentation/models/SetEnvelopeAttachmentsSettingsRequest.md": "fd716156384b28055ce14bb303fc1b9e1811985d9ae13a8ddb0aec44059920e6",
+    "documentation/models/SetEnvelopeCommentRequest.md": "44978e4dca59b4e892cddf11f8cad6dbf7fb46a781b57cb52191c0a08a828c69",
+    "documentation/models/SetEnvelopeDynamicFieldsRequest.md": "996bac33749c4535ab3ca3703cbfd5625d7fbc057e6d5bd9a486dbfd61dfb412",
+    "documentation/models/SetEnvelopeExpirationRequest.md": "ac63fb6495c4b652ef73d4dc3b838c454b67cbc9158f51ad614a155cc792bd00",
+    "documentation/models/SetEnvelopeLegalityLevelRequest.md": "949dd28d1dad27580e65819beedd5977d2d2bec3ceef2760f44d41138aada1f7",
+    "documentation/models/SetTemplateCommentRequest.md": "d0d6826ecf3854fdc62cc08b520c33bc6150780f671310ce0479b3d0988b4ba9",
+    "documentation/models/SigningStep.md": "6b70e09c0ae98067cd09c595ef630b508542ab5b6cbc15b5749b3d3bc899d9cd",
+    "documentation/models/Template.md": "3caaf370e5730a9b14e4defb70e3d086026e27ad20457d802959c4e0c92e5529",
+    "documentation/models/TemplateOrderField.md": "dcb52be30f8fd7448b6eb93dcb1097125f0404e90c58d5bd2544f064c3238778",
+    "documentation/models/TemplateRecipient.md": "c236d1292a7f58a3f13a14f30c949388052d613e895a9f8733bffaa6bfc09ff3",
+    "documentation/models/TemplateRecipientRole.md": "45fe5aa20340b38f97ab93835aa80e824934bb5f2af7913641bd35ea626cc086",
+    "documentation/models/TemplateSigningStep.md": "1ba26035141f006c3cf321ff789f7590253582d22a2b7b85f3612c9842f50b02",
+    "documentation/models/Webhook.md": "75bd77b2e7cbb64579e5fdcfdf93f0e62e2e4aadd04779cbab405565ec5a5a5f",
+    "documentation/models/WebhookEvent.md": "859455632fbdb76aafe580c237d25a053ed531ddde36f5039694dd865f118e79",
+    "documentation/services/SignplusService.md": "0d973b58891b9acf60f9d939b043529a0427a45f46593617b6f13ea978ce1730",
+    "documentation/snippets/snippets.json": "641df4339b93cd8581d41afb66abf2baedc27b650d1e745a50b3b842e6160b2e",
+    "examples/.gitignore": "16c2381047d584e96eb9c89da75b41f24abb5df5e1b9b770321ef9bf9f46b7b4",
+    "examples/README.md": "ddd772dbadc462f6282630590c80ef5ffe87b10fc4b03b4d5d83490342efc810",
+    "examples/pom.xml": "57ee0a9723d35ba37d07b37569f42b7128f8a88ab3e47a6df9ef6ff2ce66ef43",
+    "examples/run.sh": "b421122e2d707b60e35b125a39a47dd9b1bec16d241aec1ba5a7357816e4757b",
+    "examples/src/main/java/com/example/Main.java": "cde24ae9d2a0b0db7a62e537de0594fb6aef8b6cfeef7509c19abff4170b4620",
+    "pom.xml": "608b9b46631f18cf5986b0af3e5c9fcd109ad89a5ba01d43049393c7b0c714f9",
+    "prettier.config.js": "2fe33fda52344779fcf235afa8152cfd356880dc3161da09403dc26231bc72d9",
+    "src/main/java/com/alohi/signplus/Signplus.java": "eafb3e0d0efe75045e00ff431f24c95d8562718ff098d54383220e813c0273ce",
+    "src/main/java/com/alohi/signplus/config/RequestConfig.java": "2597667c8f714cafd98d85059f8dd75dfeea46101b182642a4784348053c2a31",
+    "src/main/java/com/alohi/signplus/config/RetryConfig.java": "5d6df73c5ea367c9166673a2d44139f97695b45e1e8f8a4d6819fe8925998c0b",
+    "src/main/java/com/alohi/signplus/config/SignplusConfig.java": "32c3d3627f868adfc19b3828abbd137a85f7380271075882b143ee9edfbba4b6",
+    "src/main/java/com/alohi/signplus/exceptions/ApiError.java": "312f64e9dbfff531ea8b38c0c61b36c3ae712178413281e30b1e7e8e9cf00ca8",
+    "src/main/java/com/alohi/signplus/http/Environment.java": "7edc7ec7383d5de29c417b98df6f83c71f733a6b34661dc6b6f271b35fa348b2",
+    "src/main/java/com/alohi/signplus/http/HttpMethod.java": "c470ae597b5d102ba84f06929b8369dda70bc8a53ae999ffc9adbb69be898a57",
+    "src/main/java/com/alohi/signplus/http/ModelConverter.java": "8d9e1bea43970262dd801cf0179e7a168ca0f3c0b07439f853dfe869aad877e9",
+    "src/main/java/com/alohi/signplus/http/interceptors/DefaultHeadersInterceptor.java": "152cf31f575ad923bdd8124e808b86ea991f9ca3f36b2213fb05076c74bbfb52",
+    "src/main/java/com/alohi/signplus/http/interceptors/RetryInterceptor.java": "7d56f2279b522a1bfc4ec41ec27448fe3cb5d97c5eef7facaf5f93a4990f86d7",
+    "src/main/java/com/alohi/signplus/http/serialization/PathSerializationStyle.java": "9e905d4790f03ae7ae7feb921a0afda2f5e1256784615c86c33910e2e2914fb2",
+    "src/main/java/com/alohi/signplus/http/serialization/QuerySerializationStyle.java": "54bff8afe4cf081e5fa7790f55ade53200d6515fec66c362d21fbb85aba0d5b3",
+    "src/main/java/com/alohi/signplus/http/serialization/SerializationStyle.java": "3ce00d1a99b56278564ec8913ab253cccc161dc8da1a7dfe3dc3104a08895b0d",
+    "src/main/java/com/alohi/signplus/http/serialization/Serializer.java": "d20a56aca861769ec39376db4f4c7af69fade46c53b14f42072f5912b5716361",
+    "src/main/java/com/alohi/signplus/http/serialization/Util.java": "cbbb4e6f41b24b3d9dbf809e452818998b7837325f35253b872cd72e3d287fd6",
+    "src/main/java/com/alohi/signplus/http/util/ContentTypes.java": "62597c440f204b3c474ffe8e8c478c958788d67f3387e0c2a736048b15d06666",
+    "src/main/java/com/alohi/signplus/http/util/HttpArgumentConverter.java": "9daa5274be889765855bde64871f94c73b23279069f4e4b257cb3b16a39c998c",
+    "src/main/java/com/alohi/signplus/http/util/RequestBuilder.java": "8db3b4f2e96d81773a0b4bb264e471d4249d10261bc590f4cce9d7db455b7770",
+    "src/main/java/com/alohi/signplus/json/TypeUtils.java": "3a776d11bef57b42a42fb16082879b5b2928c93aa8cfd2049ea4a2b6eeff6e27",
+    "src/main/java/com/alohi/signplus/models/AddAnnotationRequest.java": "ba0e87dc4d0aec9b19b37cc53a0ac115a1e8295f696ccaf35471fd39e608dddc",
+    "src/main/java/com/alohi/signplus/models/AddEnvelopeDocumentRequest.java": "9142806c2499c5a83691c4b86fbe31d544eea72e56f54da664eb7b1ee41e8b4c",
+    "src/main/java/com/alohi/signplus/models/AddEnvelopeSigningStepsRequest.java": "0d73bdffdcce633c737811e153f2ffc94d605413e84847183bd52f5af5b93afa",
+    "src/main/java/com/alohi/signplus/models/AddTemplateDocumentRequest.java": "3bbc927973e85042a1e9128b84fb7c96cd5b129a2d5859a346e8997303a63194",
+    "src/main/java/com/alohi/signplus/models/AddTemplateSigningStepsRequest.java": "2f8f158efd225189023cf409266548854fdf7c1bc8d206ff15d0aa2bde875237",
+    "src/main/java/com/alohi/signplus/models/Annotation.java": "704a15875ec6ad4f97b50b8b01df40e47c2d74823158f7bcf1f4bcfa9ab70f74",
+    "src/main/java/com/alohi/signplus/models/AnnotationCheckbox.java": "444ecc13c18358720eef17e4145aace7911d027d5a211acd6d3736da5291e2b5",
+    "src/main/java/com/alohi/signplus/models/AnnotationCheckboxStyle.java": "21b88d94b7fed265feca2d7e8a654879c010680667606813b5af7d0187526d2f",
+    "src/main/java/com/alohi/signplus/models/AnnotationDateTime.java": "dcdc2660635e79e14dd25260ae8c7305484065271e0c8dd09753d0cf251ca320",
+    "src/main/java/com/alohi/signplus/models/AnnotationDateTimeFormat.java": "7e0b3fa42be03ea943f0340331edfadfb5c25df768fd3af3cd6ee7d884f68378",
+    "src/main/java/com/alohi/signplus/models/AnnotationFont.java": "d48d9fe039a1aa5038e6fee2cd45cec96d6349e618ec90a2dba7fc1c28cc77f8",
+    "src/main/java/com/alohi/signplus/models/AnnotationFontFamily.java": "926885a2ecefa210d6d527bfb7965aecfe04172b3dee12629deb63b8f1da9fbc",
+    "src/main/java/com/alohi/signplus/models/AnnotationInitials.java": "274413c638c9cea9b2fa53e929fb5f99b18536672a5a122f43102126cb29fb58",
+    "src/main/java/com/alohi/signplus/models/AnnotationSignature.java": "38828fafdfe9b0ec0e8f18a0add9996e4f5790ce6ce37729d93906f133901be0",
+    "src/main/java/com/alohi/signplus/models/AnnotationText.java": "cb5b9efe1d56d5e24e2230f83b766dc5fc5394729e6910553afacb177eabd9ec",
+    "src/main/java/com/alohi/signplus/models/AnnotationType.java": "f684b855291dc096d3473c768674a5cdbdbde5bd289c03c399d8ae5d5a40b6f9",
+    "src/main/java/com/alohi/signplus/models/AttachmentPlaceholder.java": "af8f3d568890c6ca41c6358cb35a3e5ea9890d05a89b48db1a2ad6d9e2c303a5",
+    "src/main/java/com/alohi/signplus/models/AttachmentPlaceholderFile.java": "e0732f5c021e89daa964dacbeacad70ac1fbb5e910c2ad5e9e749e5dc9c4263a",
+    "src/main/java/com/alohi/signplus/models/AttachmentPlaceholderRequest.java": "a165123bb5db371e0bd5308fa9d3f0043565578461c98c957ad1df6ed58ab110",
+    "src/main/java/com/alohi/signplus/models/AttachmentPlaceholdersPerRecipient.java": "7f53b532dd6ed891403ced328b21844731fd7716633efd9fff70188fa1b8bf6a",
+    "src/main/java/com/alohi/signplus/models/AttachmentSettings.java": "44a282950bb38b01d5f5c122d83ced395476e9ed8c8c708ac5778cb7a93688d3",
+    "src/main/java/com/alohi/signplus/models/CreateEnvelopeFromTemplateRequest.java": "10c71f7fccec0a54c1f3291b964a408ab48cbf3fe9801f01c10ad9c2ac57b39a",
+    "src/main/java/com/alohi/signplus/models/CreateEnvelopeRequest.java": "a7c049092a83fdd37614be22f3046139917ec524d53d0ca074a731ec56e655bb",
+    "src/main/java/com/alohi/signplus/models/CreateTemplateRequest.java": "ada685ddc2ca4060235569408a645aec95b71e8e1d0e482d43d20f635f30d5db",
+    "src/main/java/com/alohi/signplus/models/CreateWebhookRequest.java": "0535a41d94089165b4601c6428cfc2c7bc93fe8650aa836a6494fbc2b53370d7",
+    "src/main/java/com/alohi/signplus/models/Document.java": "b5ff10b4dd8438c2ec73cf3e0b14420154606dd54745c4e4cffcf627994908c2",
+    "src/main/java/com/alohi/signplus/models/DownloadEnvelopeSignedDocumentsParameters.java": "094bcb8bc0ea0900c4b14e844a7ca0b1cdc9d24ce372ed8451f9864dfc134845",
+    "src/main/java/com/alohi/signplus/models/DynamicField.java": "37fd4113cb5add24cce9f353f7b6b91f842e80a1af7b2e272033604515a9ea35",
+    "src/main/java/com/alohi/signplus/models/Envelope.java": "27a1bf0a2c2106ad855c33c3cc06fbc474937cc5c98587e58e52841ef9544dbf",
+    "src/main/java/com/alohi/signplus/models/EnvelopeAttachments.java": "7500a53103a03da81efbf201423956446154dc3c11ee69fc748ae70451e1e3d2",
+    "src/main/java/com/alohi/signplus/models/EnvelopeFlowType.java": "f35d67ad3b3cd68bc5722a94ee354849f811c30f619a11f715f0e25bf09be35d",
+    "src/main/java/com/alohi/signplus/models/EnvelopeLegalityLevel.java": "71f10a582d1736c9e3a5d97acc3fc33042dbe656a7c1d5a56cdc9460a9b63683",
+    "src/main/java/com/alohi/signplus/models/EnvelopeNotification.java": "5b5e0c6a11c09957f86e91e63a4c5f1b316c4b1bbd8c1d2cb804db53ebb955bb",
+    "src/main/java/com/alohi/signplus/models/EnvelopeOrderField.java": "0c6456da1efddd498d865140b9568bf50bc9506f39e68c94517c93ecf45b31ed",
+    "src/main/java/com/alohi/signplus/models/EnvelopeStatus.java": "0e449692643fa94191cd313780c0706b591eb18b4ef5504173e245c6e68794fb",
+    "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentAnnotationsResponse.java": "943502797d806f765b1df380b3dca52b4f9aeee68d4d8c5efe53c2bf4c9d252b",
+    "src/main/java/com/alohi/signplus/models/ListEnvelopeDocumentsResponse.java": "3803a638bc3ac63b7fbee9ff34a4eda637378a70b0c9d9d3cae51e894d1b3754",
+    "src/main/java/com/alohi/signplus/models/ListEnvelopesRequest.java": "fc48b75676b8b63addb20c593fb5dbd91616e12160e9351c0b6e3f3db5b53203",
+    "src/main/java/com/alohi/signplus/models/ListEnvelopesResponse.java": "0bf8bbd4f4987d7d7207deec047541c05c6e47ead42977d55e364c1cd7eaeb5f",
+    "src/main/java/com/alohi/signplus/models/ListTemplateAnnotationsResponse.java": "8f806163ef58459b35f716307e905ee4c33a3e10f440aca14e40761e6429bc24",
+    "src/main/java/com/alohi/signplus/models/ListTemplateDocumentAnnotationsResponse.java": "f6ff42796114269bb95e87dd0334ebffd7b233a4e4b97dd497f7c40b50ff9077",
+    "src/main/java/com/alohi/signplus/models/ListTemplateDocumentsResponse.java": "bce0b6e654a6bbc3a4e408c3d4966ce62c626314384ec6a26ae51e211aafdda0",
+    "src/main/java/com/alohi/signplus/models/ListTemplatesRequest.java": "c7b59a0c40aad4d9ccd92e1e74d9a6ab15ed9ef05f43aa34a9af5ff41f939699",
+    "src/main/java/com/alohi/signplus/models/ListTemplatesResponse.java": "5e3f80b4d41016f624c8397ff8fcc84a2fb27be803140bf4d39e272ba6111cdf",
+    "src/main/java/com/alohi/signplus/models/ListWebhooksRequest.java": "3c1bd896a85ba40aa73addbe3568b581061295e38ead171f9740cb4edeae7bc7",
+    "src/main/java/com/alohi/signplus/models/ListWebhooksResponse.java": "d6348e83b14774c6abd9e25ca4e3d0a073c38b95ab731bad673b21baf50dccef",
+    "src/main/java/com/alohi/signplus/models/Page.java": "af8ad35ac79c763376a7d9880b0d38005174f2e6553bdd78cb74dd3fce6ca6aa",
+    "src/main/java/com/alohi/signplus/models/Recipient.java": "6c486f0b5fc5e121ec4630c28567c8914f60baa88a30cb5beaab570e78b04e50",
+    "src/main/java/com/alohi/signplus/models/RecipientRole.java": "23cf8893a14c76c486d4425a4e05122a1d41623f58f8b59d381d10702b071717",
+    "src/main/java/com/alohi/signplus/models/RecipientVerification.java": "c97ee9d2f1c1452c52cddc59b076dca588ebf6d6da2903ee81754d08f3df661c",
+    "src/main/java/com/alohi/signplus/models/RecipientVerificationType.java": "af5044771fc5b2f3eea2078cc1f203ae9d026fce8926b79fdc515bc0988a3f43",
+    "src/main/java/com/alohi/signplus/models/RenameEnvelopeRequest.java": "fc0a7dcba97e91be7a3482cabe16dfbfc83051758e41e5883f3466ae12c46ade",
+    "src/main/java/com/alohi/signplus/models/RenameTemplateRequest.java": "a2553a57d86ea92d4afe2cbba1ba3d09ec4b659c5dda8d6ea667fd5ff0818ac1",
+    "src/main/java/com/alohi/signplus/models/SetEnvelopeAttachmentsPlaceholdersRequest.java": "3a1aa5f16ba3df8635d6d965c3e964546b9b824ec5b707d4fa02ddc52fbdc0ab",
+    "src/main/java/com/alohi/signplus/models/SetEnvelopeAttachmentsSettingsRequest.java": "353a5bd5416312488b1a97a69426b0d64fa7309148664628f9ff52d1912989ac",
+    "src/main/java/com/alohi/signplus/models/SetEnvelopeCommentRequest.java": "9924228272bad803b4e73da242627cb29e78a3182d0f706b362156ac3bce043b",
+    "src/main/java/com/alohi/signplus/models/SetEnvelopeDynamicFieldsRequest.java": "17b1f3b886af05322efe36c270b930ee8319ebc678fbd9af1bdac2988b7fead2",
+    "src/main/java/com/alohi/signplus/models/SetEnvelopeExpirationRequest.java": "d383b50cbd69890398f14c10693b23d45b436679b21dd506e79cf1ac87577032",
+    "src/main/java/com/alohi/signplus/models/SetEnvelopeLegalityLevelRequest.java": "d3d5681cc7386fb387bd0f448942d1d85ee28d817f1e42892af496b0755670e7",
+    "src/main/java/com/alohi/signplus/models/SetTemplateCommentRequest.java": "019ce1b7c668fc4a0d87237c500c3b85b24a554d07165a26da07e8b5995f1ee6",
+    "src/main/java/com/alohi/signplus/models/SigningStep.java": "4f4c0476981753e18ec6b9dfbf2bc877eb8f720a7c02dd82b261eb0b5c255595",
+    "src/main/java/com/alohi/signplus/models/Template.java": "2d2cc43f5abe85ad55ba1c7b32477b5fd5403062495fd92766e96655ecc1da6f",
+    "src/main/java/com/alohi/signplus/models/TemplateOrderField.java": "37f4ac647bca16fe88e7df158784dd41a59d90c926f2b708de58a7df1cd256ee",
+    "src/main/java/com/alohi/signplus/models/TemplateRecipient.java": "44b2853c0118ead1e26c88af58492ee2f843acadcadecc7a5866765a857cba5d",
+    "src/main/java/com/alohi/signplus/models/TemplateRecipientRole.java": "56452548fe6ee077b0813d80c09ac40fd0af14f9b7d79752bc5726d09a4b1a90",
+    "src/main/java/com/alohi/signplus/models/TemplateSigningStep.java": "87410a2a7916fe4e19b9fb53e101d71863038c2fae6ad06acac37c805008cb90",
+    "src/main/java/com/alohi/signplus/models/Webhook.java": "55b2132bd87fcb3c909c27b2de1bdf524ff96bc509f3275102a4de3a384115b2",
+    "src/main/java/com/alohi/signplus/models/WebhookEvent.java": "61a974ec52a8508e544b1cb1b80c157e3aaab99f453a34868b2eeb60d486b976",
+    "src/main/java/com/alohi/signplus/services/BaseService.java": "0f2f23ff12bb807440057f4d997538bddbc102ec5c331d606ebd06ae680108a4",
+    "src/main/java/com/alohi/signplus/services/SignplusService.java": "b7f3191fc35d88fdf5aeb884514e51ccd204ad3fe3e270051ba5074c51a307cc",
+    "src/main/java/com/alohi/signplus/validation/Violation.java": "02ca55a4fae380775b3795810ba1ad4d655cd97d5b1bba5acc4f96617ffb6350",
+    "src/main/java/com/alohi/signplus/validation/ViolationAggregator.java": "945043886a7c657017db23c5cbe18884411c977a7e978bc24489bd0d0d9c59b1",
+    "src/main/java/com/alohi/signplus/validation/exceptions/ValidationException.java": "9a4a9895a4b6d0d5d5d702c48caded2dbe7a83eed5d137cc551b1d1c67e46172",
+    "src/main/java/com/alohi/signplus/validation/validators/AbstractValidator.java": "2c2509fd549df9de306d929387e73e32716695976b8627fa3b6561ca656eba85",
+    "src/main/java/com/alohi/signplus/validation/validators/ListValidator.java": "c03f599639b4707dbec212ff0ade43280dd75e31614cf776ff2507e0d00dbeb6",
+    "src/main/java/com/alohi/signplus/validation/validators/NumericValidator.java": "b5e24156c72a2c291ef01203d8dfe35ee0596c8696baabc58f845bd768caa915",
+    "src/main/java/com/alohi/signplus/validation/validators/StringValidator.java": "b560dcbb9b122e32f08cf538c49e09b7f031cd406c3a5fd36b849fe43f3a0721",
+    "src/main/java/com/alohi/signplus/validation/validators/Validator.java": "0290ff09377dcc295bd63127cc9ce7438033fa3828b73b25127dd3fdf801f04d",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/AbstractModelValidator.java": "00d24eb9a593324e2c7f9b1f9b46c51759046d528d8898662ee3652de9c13021",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/CreateEnvelopeFromTemplateRequestValidator.java": "4c254226560bfcf0350c60f0b33fcce8062b1f9b8b0bd027146f41be85491c34",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/CreateEnvelopeRequestValidator.java": "a630bf672e46d8567ca64cd0e238a2eef7397160fedfadc0781cb202185472fd",
+    "src/main/java/com/alohi/signplus/validation/validators/modelValidators/CreateTemplateRequestValidator.java": "05c32a07913be579f19866ff241b3a25f0f088ecc634f38d0472fb139136a638"
+  }
 }
