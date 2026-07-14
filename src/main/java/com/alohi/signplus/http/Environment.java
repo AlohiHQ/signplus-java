@@ -1,10 +1,10 @@
 package com.alohi.signplus.http;
 
 import lombok.Getter;
-import okhttp3.HttpUrl;
 
 /**
- * SDK Environments
+ * Predefined environment configurations for the SDK.
+ * Each environment represents a different base URL (e.g., production, staging, development).
  */
 @Getter
 public enum Environment {
@@ -13,11 +13,6 @@ public enum Environment {
   private final String url;
 
   Environment(String url) {
-    if (HttpUrl.parse(url) == null) {
-      throw new IllegalArgumentException(
-        String.format("Environment url [%s] is not valid. Please use the following format https://api.example.com", url)
-      );
-    }
     this.url = url;
   }
 }

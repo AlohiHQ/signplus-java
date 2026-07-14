@@ -21,6 +21,9 @@ public enum RecipientRole {
 
   @JsonCreator
   public static RecipientRole fromValue(String value) {
-    return Arrays.stream(RecipientRole.values()).filter(item -> item.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(RecipientRole.values())
+      .filter(item -> item.value.equals(value))
+      .findFirst()
+      .orElse(null);
   }
 }

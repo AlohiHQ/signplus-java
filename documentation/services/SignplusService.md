@@ -135,13 +135,17 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    CreateEnvelopeFromTemplateRequest createEnvelopeFromTemplateRequest = CreateEnvelopeFromTemplateRequest.builder()
-      .name("name")
-      .comment("comment")
-      .sandbox(true)
-      .build();
+    CreateEnvelopeFromTemplateRequest createEnvelopeFromTemplateRequest =
+      CreateEnvelopeFromTemplateRequest.builder()
+        .name("name")
+        .comment("comment")
+        .sandbox(true)
+        .build();
 
-    Envelope response = signplus.signplus.createEnvelopeFromTemplate("template_id", createEnvelopeFromTemplateRequest);
+    Envelope response = signplus.signplus.createEnvelopeFromTemplate(
+      "template_id",
+      createEnvelopeFromTemplateRequest
+    );
 
     System.out.println(response);
   }
@@ -201,16 +205,16 @@ public class Main {
       .statuses(statusesList)
       .folderIds(folderIdsList)
       .onlyRootFolder(true)
-      .dateFrom(5L)
-      .dateTo(9L)
+      .dateFrom(8L)
+      .dateTo(5L)
       .uid("uid")
       .first(9L)
-      .last(7L)
+      .last(9L)
       .after("after")
       .before("before")
       .orderField(EnvelopeOrderField.CREATION_DATE)
-      .ascending(true)
-      .includeTrash(true)
+      .ascending(false)
+      .includeTrash(false)
       .build();
 
     ListEnvelopesResponse response = signplus.signplus.listEnvelopes(listEnvelopesRequest);
@@ -324,11 +328,13 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    DownloadEnvelopeSignedDocumentsParameters requestParameters = DownloadEnvelopeSignedDocumentsParameters.builder()
-      .certificateOfCompletion(true)
-      .build();
+    DownloadEnvelopeSignedDocumentsParameters requestParameters =
+      DownloadEnvelopeSignedDocumentsParameters.builder().certificateOfCompletion(true).build();
 
-    byte[] response = signplus.signplus.downloadEnvelopeSignedDocuments("envelope_id", requestParameters);
+    byte[] response = signplus.signplus.downloadEnvelopeSignedDocuments(
+      "envelope_id",
+      requestParameters
+    );
 
     System.out.println(response);
   }
@@ -466,7 +472,7 @@ Add envelope document
 | :------------------------- | :-------------------------------------------------------------------- | :------- | :----------------------------- |
 | envelopeId                 | String                                                                | ✅       |                                |
 | addEnvelopeDocumentRequest | [AddEnvelopeDocumentRequest](../models/AddEnvelopeDocumentRequest.md) | ✅       | Request Body                   |
-| \_filename                 | [String](../models/String.md)                                         | ✅       | Filename for the uploaded file |
+| \_filename                 | String                                                                | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
@@ -487,13 +493,16 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    AddEnvelopeDocumentRequest addEnvelopeDocumentRequest = AddEnvelopeDocumentRequest.builder().file(file).build();
-    AddEnvelopeDocumentRequest addEnvelopeDocumentRequest = AddEnvelopeDocumentRequest.builder().file(file).build();
+    byte[] file = new byte[] { 0, 1, 2, 3, 4, 5 };
+
+    AddEnvelopeDocumentRequest addEnvelopeDocumentRequest = AddEnvelopeDocumentRequest.builder()
+      .file(file)
+      .build();
 
     Document response = signplus.signplus.addEnvelopeDocument(
       "envelope_id",
       addEnvelopeDocumentRequest,
-      addEnvelopeDocumentRequest
+      "filename.txt"
     );
 
     System.out.println(response);
@@ -542,11 +551,13 @@ public class Main {
 
     List<DynamicField> dynamicFieldsList = Arrays.asList(dynamicField);
 
-    SetEnvelopeDynamicFieldsRequest setEnvelopeDynamicFieldsRequest = SetEnvelopeDynamicFieldsRequest.builder()
-      .dynamicFields(dynamicFieldsList)
-      .build();
+    SetEnvelopeDynamicFieldsRequest setEnvelopeDynamicFieldsRequest =
+      SetEnvelopeDynamicFieldsRequest.builder().dynamicFields(dynamicFieldsList).build();
 
-    Envelope response = signplus.signplus.setEnvelopeDynamicFields("envelope_id", setEnvelopeDynamicFieldsRequest);
+    Envelope response = signplus.signplus.setEnvelopeDynamicFields(
+      "envelope_id",
+      setEnvelopeDynamicFieldsRequest
+    );
 
     System.out.println(response);
   }
@@ -614,11 +625,13 @@ public class Main {
 
     List<SigningStep> signingStepsList = Arrays.asList(signingStep);
 
-    AddEnvelopeSigningStepsRequest addEnvelopeSigningStepsRequest = AddEnvelopeSigningStepsRequest.builder()
-      .signingSteps(signingStepsList)
-      .build();
+    AddEnvelopeSigningStepsRequest addEnvelopeSigningStepsRequest =
+      AddEnvelopeSigningStepsRequest.builder().signingSteps(signingStepsList).build();
 
-    Envelope response = signplus.signplus.addEnvelopeSigningSteps("envelope_id", addEnvelopeSigningStepsRequest);
+    Envelope response = signplus.signplus.addEnvelopeSigningSteps(
+      "envelope_id",
+      addEnvelopeSigningStepsRequest
+    );
 
     System.out.println(response);
   }
@@ -660,7 +673,9 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    AttachmentSettings attachmentSettings = AttachmentSettings.builder().visibleToRecipients(false).build();
+    AttachmentSettings attachmentSettings = AttachmentSettings.builder()
+      .visibleToRecipients(true)
+      .build();
 
     SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest =
       SetEnvelopeAttachmentsSettingsRequest.builder().settings(attachmentSettings).build();
@@ -712,16 +727,19 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    AttachmentPlaceholderRequest attachmentPlaceholderRequest = AttachmentPlaceholderRequest.builder()
-      .recipientId("recipient_id")
-      .id("id")
-      .name("name")
-      .hint("hint")
-      .required(false)
-      .multiple(true)
-      .build();
+    AttachmentPlaceholderRequest attachmentPlaceholderRequest =
+      AttachmentPlaceholderRequest.builder()
+        .recipientId("recipient_id")
+        .id("id")
+        .name("name")
+        .hint("hint")
+        .required(false)
+        .multiple(true)
+        .build();
 
-    List<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(attachmentPlaceholderRequest);
+    List<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(
+      attachmentPlaceholderRequest
+    );
 
     SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest =
       SetEnvelopeAttachmentsPlaceholdersRequest.builder().placeholders(placeholdersList).build();
@@ -926,7 +944,9 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    RenameEnvelopeRequest renameEnvelopeRequest = RenameEnvelopeRequest.builder().name("name").build();
+    RenameEnvelopeRequest renameEnvelopeRequest = RenameEnvelopeRequest.builder()
+      .name("name")
+      .build();
 
     Envelope response = signplus.signplus.renameEnvelope("envelope_id", renameEnvelopeRequest);
 
@@ -973,7 +993,10 @@ public class Main {
       .comment("comment")
       .build();
 
-    Envelope response = signplus.signplus.setEnvelopeComment("envelope_id", setEnvelopeCommentRequest);
+    Envelope response = signplus.signplus.setEnvelopeComment(
+      "envelope_id",
+      setEnvelopeCommentRequest
+    );
 
     System.out.println(response);
   }
@@ -1017,10 +1040,13 @@ public class Main {
     EnvelopeNotification envelopeNotification = EnvelopeNotification.builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(1L)
+      .reminderInterval(9L)
       .build();
 
-    Envelope response = signplus.signplus.setEnvelopeNotification("envelope_id", envelopeNotification);
+    Envelope response = signplus.signplus.setEnvelopeNotification(
+      "envelope_id",
+      envelopeNotification
+    );
 
     System.out.println(response);
   }
@@ -1061,11 +1087,13 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    SetEnvelopeExpirationRequest setEnvelopeExpirationRequest = SetEnvelopeExpirationRequest.builder()
-      .expiresAt(0L)
-      .build();
+    SetEnvelopeExpirationRequest setEnvelopeExpirationRequest =
+      SetEnvelopeExpirationRequest.builder().expiresAt(10L).build();
 
-    Envelope response = signplus.signplus.setEnvelopeExpirationDate("envelope_id", setEnvelopeExpirationRequest);
+    Envelope response = signplus.signplus.setEnvelopeExpirationDate(
+      "envelope_id",
+      setEnvelopeExpirationRequest
+    );
 
     System.out.println(response);
   }
@@ -1107,11 +1135,13 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    SetEnvelopeLegalityLevelRequest setEnvelopeLegalityLevelRequest = SetEnvelopeLegalityLevelRequest.builder()
-      .legalityLevel(EnvelopeLegalityLevel.SES)
-      .build();
+    SetEnvelopeLegalityLevelRequest setEnvelopeLegalityLevelRequest =
+      SetEnvelopeLegalityLevelRequest.builder().legalityLevel(EnvelopeLegalityLevel.SES).build();
 
-    Envelope response = signplus.signplus.setEnvelopeLegalityLevel("envelope_id", setEnvelopeLegalityLevelRequest);
+    Envelope response = signplus.signplus.setEnvelopeLegalityLevel(
+      "envelope_id",
+      setEnvelopeLegalityLevelRequest
+    );
 
     System.out.println(response);
   }
@@ -1191,10 +1221,8 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    ListEnvelopeDocumentAnnotationsResponse response = signplus.signplus.getEnvelopeDocumentAnnotations(
-      "envelope_id",
-      "document_id"
-    );
+    ListEnvelopeDocumentAnnotationsResponse response =
+      signplus.signplus.getEnvelopeDocumentAnnotations("envelope_id", "document_id");
 
     System.out.println(response);
   }
@@ -1251,13 +1279,13 @@ public class Main {
 
     AnnotationFont annotationFont = AnnotationFont.builder()
       .family(AnnotationFontFamily.UNKNOWN)
-      .italic(true)
-      .bold(true)
+      .italic(false)
+      .bold(false)
       .build();
 
     AnnotationText annotationText = AnnotationText.builder()
-      .size(5.96D)
-      .color(8.73D)
+      .size(5.86D)
+      .color(4.1D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
@@ -1265,29 +1293,29 @@ public class Main {
       .build();
 
     AnnotationDateTime annotationDateTime = AnnotationDateTime.builder()
-      .size(0.26D)
+      .size(4.5D)
       .font(annotationFont)
       .color("color")
-      .autoFill(true)
+      .autoFill(false)
       .timezone("timezone")
-      .timestamp(1L)
+      .timestamp(10L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
     AnnotationCheckbox annotationCheckbox = AnnotationCheckbox.builder()
-      .checked(true)
+      .checked(false)
       .style(AnnotationCheckboxStyle.CIRCLE_CHECK)
       .build();
 
     AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(2L)
-      .x(1.99D)
-      .y(8.2D)
-      .width(4.89D)
-      .height(9.43D)
-      .required(false)
+      .page(7L)
+      .x(8.57D)
+      .y(4.21D)
+      .width(6.37D)
+      .height(2.63D)
+      .required(true)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
       .initials(annotationInitials)
@@ -1296,7 +1324,10 @@ public class Main {
       .checkbox(annotationCheckbox)
       .build();
 
-    Annotation response = signplus.signplus.addEnvelopeAnnotation("envelope_id", addAnnotationRequest);
+    Annotation response = signplus.signplus.addEnvelopeAnnotation(
+      "envelope_id",
+      addAnnotationRequest
+    );
 
     System.out.println(response);
   }
@@ -1369,7 +1400,9 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    CreateTemplateRequest createTemplateRequest = CreateTemplateRequest.builder().name("name").build();
+    CreateTemplateRequest createTemplateRequest = CreateTemplateRequest.builder()
+      .name("name")
+      .build();
 
     Template response = signplus.signplus.createTemplate(createTemplateRequest);
 
@@ -1422,12 +1455,12 @@ public class Main {
       .name("name")
       .tags(tagsList)
       .ids(idsList)
-      .first(1L)
-      .last(6L)
+      .first(4L)
+      .last(3L)
       .after("after")
       .before("before")
       .orderField(TemplateOrderField.TEMPLATE_ID)
-      .ascending(false)
+      .ascending(true)
       .build();
 
     ListTemplatesResponse response = signplus.signplus.listTemplates(listTemplatesRequest);
@@ -1561,7 +1594,7 @@ Add template document
 | :------------------------- | :-------------------------------------------------------------------- | :------- | :----------------------------- |
 | templateId                 | String                                                                | ✅       |                                |
 | addTemplateDocumentRequest | [AddTemplateDocumentRequest](../models/AddTemplateDocumentRequest.md) | ✅       | Request Body                   |
-| \_filename                 | [String](../models/String.md)                                         | ✅       | Filename for the uploaded file |
+| \_filename                 | String                                                                | ✅       | Filename for the uploaded file |
 
 **Return Type**
 
@@ -1582,13 +1615,16 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    AddTemplateDocumentRequest addTemplateDocumentRequest = AddTemplateDocumentRequest.builder().file(file).build();
-    AddTemplateDocumentRequest addTemplateDocumentRequest = AddTemplateDocumentRequest.builder().file(file).build();
+    byte[] file = new byte[] { 0, 1, 2, 3, 4, 5 };
+
+    AddTemplateDocumentRequest addTemplateDocumentRequest = AddTemplateDocumentRequest.builder()
+      .file(file)
+      .build();
 
     Document response = signplus.signplus.addTemplateDocument(
       "template_id",
       addTemplateDocumentRequest,
-      addTemplateDocumentRequest
+      "filename.txt"
     );
 
     System.out.println(response);
@@ -1724,15 +1760,19 @@ public class Main {
 
     List<TemplateRecipient> recipientsList = Arrays.asList(templateRecipient);
 
-    TemplateSigningStep templateSigningStep = TemplateSigningStep.builder().recipients(recipientsList).build();
+    TemplateSigningStep templateSigningStep = TemplateSigningStep.builder()
+      .recipients(recipientsList)
+      .build();
 
     List<TemplateSigningStep> signingStepsList = Arrays.asList(templateSigningStep);
 
-    AddTemplateSigningStepsRequest addTemplateSigningStepsRequest = AddTemplateSigningStepsRequest.builder()
-      .signingSteps(signingStepsList)
-      .build();
+    AddTemplateSigningStepsRequest addTemplateSigningStepsRequest =
+      AddTemplateSigningStepsRequest.builder().signingSteps(signingStepsList).build();
 
-    Template response = signplus.signplus.addTemplateSigningSteps("template_id", addTemplateSigningStepsRequest);
+    Template response = signplus.signplus.addTemplateSigningSteps(
+      "template_id",
+      addTemplateSigningStepsRequest
+    );
 
     System.out.println(response);
   }
@@ -1773,7 +1813,9 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    RenameTemplateRequest renameTemplateRequest = RenameTemplateRequest.builder().name("name").build();
+    RenameTemplateRequest renameTemplateRequest = RenameTemplateRequest.builder()
+      .name("name")
+      .build();
 
     Template response = signplus.signplus.renameTemplate("template_id", renameTemplateRequest);
 
@@ -1820,7 +1862,10 @@ public class Main {
       .comment("comment")
       .build();
 
-    Template response = signplus.signplus.setTemplateComment("template_id", setTemplateCommentRequest);
+    Template response = signplus.signplus.setTemplateComment(
+      "template_id",
+      setTemplateCommentRequest
+    );
 
     System.out.println(response);
   }
@@ -1864,10 +1909,13 @@ public class Main {
     EnvelopeNotification envelopeNotification = EnvelopeNotification.builder()
       .subject("subject")
       .message("message")
-      .reminderInterval(1L)
+      .reminderInterval(9L)
       .build();
 
-    Template response = signplus.signplus.setTemplateNotification("template_id", envelopeNotification);
+    Template response = signplus.signplus.setTemplateNotification(
+      "template_id",
+      envelopeNotification
+    );
 
     System.out.println(response);
   }
@@ -1906,7 +1954,9 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    ListTemplateAnnotationsResponse response = signplus.signplus.getTemplateAnnotations("template_id");
+    ListTemplateAnnotationsResponse response = signplus.signplus.getTemplateAnnotations(
+      "template_id"
+    );
 
     System.out.println(response);
   }
@@ -1946,10 +1996,8 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    ListTemplateDocumentAnnotationsResponse response = signplus.signplus.getDocumentTemplateAnnotations(
-      "template_id",
-      "document_id"
-    );
+    ListTemplateDocumentAnnotationsResponse response =
+      signplus.signplus.getDocumentTemplateAnnotations("template_id", "document_id");
 
     System.out.println(response);
   }
@@ -2006,13 +2054,13 @@ public class Main {
 
     AnnotationFont annotationFont = AnnotationFont.builder()
       .family(AnnotationFontFamily.UNKNOWN)
-      .italic(true)
-      .bold(true)
+      .italic(false)
+      .bold(false)
       .build();
 
     AnnotationText annotationText = AnnotationText.builder()
-      .size(5.96D)
-      .color(8.73D)
+      .size(5.86D)
+      .color(4.1D)
       .value("value")
       .tooltip("tooltip")
       .dynamicFieldName("dynamic_field_name")
@@ -2020,29 +2068,29 @@ public class Main {
       .build();
 
     AnnotationDateTime annotationDateTime = AnnotationDateTime.builder()
-      .size(0.26D)
+      .size(4.5D)
       .font(annotationFont)
       .color("color")
-      .autoFill(true)
+      .autoFill(false)
       .timezone("timezone")
-      .timestamp(1L)
+      .timestamp(10L)
       .format(AnnotationDateTimeFormat.DMY_NUMERIC_SLASH)
       .build();
 
     AnnotationCheckbox annotationCheckbox = AnnotationCheckbox.builder()
-      .checked(true)
+      .checked(false)
       .style(AnnotationCheckboxStyle.CIRCLE_CHECK)
       .build();
 
     AddAnnotationRequest addAnnotationRequest = AddAnnotationRequest.builder()
       .recipientId("recipient_id")
       .documentId("document_id")
-      .page(2L)
-      .x(1.99D)
-      .y(8.2D)
-      .width(4.89D)
-      .height(9.43D)
-      .required(false)
+      .page(7L)
+      .x(8.57D)
+      .y(4.21D)
+      .width(6.37D)
+      .height(2.63D)
+      .required(true)
       .type(AnnotationType.TEXT)
       .signature(annotationSignature)
       .initials(annotationInitials)
@@ -2051,7 +2099,10 @@ public class Main {
       .checkbox(annotationCheckbox)
       .build();
 
-    Annotation response = signplus.signplus.addTemplateAnnotation("template_id", addAnnotationRequest);
+    Annotation response = signplus.signplus.addTemplateAnnotation(
+      "template_id",
+      addAnnotationRequest
+    );
 
     System.out.println(response);
   }
@@ -2126,7 +2177,9 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    AttachmentSettings attachmentSettings = AttachmentSettings.builder().visibleToRecipients(false).build();
+    AttachmentSettings attachmentSettings = AttachmentSettings.builder()
+      .visibleToRecipients(true)
+      .build();
 
     SetEnvelopeAttachmentsSettingsRequest setEnvelopeAttachmentsSettingsRequest =
       SetEnvelopeAttachmentsSettingsRequest.builder().settings(attachmentSettings).build();
@@ -2178,16 +2231,19 @@ public class Main {
 
     Signplus signplus = new Signplus(config);
 
-    AttachmentPlaceholderRequest attachmentPlaceholderRequest = AttachmentPlaceholderRequest.builder()
-      .recipientId("recipient_id")
-      .id("id")
-      .name("name")
-      .hint("hint")
-      .required(false)
-      .multiple(true)
-      .build();
+    AttachmentPlaceholderRequest attachmentPlaceholderRequest =
+      AttachmentPlaceholderRequest.builder()
+        .recipientId("recipient_id")
+        .id("id")
+        .name("name")
+        .hint("hint")
+        .required(false)
+        .multiple(true)
+        .build();
 
-    List<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(attachmentPlaceholderRequest);
+    List<AttachmentPlaceholderRequest> placeholdersList = Arrays.asList(
+      attachmentPlaceholderRequest
+    );
 
     SetEnvelopeAttachmentsPlaceholdersRequest setEnvelopeAttachmentsPlaceholdersRequest =
       SetEnvelopeAttachmentsPlaceholdersRequest.builder().placeholders(placeholdersList).build();

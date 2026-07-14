@@ -20,6 +20,9 @@ public enum EnvelopeFlowType {
 
   @JsonCreator
   public static EnvelopeFlowType fromValue(String value) {
-    return Arrays.stream(EnvelopeFlowType.values()).filter(item -> item.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(EnvelopeFlowType.values())
+      .filter(item -> item.value.equals(value))
+      .findFirst()
+      .orElse(null);
   }
 }

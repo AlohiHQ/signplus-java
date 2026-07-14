@@ -23,6 +23,9 @@ public enum EnvelopeOrderField {
 
   @JsonCreator
   public static EnvelopeOrderField fromValue(String value) {
-    return Arrays.stream(EnvelopeOrderField.values()).filter(item -> item.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(EnvelopeOrderField.values())
+      .filter(item -> item.value.equals(value))
+      .findFirst()
+      .orElse(null);
   }
 }

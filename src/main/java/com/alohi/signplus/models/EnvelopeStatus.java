@@ -25,6 +25,9 @@ public enum EnvelopeStatus {
 
   @JsonCreator
   public static EnvelopeStatus fromValue(String value) {
-    return Arrays.stream(EnvelopeStatus.values()).filter(item -> item.value.equals(value)).findFirst().orElse(null);
+    return Arrays.stream(EnvelopeStatus.values())
+      .filter(item -> item.value.equals(value))
+      .findFirst()
+      .orElse(null);
   }
 }

@@ -77,7 +77,9 @@ public class AttachmentPlaceholdersPerRecipient {
     private JsonNullable<List<AttachmentPlaceholder>> placeholders = JsonNullable.undefined();
 
     @JsonProperty("placeholders")
-    public AttachmentPlaceholdersPerRecipientBuilder placeholders(List<AttachmentPlaceholder> value) {
+    public AttachmentPlaceholdersPerRecipientBuilder placeholders(
+      List<AttachmentPlaceholder> value
+    ) {
       if (value == null) {
         throw new IllegalStateException("placeholders cannot be null");
       }
